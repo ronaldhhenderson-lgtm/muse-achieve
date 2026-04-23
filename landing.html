@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="繆思臻美 Muse Achieve — Hong Kong's most exclusive private members' beauty sanctuary. By invitation only.">
+<title>繆思臻美 Muse Achieve™ — Private Members' Club · 頂級私人美學會所</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════
+   ROOT · TOKENS
+════════════════════════════════════════════ */
+:root{
+  --night:#2A1F1B;--night2:#3A2A26;--night3:#1E1614;
+  --cream:#FBF6F2;--ivory:#FFF9F6;--white:#FFFFFF;
+  --charcoal:#1E1614;--ink:#2D2420;
+  --gold:#B8743A;--gold-l:#D4966A;--gold-d:#8A5428;
+  --grey:#8A7268;--grey-l:#B0A098;--grey-ll:#D8CCC6;
+  /* Macaron palette — authentic French pastel */
+  --mac-rose:#F5C0D0;--mac-rose-d:#C87090;--mac-rose-bg:#FEF2F7;
+  --mac-lav:#D0BCE8;--mac-lav-d:#9070C0;--mac-lav-bg:#F7F2FE;
+  --mac-mint:#A8DCC8;--mac-mint-d:#509878;--mac-mint-bg:#F0FAF7;
+  --mac-peach:#F5D0A8;--mac-peach-d:#C8804A;--mac-peach-bg:#FEF7EE;
+  --mac-sky:#B0CCEE;--mac-sky-d:#4878B8;--mac-sky-bg:#EFF6FD;
+  --mac-pist:#BAE0A8;--mac-pist-d:#508840;--mac-pist-bg:#F2F9EE;
+  --mac-vanilla:#FDF8EC;--mac-lemon:#FEFAE0;--mac-caramel:#F8E8D0;
+  --serif:'Playfair Display',Georgia,serif;
+  --body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-in-out:cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{background:var(--cream);color:var(--charcoal);font-family:var(--body);overflow-x:hidden;cursor:none;}
+::selection{background:rgba(184,116,58,.2);color:var(--charcoal);}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--mac-rose-d);border-radius:2px;}
+a{text-decoration:none;color:inherit;}
+button{cursor:none;font-family:var(--body);}
+input,select,textarea{cursor:none;font-family:var(--body);}
+
+/* ════════════════════════════════════════════
+   CUSTOM CURSOR
+════════════════════════════════════════════ */
+#cursor-dot{width:6px;height:6px;background:var(--mac-rose-d);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;}
+#cursor-ring{width:32px;height:32px;border:1px solid rgba(200,112,144,.45);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s var(--ease-out),height .3s var(--ease-out),border-color .3s,top .08s linear,left .08s linear;}
+body.cursor-hover #cursor-dot{width:10px;height:10px;background:var(--mac-lav-d);}
+body.cursor-hover #cursor-ring{width:48px;height:48px;border-color:rgba(144,112,192,.35);}
+
+/* ════════════════════════════════════════════
+   REVEAL ANIMATION SYSTEM
+════════════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out);}
+.reveal.up{transform:translateY(28px);}
+.reveal.left{transform:translateX(-28px);}
+.reveal.right{transform:translateX(28px);}
+.reveal.scale{transform:translateY(28px) scale(.97);}
+.reveal.in{opacity:1;transform:none;}
+.d0{transition-delay:0s;}
+.d1{transition-delay:.12s;}
+.d2{transition-delay:.24s;}
+.d3{transition-delay:.36s;}
+.d4{transition-delay:.48s;}
+.d5{transition-delay:.60s;}
+.d6{transition-delay:.72s;}
+
+/* ════════════════════════════════════════════
+   BILINGUAL TEXT SYSTEM
+════════════════════════════════════════════ */
+.zh{display:block;line-height:1.5;}
+.en{display:block;line-height:1.6;}
+.bi-label{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mac-rose-d);}
+.bi-label::before,.bi-label::after{content:'';flex:1;height:1px;background:currentColor;opacity:.3;max-width:40px;}
+.bi-label .zh{display:inline;font-size:10px;font-style:normal;}
+.bi-label .en{display:inline;font-size:10px;}
+.bi-heading .zh{font-family:var(--serif);color:inherit;font-weight:500;}
+.bi-heading .en{font-family:var(--display);font-style:italic;font-weight:300;color:var(--grey);}
+.bi-body .zh{font-size:14px;color:var(--ink);line-height:1.9;margin-bottom:10px;}
+.bi-body .en{font-size:13px;color:var(--grey);line-height:1.8;font-style:italic;font-weight:300;}
+.bi-btn .zh{display:inline;margin-right:4px;}
+.bi-btn .en{display:inline;font-size:10px;opacity:.7;}
+
+/* ════════════════════════════════════════════
+   NAVIGATION
+════════════════════════════════════════════ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:9000;padding:22px 52px;display:flex;justify-content:space-between;align-items:center;transition:all .5s var(--ease-in-out);}
+#nav.scrolled{background:rgba(253,240,247,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:14px 52px;border-bottom:1px solid rgba(200,112,144,.12);box-shadow:0 4px 32px rgba(30,22,20,.05);}
+.nav-logo{display:flex;flex-direction:column;line-height:1;}
+.logo-zh{font-family:var(--serif);font-size:20px;color:var(--charcoal);font-weight:600;letter-spacing:.5px;transition:color .4s;}
+.logo-en{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--grey);margin-top:4px;transition:color .4s;}
+#nav.scrolled .logo-zh{color:var(--charcoal);}
+#nav.scrolled .logo-en{color:var(--grey);}
+/* Desktop links */
+.nav-desktop{display:flex;align-items:center;gap:8px;}
+.nav-link{display:flex;flex-direction:column;align-items:center;padding:8px 14px;border-radius:2px;transition:all .25s;border-bottom:1px solid transparent;}
+.nav-link.active .zh{color:var(--charcoal)!important;}
+.nav-link.active{border-bottom-color:rgba(200,112,144,.35);}
+body.night .nav-link.active .zh{color:#EDE8F5!important;}
+body.night .nav-link.active{border-bottom-color:rgba(200,112,144,.4);}
+.nav-link .zh{font-size:12px;font-weight:500;color:var(--grey);transition:color .3s;letter-spacing:.3px;}
+.nav-link .en{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-l);transition:color .3s;margin-top:1px;}
+.nav-link:hover .zh{color:var(--charcoal);}
+.nav-link:hover .en{color:var(--grey);}
+#nav.scrolled .nav-link .zh{color:var(--grey);}
+#nav.scrolled .nav-link .en{color:var(--grey-l);}
+#nav.scrolled .nav-link:hover .zh{color:var(--charcoal);}
+#nav.scrolled .nav-link:hover .en{color:var(--grey);}
+.nav-cta{display:flex;flex-direction:column;align-items:center;padding:11px 24px;background:transparent;border:1px solid rgba(200,112,144,.6);border-radius:1px;transition:all .35s;margin-left:8px;cursor:none;}
+.nav-cta .zh{font-size:12px;font-weight:600;color:var(--mac-rose-d);letter-spacing:.5px;transition:color .3s;}
+.nav-cta .en{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,112,144,.7);transition:color .3s;margin-top:1px;}
+.nav-cta:hover{background:var(--mac-rose-d);border-color:var(--mac-rose-d);}
+.nav-cta:hover .zh,.nav-cta:hover .en{color:var(--white);}
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;width:32px;cursor:none;background:none;border:none;padding:4px;}
+.hamburger span{display:block;height:1px;background:var(--charcoal);transition:all .35s;}
+#nav.scrolled .hamburger span{background:var(--charcoal);}
+#nav.menu-open .hamburger span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+#nav.menu-open .hamburger span:nth-child(2){opacity:0;transform:scaleX(0);}
+#nav.menu-open .hamburger span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+/* Mobile drawer — macaron light */
+.mobile-menu{position:fixed;inset:0;background:linear-gradient(160deg,#FEF2F7 0%,#F7F2FE 50%,#EFF6FD 100%);z-index:8900;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;opacity:0;pointer-events:none;transition:opacity .4s var(--ease-in-out);}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-nav-link{display:flex;flex-direction:column;align-items:center;padding:16px 32px;text-align:center;}
+.mobile-nav-link .zh{font-family:var(--serif);font-size:30px;color:var(--charcoal);font-weight:400;}
+.mobile-nav-link .en{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--grey-l);margin-top:4px;}
+.mobile-nav-link:hover .zh{color:var(--mac-rose-d);}
+.mobile-menu-cta{margin-top:24px;padding:16px 48px;border:1px solid rgba(200,112,144,.5);color:var(--mac-rose-d);display:flex;flex-direction:column;align-items:center;gap:4px;transition:all .3s;background:none;}
+.mobile-menu-cta .zh{font-size:16px;font-weight:600;}
+.mobile-menu-cta .en{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,112,144,.7);}
+.mobile-menu-cta:hover{background:var(--mac-rose-d);}
+.mobile-menu-cta:hover .zh,.mobile-menu-cta:hover .en{color:var(--white);}
+
+/* ════════════════════════════════════════════
+   HERO — French Macaron Light
+════════════════════════════════════════════ */
+#hero{min-height:100vh;background:linear-gradient(160deg,#FFF8F5 0%,#FEF2F9 40%,#F8F2FE 70%,#F0F6FE 100%);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
+.hero-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");opacity:.5;pointer-events:none;}
+.hero-gradient{position:absolute;inset:0;background:
+  radial-gradient(ellipse 90% 70% at 15% 85%, rgba(245,192,208,.35) 0%,transparent 55%),
+  radial-gradient(ellipse 70% 80% at 85% 15%, rgba(208,188,232,.28) 0%,transparent 55%),
+  radial-gradient(ellipse 60% 60% at 50% 50%, rgba(245,208,168,.18) 0%,transparent 60%);
+  animation:heroGlow 12s ease-in-out infinite alternate;}
+@keyframes heroGlow{
+  0%{opacity:.7;}50%{opacity:1;}100%{opacity:.8;}
+}
+/* Floating orbs — vibrant macaron on light */
+.orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;}
+.orb-a{width:380px;height:380px;background:rgba(245,192,208,.42);top:5%;left:-5%;animation:orbFloat 14s ease-in-out infinite;}
+.orb-b{width:300px;height:300px;background:rgba(208,188,232,.35);bottom:10%;right:-3%;animation:orbFloat 11s ease-in-out infinite;animation-delay:-5s;}
+.orb-c{width:220px;height:220px;background:rgba(168,220,200,.28);top:50%;left:52%;animation:orbFloat 17s ease-in-out infinite;animation-delay:-9s;}
+.orb-d{width:180px;height:180px;background:rgba(245,208,168,.32);top:15%;right:20%;animation:orbFloat 13s ease-in-out infinite;animation-delay:-3s;}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(16px,-20px) scale(1.04);}66%{transform:translate(-12px,12px) scale(.97);}}
+/* Decorative horizontal lines */
+.hero-line-top,.hero-line-bot{position:absolute;left:52px;right:52px;height:1px;background:linear-gradient(90deg,transparent,rgba(200,112,144,.2),transparent);}
+.hero-line-top{top:28%;}
+.hero-line-bot{bottom:32%;}
+/* Hero content */
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:900px;width:100%;}
+.hero-eyebrow{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:36px;opacity:0;animation:fadeUp .8s var(--ease-out) .3s forwards;}
+.hero-eyebrow-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,112,144,.5));max-width:80px;}
+.hero-eyebrow-text{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--mac-rose-d);}
+.hero-eyebrow-text .zh{display:inline;font-style:normal;margin-right:6px;}
+.hero-eyebrow-text .en{display:inline;}
+.hero-title{margin-bottom:6px;opacity:0;animation:fadeUp 1s var(--ease-out) .5s forwards;}
+.hero-title .zh{font-family:var(--serif);font-size:clamp(48px,8vw,100px);color:var(--charcoal);font-weight:500;line-height:1.05;letter-spacing:-1px;}
+.hero-title .en{font-family:var(--display);font-size:clamp(22px,3.5vw,44px);color:var(--mac-rose-d);font-style:italic;font-weight:300;margin-top:12px;letter-spacing:.5px;line-height:1.3;opacity:.75;}
+.hero-tagline{margin-bottom:52px;opacity:0;animation:fadeUp .9s var(--ease-out) .8s forwards;}
+.hero-tagline .zh{font-size:clamp(13px,1.5vw,16px);color:var(--ink);line-height:1.8;letter-spacing:.5px;}
+.hero-tagline .en{font-family:var(--display);font-size:clamp(12px,1.4vw,15px);color:var(--grey);font-style:italic;font-weight:300;margin-top:6px;line-height:1.7;}
+/* Hero CTAs */
+.hero-ctas{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;opacity:0;animation:fadeUp .9s var(--ease-out) 1s forwards;}
+.btn-primary{padding:16px 44px;background:transparent;border:1px solid rgba(200,112,144,.65);color:var(--mac-rose-d);display:flex;flex-direction:column;align-items:center;gap:3px;transition:all .4s var(--ease-out);border-radius:1px;}
+.btn-primary .zh{font-size:13px;font-weight:600;letter-spacing:.5px;}
+.btn-primary .en{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;opacity:.7;}
+.btn-primary:hover{background:var(--mac-rose-d);border-color:var(--mac-rose-d);box-shadow:0 0 40px rgba(200,112,144,.25);}
+.btn-primary:hover .zh,.btn-primary:hover .en{color:var(--white);opacity:1;}
+.btn-ghost{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--grey);transition:color .3s;padding:16px 20px;}
+.btn-ghost .zh{font-size:13px;font-weight:400;}
+.btn-ghost .en{font-size:9px;letter-spacing:2px;text-transform:uppercase;}
+.btn-ghost:hover{color:var(--charcoal);}
+/* Scroll indicator */
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeUp .8s var(--ease-out) 1.4s forwards;cursor:none;}
+.scroll-track{width:1px;height:52px;background:linear-gradient(180deg,rgba(200,112,144,.5),transparent);position:relative;overflow:hidden;}
+.scroll-track::after{content:'';position:absolute;top:-52px;left:0;width:100%;height:100%;background:var(--mac-rose-d);animation:scrollMove 2s ease-in-out infinite;}
+@keyframes scrollMove{0%{top:-52px;}100%{top:52px;}}
+.scroll-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--grey-l);}
+.scroll-label .zh{display:inline;margin-right:4px;}
+.scroll-label .en{display:inline;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+/* Macaron stripe on hero bottom */
+.hero-stripe{position:absolute;bottom:0;left:0;right:0;height:3px;display:flex;}
+.hero-stripe span{flex:1;}
+
+/* ════════════════════════════════════════════
+   SECTION COMMONS
+════════════════════════════════════════════ */
+section{position:relative;}
+.container{max-width:1120px;margin:0 auto;padding:0 52px;}
+.section-pad{padding:120px 0;}
+.section-pad-sm{padding:80px 0;}
+.section-label-wrap{margin-bottom:20px;}
+.section-heading{margin-bottom:20px;}
+.section-heading .zh{font-family:var(--serif);font-size:clamp(32px,4.5vw,58px);color:var(--charcoal);font-weight:500;line-height:1.12;letter-spacing:-.5px;}
+.section-heading .en{font-family:var(--display);font-size:clamp(16px,2.2vw,26px);color:var(--grey-l);font-style:italic;font-weight:300;margin-top:8px;line-height:1.4;}
+.section-heading.light .zh{color:var(--charcoal);}
+.section-heading.light .en{color:var(--grey-l);}
+.section-lead{max-width:620px;}
+
+/* ════════════════════════════════════════════
+   PHILOSOPHY
+════════════════════════════════════════════ */
+#philosophy{background:linear-gradient(160deg,var(--mac-vanilla) 0%,var(--ivory) 100%);overflow:hidden;}
+.philosophy-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;min-height:70vh;padding:120px 0;}
+.philo-left{position:relative;}
+.philo-quote-mark{font-family:var(--display);font-size:220px;line-height:.6;color:rgba(184,116,58,.06);position:absolute;top:-20px;left:-20px;pointer-events:none;user-select:none;}
+.philo-quote .zh{font-family:var(--serif);font-size:clamp(22px,2.8vw,34px);color:var(--charcoal);line-height:1.5;font-weight:500;position:relative;z-index:1;}
+.philo-quote .en{font-family:var(--display);font-size:clamp(16px,2vw,22px);color:var(--grey);font-style:italic;font-weight:300;margin-top:16px;line-height:1.6;position:relative;z-index:1;}
+.philo-right{}
+.philo-body{margin-top:32px;}
+.philo-body .zh{font-size:15px;color:var(--ink);line-height:1.9;margin-bottom:14px;}
+.philo-body .en{font-size:13px;color:var(--grey);line-height:1.9;font-style:italic;font-weight:300;}
+.philo-divider{width:48px;height:2px;margin:32px 0;background:linear-gradient(90deg,var(--mac-rose-d),var(--mac-lav-d));}
+.philo-facts{display:flex;gap:32px;flex-wrap:wrap;}
+.philo-fact .label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-l);margin-bottom:4px;}
+.philo-fact .label .zh{display:inline;margin-right:4px;}
+.philo-fact .label .en{display:inline;}
+.philo-fact .value{font-family:var(--serif);font-size:28px;color:var(--charcoal);font-weight:500;}
+
+/* ════════════════════════════════════════════
+   MACARON STRIPE DIVIDER
+════════════════════════════════════════════ */
+.mac-stripe{height:4px;display:flex;}
+.mac-stripe span{flex:1;}
+
+/* ════════════════════════════════════════════
+   EXPERIENCE
+════════════════════════════════════════════ */
+#experience{background:linear-gradient(180deg,var(--mac-caramel) 0%,var(--cream) 100%);}
+.exp-header{text-align:center;margin-bottom:72px;}
+.exp-header .bi-label{justify-content:center;}
+.exp-header .section-lead{margin:16px auto 0;}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.exp-card{background:var(--white);padding:40px 32px;position:relative;overflow:hidden;transition:transform .5s var(--ease-out),box-shadow .5s var(--ease-out);cursor:none;}
+.exp-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(30,22,20,.08);}
+.exp-card-bar{height:3px;position:absolute;top:0;left:0;right:0;}
+.exp-card:nth-child(1) .exp-card-bar{background:linear-gradient(90deg,var(--mac-rose),var(--mac-lav));}
+.exp-card:nth-child(2) .exp-card-bar{background:linear-gradient(90deg,var(--mac-mint),var(--mac-sky));}
+.exp-card:nth-child(3) .exp-card-bar{background:linear-gradient(90deg,var(--mac-peach),var(--mac-rose));}
+.exp-card:nth-child(4) .exp-card-bar{background:linear-gradient(90deg,var(--mac-sky),var(--mac-lav));}
+.exp-card:nth-child(5) .exp-card-bar{background:linear-gradient(90deg,var(--mac-rose),var(--mac-peach));}
+.exp-card:nth-child(6) .exp-card-bar{background:linear-gradient(90deg,var(--mac-pist),var(--mac-mint));}
+.exp-icon{font-size:28px;margin-bottom:24px;display:block;line-height:1;}
+.exp-title{margin-bottom:14px;}
+.exp-title .zh{font-family:var(--serif);font-size:20px;color:var(--charcoal);font-weight:500;line-height:1.3;}
+.exp-title .en{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-l);margin-top:5px;font-style:normal;}
+.exp-desc .zh{font-size:13px;color:var(--grey);line-height:1.8;margin-bottom:8px;}
+.exp-desc .en{font-size:12px;color:var(--grey-l);line-height:1.8;font-style:italic;font-weight:300;}
+.exp-tag{display:inline-block;margin-top:20px;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mac-rose-d);border:1px solid rgba(200,112,144,.25);padding:5px 12px;}
+.exp-tag .zh{display:inline;margin-right:4px;}
+.exp-tag .en{display:inline;}
+
+/* ════════════════════════════════════════════
+   FORMULATION — Soft Lavender Macaron
+════════════════════════════════════════════ */
+#formulation{background:linear-gradient(160deg,#F7F2FE 0%,#FEF2F7 50%,#F0F6FE 100%);}
+.form-glow{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 80% at 85% 50%, rgba(208,188,232,.25) 0%,transparent 55%),
+  radial-gradient(ellipse 50% 60% at 10% 40%, rgba(245,192,208,.2) 0%,transparent 50%);
+  pointer-events:none;}
+.formulation-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:120px 0;position:relative;z-index:2;}
+/* Visual */
+.form-visual{display:flex;flex-direction:column;align-items:center;gap:40px;}
+.form-orb{width:280px;height:280px;border-radius:50%;background:linear-gradient(135deg,rgba(208,188,232,.4),rgba(245,192,208,.3));border:1px solid rgba(208,188,232,.5);display:flex;align-items:center;justify-content:center;position:relative;margin:32px auto;box-shadow:0 20px 60px rgba(200,112,144,.12);}
+.form-orb::before{content:'';position:absolute;inset:-18px;border-radius:50%;border:1px dashed rgba(200,112,144,.25);animation:spin 30s linear infinite;}
+.form-orb::after{content:'';position:absolute;inset:-40px;border-radius:50%;border:1px dashed rgba(144,112,192,.15);animation:spin 20s linear infinite reverse;}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.form-orb-glyph{font-size:72px;filter:drop-shadow(0 0 24px rgba(200,112,144,.3));}
+.form-levels{display:flex;gap:8px;width:280px;}
+.form-level{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.form-level-bar{width:100%;border-radius:2px;}
+.form-level-label{font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--grey);}
+.form-level-label .zh{display:inline;}
+/* Content */
+.form-content .bi-label{margin-bottom:20px;color:var(--mac-lav-d);}
+.form-content .bi-label::before,.form-content .bi-label::after{background:currentColor;}
+.form-content .section-heading{margin-bottom:24px;}
+.form-body .zh{font-size:14px;color:var(--ink);line-height:1.9;margin-bottom:12px;}
+.form-body .en{font-size:13px;color:var(--grey);font-style:italic;font-weight:300;line-height:1.8;}
+.form-attrs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:36px 0;}
+.form-attr{background:rgba(255,255,255,.75);border:1px solid rgba(208,188,232,.4);padding:18px;backdrop-filter:blur(8px);}
+.form-attr-val{font-family:var(--serif);font-size:22px;color:var(--mac-lav-d);font-weight:600;margin-bottom:4px;}
+.form-attr-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);}
+.form-attr-label .zh{display:inline;margin-right:4px;}
+.form-attr-label .en{display:inline;}
+.form-note .zh{font-size:11px;color:var(--grey);font-style:italic;border-top:1px solid rgba(208,188,232,.35);padding-top:16px;line-height:1.6;}
+.form-note .en{font-size:10px;color:var(--grey-l);font-style:italic;margin-top:4px;line-height:1.6;}
+
+/* ════════════════════════════════════════════
+   RITUALS
+════════════════════════════════════════════ */
+#rituals{background:linear-gradient(160deg,var(--mac-rose-bg) 0%,var(--ivory) 50%,var(--mac-mint-bg) 100%);}
+.rituals-header{text-align:center;margin-bottom:72px;}
+.rituals-header .bi-label{justify-content:center;}
+.rituals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px;}
+.ritual-card{padding:52px 36px;text-align:center;position:relative;overflow:hidden;transition:transform .4s var(--ease-out);}
+.ritual-card:hover{transform:translateY(-5px);}
+.ritual-card:nth-child(1){background:linear-gradient(160deg,var(--mac-rose-bg) 0%,#FFF8FB 100%);}
+.ritual-card:nth-child(2){background:linear-gradient(160deg,var(--mac-lav-bg) 0%,#FAF8FF 100%);}
+.ritual-card:nth-child(3){background:linear-gradient(160deg,var(--mac-peach-bg) 0%,#FFFAF5 100%);}
+.ritual-icon{font-size:52px;margin-bottom:28px;display:block;}
+.ritual-name .zh{font-family:var(--serif);font-size:22px;color:var(--charcoal);font-weight:500;margin-bottom:4px;}
+.ritual-name .en{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-l);}
+.ritual-desc .zh{font-size:13px;color:var(--grey);line-height:1.8;margin:16px 0 8px;}
+.ritual-desc .en{font-size:12px;color:var(--grey-l);font-style:italic;line-height:1.8;font-weight:300;}
+.ritual-tagline{margin-top:20px;font-family:var(--display);font-size:16px;font-style:italic;color:var(--gold-d);}
+.ritual-tagline .zh{display:inline;margin-right:4px;}
+.ritual-tagline .en{display:inline;}
+.rituals-footer{background:var(--white);padding:36px 48px;text-align:center;border-top:3px solid transparent;border-image:linear-gradient(90deg,var(--mac-rose),var(--mac-lav),var(--mac-mint),var(--mac-peach),var(--mac-sky)) 1;}
+.rituals-footer .zh{font-family:var(--serif);font-size:18px;color:var(--charcoal);font-weight:500;line-height:1.6;margin-bottom:8px;}
+.rituals-footer .en{font-family:var(--display);font-size:15px;color:var(--grey);font-style:italic;font-weight:300;line-height:1.6;}
+
+/* ════════════════════════════════════════════
+   PRIVACY
+════════════════════════════════════════════ */
+#privacy{background:linear-gradient(160deg,var(--mac-lav-bg) 0%,var(--mac-rose-bg) 50%,var(--mac-mint-bg) 100%);}
+.privacy-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:120px 0;}
+.privacy-vis{display:flex;align-items:center;justify-content:center;}
+.priv-circle{width:300px;height:300px;border-radius:50%;background:linear-gradient(135deg,rgba(200,176,224,.2),rgba(240,180,200,.15));border:1px solid rgba(200,176,224,.3);display:flex;align-items:center;justify-content:center;position:relative;}
+.priv-circle-inner{position:absolute;inset:24px;border-radius:50%;border:1px dashed rgba(200,176,224,.25);animation:spin 25s linear infinite;}
+.priv-icon{font-size:80px;position:relative;z-index:2;filter:drop-shadow(0 4px 20px rgba(144,112,192,.25));}
+.privacy-content .bi-label{margin-bottom:20px;color:var(--mac-lav-d);}
+.privacy-content .bi-label::before,.privacy-content .bi-label::after{background:currentColor;}
+.priv-heading .zh{font-family:var(--serif);font-size:clamp(28px,3.5vw,46px);color:var(--charcoal);font-weight:500;line-height:1.2;}
+.priv-heading .en{font-family:var(--display);font-size:clamp(14px,2vw,22px);color:var(--grey);font-style:italic;font-weight:300;margin-top:8px;}
+.priv-intro{margin:20px 0 28px;}
+.priv-intro .zh{font-size:14px;color:var(--ink);line-height:1.9;}
+.priv-intro .en{font-size:13px;color:var(--grey);font-style:italic;font-weight:300;margin-top:8px;line-height:1.8;}
+.priv-points{display:flex;flex-direction:column;gap:16px;}
+.priv-point{display:flex;gap:14px;align-items:flex-start;}
+.priv-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.priv-point-text .zh{font-size:13px;color:var(--ink);line-height:1.7;font-weight:400;}
+.priv-point-text .en{font-size:12px;color:var(--grey);font-style:italic;font-weight:300;margin-top:3px;line-height:1.6;}
+
+/* ════════════════════════════════════════════
+   THE CIRCLE
+════════════════════════════════════════════ */
+#circle{background:linear-gradient(180deg,var(--mac-vanilla) 0%,var(--mac-lemon) 100%);}
+.circle-header{text-align:center;margin-bottom:64px;}
+.circle-header .bi-label{justify-content:center;}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:56px;}
+.stat-card{background:var(--white);padding:40px 28px;text-align:center;position:relative;overflow:hidden;transition:transform .4s var(--ease-out);}
+.stat-card:hover{transform:translateY(-4px);}
+.stat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;}
+.stat-card:nth-child(1)::after{background:linear-gradient(90deg,var(--mac-rose),var(--mac-lav));}
+.stat-card:nth-child(2)::after{background:linear-gradient(90deg,var(--mac-mint),var(--mac-sky));}
+.stat-card:nth-child(3)::after{background:linear-gradient(90deg,var(--mac-peach),var(--mac-rose));}
+.stat-card:nth-child(4)::after{background:linear-gradient(90deg,var(--mac-lav),var(--mac-pist));}
+.stat-val{font-family:var(--serif);font-size:48px;font-weight:700;color:var(--charcoal);line-height:1;margin-bottom:8px;}
+.stat-label .zh{font-size:11px;color:var(--grey);letter-spacing:.3px;margin-bottom:2px;}
+.stat-label .en{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-l);}
+.quotes-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.quote-card{background:var(--white);padding:40px;position:relative;overflow:hidden;}
+.quote-mark{font-family:var(--display);font-size:100px;line-height:.5;color:rgba(184,116,58,.08);position:absolute;top:20px;left:24px;}
+.quote-body{padding-top:28px;}
+.quote-body .zh{font-family:var(--serif);font-size:17px;color:var(--charcoal);font-style:italic;line-height:1.7;margin-bottom:8px;font-weight:400;position:relative;z-index:1;}
+.quote-body .en{font-family:var(--display);font-size:14px;color:var(--grey);font-style:italic;font-weight:300;line-height:1.7;position:relative;z-index:1;}
+.quote-footer{margin-top:20px;padding-top:16px;border-top:1px solid var(--grey-ll);}
+.quote-author .zh{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mac-rose-d);display:block;}
+.quote-author .en{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-l);display:block;margin-top:3px;}
+
+/* ════════════════════════════════════════════
+   APPLICATION — Macaron Rose & Lavender Light
+════════════════════════════════════════════ */
+#application{background:linear-gradient(160deg,#FEF2F7 0%,#F7F2FE 40%,#FEF7EE 80%,#FEF2F7 100%);}
+.app-glow{position:absolute;inset:0;background:
+  radial-gradient(ellipse 80% 60% at 50% 110%, rgba(245,192,208,.3) 0%,transparent 55%),
+  radial-gradient(ellipse 50% 40% at 15% 0%, rgba(208,188,232,.2) 0%,transparent 50%);
+  pointer-events:none;}
+.app-inner{position:relative;z-index:2;padding:120px 0;max-width:800px;margin:0 auto;text-align:center;}
+.app-eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:28px;}
+.app-eyebrow-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,112,144,.4));max-width:60px;}
+.app-eyebrow-text{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--mac-rose-d);}
+.app-eyebrow-text .zh{display:inline;margin-right:5px;}
+.app-eyebrow-text .en{display:inline;}
+.app-heading .zh{font-family:var(--serif);font-size:clamp(36px,6vw,72px);color:var(--charcoal);font-weight:500;line-height:1.08;}
+.app-heading .en{font-family:var(--display);font-size:clamp(18px,2.5vw,28px);color:var(--grey);font-style:italic;font-weight:300;margin-top:12px;}
+.app-sub{margin:28px auto 52px;max-width:580px;}
+.app-sub .zh{font-size:14px;color:var(--ink);line-height:1.9;}
+.app-sub .en{font-size:13px;color:var(--grey);font-style:italic;font-weight:300;margin-top:8px;line-height:1.8;}
+/* Form */
+.app-form{background:rgba(255,255,255,.82);border:1px solid rgba(208,188,232,.4);padding:52px;text-align:left;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 16px 64px rgba(200,112,144,.1);}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.f-group{display:flex;flex-direction:column;gap:8px;}
+.f-group.full{grid-column:1/-1;}
+.f-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);}
+.f-label .zh{display:inline;margin-right:4px;}
+.f-label .en{display:inline;}
+.f-input{background:var(--white);border:1px solid rgba(208,188,232,.5);padding:14px 16px;font-size:13px;color:var(--charcoal);outline:none;transition:border-color .3s,box-shadow .3s;width:100%;-webkit-appearance:none;appearance:none;}
+.f-input::placeholder{color:var(--grey-l);}
+.f-input:focus{border-color:var(--mac-rose-d);box-shadow:0 0 0 3px rgba(200,112,144,.1);}
+.f-input.err{border-color:rgba(220,80,80,.4);background:rgba(220,80,80,.02);}
+.f-err{font-size:10px;color:rgba(200,60,60,.75);margin-top:2px;display:none;}
+.f-group.has-err .f-err{display:block;}
+.f-group.has-err .f-input{border-color:rgba(220,80,80,.4);}
+.f-textarea{min-height:110px;resize:vertical;line-height:1.7;}
+select.f-input option{background:var(--white);color:var(--charcoal);}
+.f-divider{display:flex;align-items:center;gap:16px;margin:28px 0;color:var(--grey-ll);font-size:10px;letter-spacing:2px;}
+.f-divider::before,.f-divider::after{content:'';flex:1;height:1px;background:rgba(208,188,232,.4);}
+.f-divider .zh{display:inline;margin-right:4px;}
+.f-divider .en{display:inline;}
+.f-submit{width:100%;background:transparent;border:1px solid rgba(200,112,144,.6);color:var(--mac-rose-d);padding:18px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;transition:all .4s var(--ease-out);margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px;}
+.f-submit:hover{background:var(--mac-rose-d);border-color:var(--mac-rose-d);color:var(--white);box-shadow:0 8px 32px rgba(200,112,144,.25);}
+.f-submit-zh{font-size:14px;font-weight:600;letter-spacing:.5px;}
+.f-submit-en{font-size:9px;letter-spacing:2.5px;opacity:.7;}
+.f-note{margin-top:24px;text-align:center;}
+.f-note .zh{font-size:11px;color:var(--grey);line-height:1.7;font-style:italic;}
+.f-note .en{font-size:10px;color:var(--grey-l);font-style:italic;margin-top:4px;line-height:1.6;}
+/* Referral note */
+.ref-note{margin-top:0;background:rgba(208,188,232,.15);border:1px solid rgba(208,188,232,.4);padding:28px 32px;text-align:center;}
+.ref-note .zh{font-family:var(--serif);font-size:18px;color:var(--ink);line-height:1.6;margin-bottom:8px;font-weight:400;font-style:italic;}
+.ref-note .en{font-size:13px;color:var(--grey);font-style:italic;font-weight:300;line-height:1.7;}
+.ref-note strong{color:var(--mac-rose-d);font-style:normal;}
+/* Error / success banner */
+.form-banner{padding:14px 20px;margin-bottom:20px;display:none;font-size:12px;line-height:1.5;align-items:flex-start;gap:10px;}
+.form-banner.err-banner{background:rgba(220,80,80,.06);border:1px solid rgba(220,80,80,.25);color:rgba(180,50,50,.8);display:flex;}
+.form-banner.ok-banner{background:rgba(80,152,120,.06);border:1px solid rgba(80,152,120,.25);color:rgba(50,120,80,.8);display:flex;}
+.form-banner .zh{display:inline;margin-right:4px;}
+.form-banner .en{display:inline;}
+
+/* ════════════════════════════════════════════
+   DISCLOSURE
+════════════════════════════════════════════ */
+#disclose{background:linear-gradient(160deg,var(--mac-sky-bg) 0%,var(--mac-pist-bg) 100%);border-top:1px solid rgba(200,112,144,.1);}
+.disclose-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding:72px 0;}
+.disc-icon{font-size:24px;margin-bottom:14px;}
+.disc-title{margin-bottom:10px;}
+.disc-title .zh{font-size:11px;font-weight:600;color:var(--charcoal);letter-spacing:.3px;margin-bottom:2px;}
+.disc-title .en{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-l);}
+.disc-body .zh{font-size:12px;color:var(--grey);line-height:1.8;}
+.disc-body .en{font-size:11px;color:var(--grey-l);font-style:italic;margin-top:6px;line-height:1.7;font-weight:300;}
+
+/* ════════════════════════════════════════════
+   FOOTER — Warm Charcoal (macaron accents)
+════════════════════════════════════════════ */
+footer{background:#2A1F1B;}
+.footer-mac-bar{height:3px;display:flex;}
+.footer-mac-bar span{flex:1;}
+.footer-inner{padding:64px 0 36px;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:52px;}
+.footer-brand .logo-zh{font-family:var(--serif);font-size:22px;color:var(--white);font-weight:600;}
+.footer-brand .logo-en{font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:5px;}
+.footer-brand .tagline{margin-top:16px;max-width:220px;}
+.footer-brand .tagline .zh{font-family:var(--display);font-size:14px;color:rgba(255,255,255,.35);font-style:italic;line-height:1.6;margin-bottom:4px;}
+.footer-brand .tagline .en{font-size:12px;color:rgba(255,255,255,.2);font-style:italic;font-weight:300;line-height:1.6;}
+.footer-col-title{margin-bottom:18px;}
+.footer-col-title .zh{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mac-rose);}
+.footer-col-title .en{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:2px;}
+.footer-links-list{display:flex;flex-direction:column;gap:12px;}
+.footer-link{display:flex;flex-direction:column;gap:2px;transition:all .3s;}
+.footer-link .zh{font-size:12px;color:rgba(255,255,255,.35);}
+.footer-link .en{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.18);}
+.footer-link:hover .zh{color:var(--mac-rose);}
+.footer-link:hover .en{color:rgba(255,255,255,.4);}
+.footer-divider{height:1px;background:rgba(255,255,255,.07);margin-bottom:28px;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-copy .zh{font-size:11px;color:rgba(255,255,255,.25);}
+.footer-copy .en{font-size:10px;color:rgba(255,255,255,.15);font-style:italic;margin-top:2px;}
+.footer-tm .zh{font-size:10px;color:rgba(255,255,255,.18);font-style:italic;}
+.footer-tm .en{font-size:9px;color:rgba(255,255,255,.12);margin-top:1px;}
+
+/* ════════════════════════════════════════════
+   FILE UPLOAD
+════════════════════════════════════════════ */
+.f-file-input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+.f-file-label{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:28px 20px;border:2px dashed rgba(208,188,232,.6);background:rgba(255,255,255,.5);cursor:pointer;transition:all .3s var(--ease-out);text-align:center;}
+.f-file-label:hover{border-color:var(--mac-rose-d);background:var(--mac-rose-bg);}
+.f-file-label.has-files{border-color:var(--mac-mint-d);background:var(--mac-mint-bg);border-style:solid;}
+.f-file-icon{font-size:28px;line-height:1;}
+.f-file-text .zh{font-size:13px;color:var(--ink);font-weight:500;display:block;margin-bottom:3px;}
+.f-file-text .en{font-size:11px;color:var(--grey);font-style:italic;display:block;}
+.f-file-hint .zh{font-size:10px;color:var(--grey-l);letter-spacing:.5px;display:block;margin-top:6px;}
+.f-file-hint .en{font-size:9px;color:var(--grey-l);font-style:italic;display:block;margin-top:2px;}
+.f-file-count{font-size:11px;color:var(--mac-mint-d);margin-top:7px;font-weight:500;min-height:16px;font-style:italic;}
+
+/* ════════════════════════════════════════════
+   NAV CONTROL BUTTONS (Theme + Fullscreen)
+════════════════════════════════════════════ */
+.nav-controls{display:flex;gap:8px;align-items:center;margin-left:8px;}
+.nav-icon-btn{width:34px;height:34px;border-radius:50%;background:transparent;border:1px solid rgba(200,112,144,.35);display:flex;align-items:center;justify-content:center;font-size:15px;cursor:none;transition:background .3s,border-color .3s,transform .25s;flex-shrink:0;line-height:1;padding:0;color:var(--mac-rose-d);}
+.nav-icon-btn:hover{background:rgba(200,112,144,.12);border-color:var(--mac-rose-d);transform:scale(1.1);}
+
+/* ════════════════════════════════════════════
+   SMOOTH THEME TRANSITION
+════════════════════════════════════════════ */
+body.theme-trans,body.theme-trans *{transition:background .45s ease,background-color .45s ease,color .4s ease,border-color .4s ease,box-shadow .4s ease!important;}
+
+/* ════════════════════════════════════════════
+   NIGHT MODE — All Sections
+════════════════════════════════════════════ */
+body.night{background:#0F0D14;color:#EDE8F5;}
+body.night::selection{background:rgba(200,112,144,.3);}
+/* Hero */
+body.night #hero{background:linear-gradient(160deg,#0F0D14 0%,#1A1020 40%,#16122A 70%,#0D1220 100%)!important;}
+body.night .hero-title .zh{color:#EDE8F5;}
+body.night .hero-tagline .zh{color:rgba(220,210,235,.8);}
+body.night .hero-tagline .en{color:rgba(180,170,210,.55);}
+body.night .btn-primary{border-color:rgba(200,112,144,.5);}
+body.night .btn-ghost{color:rgba(200,190,215,.6);}
+body.night .btn-ghost:hover{color:#EDE8F5;}
+body.night .scroll-label{color:rgba(180,170,210,.45);}
+/* Nav */
+body.night #nav.scrolled{background:rgba(10,8,18,.92);border-bottom-color:rgba(200,112,144,.15);}
+body.night #nav .logo-zh{color:#EDE8F5;}
+body.night #nav .logo-en{color:rgba(200,190,215,.4);}
+body.night #nav .nav-link .zh{color:rgba(200,190,215,.6);}
+body.night #nav .nav-link .en{color:rgba(200,190,215,.3);}
+body.night #nav .nav-link:hover .zh{color:#EDE8F5;}
+body.night #nav .hamburger span{background:#EDE8F5;}
+body.night .mobile-menu{background:linear-gradient(160deg,#1A1020 0%,#16122A 50%,#0D1220 100%);}
+body.night .mobile-nav-link .zh{color:#EDE8F5;}
+body.night .mobile-nav-link .en{color:rgba(200,190,215,.4);}
+/* Philosophy */
+body.night #philosophy{background:linear-gradient(160deg,#1A1525 0%,#141018 100%)!important;}
+body.night .philo-quote .zh{color:#EDE8F5;}
+body.night .philo-quote .en{color:rgba(180,160,210,.5);}
+body.night .philo-body .zh{color:rgba(210,200,230,.8);}
+body.night .philo-body .en{color:rgba(160,150,185,.55);}
+body.night .philo-fact .value{color:#EDE8F5;}
+body.night .philo-fact .label{color:rgba(180,170,210,.5);}
+body.night .philo-quote-mark{color:rgba(200,112,144,.06);}
+/* Experience */
+body.night #experience{background:linear-gradient(180deg,#1E1528 0%,#0F0D14 100%)!important;}
+body.night .exp-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);box-shadow:none;}
+body.night .exp-card:hover{background:rgba(255,255,255,.07);box-shadow:0 24px 64px rgba(0,0,0,.45);}
+body.night .exp-title .zh{color:#EDE8F5;}
+body.night .exp-desc .zh{color:rgba(180,170,210,.7);}
+body.night .exp-desc .en{color:rgba(150,140,180,.5);}
+/* Formulation */
+body.night #formulation{background:linear-gradient(160deg,#1E1A2E 0%,#2A1520 50%,#1A2030 100%)!important;}
+body.night .form-body .zh{color:rgba(210,200,230,.8);}
+body.night .form-body .en{color:rgba(160,150,185,.55);}
+body.night .form-attr{background:rgba(255,255,255,.06);border-color:rgba(208,188,232,.18);}
+body.night .form-attr-label{color:rgba(180,170,210,.55);}
+body.night .form-note .zh{color:rgba(160,150,185,.6);border-top-color:rgba(208,188,232,.15);}
+body.night .form-note .en{color:rgba(140,130,165,.5);}
+/* Rituals */
+body.night #rituals{background:linear-gradient(160deg,#2A1520 0%,#1A1525 50%,#1A2520 100%)!important;}
+body.night .ritual-card:nth-child(1),
+body.night .ritual-card:nth-child(2),
+body.night .ritual-card:nth-child(3){background:rgba(255,255,255,.04)!important;}
+body.night .ritual-name .zh{color:#EDE8F5;}
+body.night .ritual-name .en{color:rgba(180,170,210,.45);}
+body.night .ritual-desc .zh{color:rgba(180,170,210,.7);}
+body.night .ritual-desc .en{color:rgba(150,140,180,.5);}
+body.night .ritual-tagline{color:var(--gold-l);}
+body.night .rituals-footer{background:rgba(255,255,255,.04);}
+body.night .rituals-footer .zh{color:#EDE8F5;}
+body.night .rituals-footer .en{color:rgba(180,170,210,.55);}
+/* Privacy */
+body.night #privacy{background:linear-gradient(160deg,#1E1A2E 0%,#2A1520 50%,#1A2520 100%)!important;}
+body.night .priv-circle{background:rgba(255,255,255,.04);border-color:rgba(200,176,224,.15);}
+body.night .priv-heading .zh{color:#EDE8F5;}
+body.night .priv-heading .en{color:rgba(180,160,210,.45);}
+body.night .priv-intro .zh{color:rgba(210,200,230,.8);}
+body.night .priv-intro .en{color:rgba(160,150,185,.55);}
+body.night .priv-point-text .zh{color:rgba(210,200,230,.8);}
+body.night .priv-point-text .en{color:rgba(160,150,185,.55);}
+/* Circle / Stats */
+body.night #circle{background:linear-gradient(180deg,#1A1525 0%,#20180E 100%)!important;}
+body.night .stat-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);}
+body.night .stat-card:hover{background:rgba(255,255,255,.07);}
+body.night .stat-val{color:#EDE8F5;}
+body.night .stat-label .zh{color:rgba(180,170,210,.6);}
+body.night .stat-label .en{color:rgba(150,140,180,.4);}
+body.night .quote-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);}
+body.night .quote-body .zh{color:#EDE8F5;}
+body.night .quote-body .en{color:rgba(180,170,210,.6);}
+body.night .quote-footer{border-top-color:rgba(255,255,255,.07);}
+/* Application */
+body.night #application{background:linear-gradient(160deg,#2A1520 0%,#1E1A2E 40%,#2A2018 80%,#2A1520 100%)!important;}
+body.night .app-heading .zh{color:#EDE8F5;}
+body.night .app-heading .en{color:rgba(180,160,210,.45);}
+body.night .app-sub .zh{color:rgba(210,200,230,.8);}
+body.night .app-sub .en{color:rgba(160,150,185,.55);}
+body.night .app-form{background:rgba(255,255,255,.04);border-color:rgba(208,188,232,.18);box-shadow:0 16px 64px rgba(0,0,0,.5);}
+body.night .f-input{background:rgba(255,255,255,.06);border-color:rgba(208,188,232,.25);color:#EDE8F5;}
+body.night .f-input::placeholder{color:rgba(180,170,210,.3);}
+body.night .f-input:focus{border-color:var(--mac-rose-d);box-shadow:0 0 0 3px rgba(200,112,144,.15);}
+body.night .f-label{color:rgba(180,170,210,.55);}
+body.night .f-file-label{border-color:rgba(208,188,232,.22);background:rgba(255,255,255,.03);}
+body.night .f-file-label:hover{background:rgba(200,112,144,.08);border-color:var(--mac-rose-d);}
+body.night .f-file-text .zh{color:#EDE8F5;}
+body.night .f-file-text .en{color:rgba(180,170,210,.55);}
+body.night .f-file-hint .zh,body.night .f-file-hint .en{color:rgba(150,140,180,.45);}
+body.night .f-divider{color:rgba(255,255,255,.12);}
+body.night .f-note .zh,body.night .f-note .en{color:rgba(160,150,185,.5);}
+body.night .ref-note{background:rgba(208,188,232,.07);border-color:rgba(208,188,232,.14);}
+body.night .ref-note .zh{color:#EDE8F5;}
+body.night .ref-note .en{color:rgba(180,170,210,.65);}
+body.night .form-banner.err-banner{background:rgba(220,80,80,.1);color:rgba(255,120,120,.8);}
+body.night select.f-input option{background:#1A1525;color:#EDE8F5;}
+/* Disclosure */
+body.night #disclose{background:linear-gradient(160deg,#1A2030 0%,#162018 100%)!important;}
+body.night .disc-title .zh{color:#EDE8F5;}
+body.night .disc-body .zh{color:rgba(180,170,210,.7);}
+body.night .disc-body .en{color:rgba(150,140,180,.5);}
+/* Shared headings */
+body.night .section-heading .zh,
+body.night .section-heading.light .zh{color:#EDE8F5;}
+body.night .section-heading .en,
+body.night .section-heading.light .en{color:rgba(180,160,210,.4);}
+body.night .bi-body .zh{color:rgba(210,200,230,.8);}
+body.night .bi-body .en{color:rgba(160,150,185,.55);}
+body.night .bi-label{color:var(--mac-rose-d)!important;}
+/* Toast night */
+body.night #toast{background:#1A1525;box-shadow:0 8px 48px rgba(0,0,0,.6);}
+body.night .toast-title .zh{color:#EDE8F5;}
+body.night .toast-body .zh{color:rgba(180,170,210,.7);}
+/* Scrollbar night */
+body.night::-webkit-scrollbar-thumb{background:var(--mac-lav-d);}
+/* Orbs — richer glow in night */
+body.night .orb-a{background:rgba(245,192,208,.28);}
+body.night .orb-b{background:rgba(208,188,232,.22);}
+body.night .orb-c{background:rgba(168,220,200,.18);}
+body.night .orb-d{background:rgba(245,208,168,.18);}
+
+/* ════════════════════════════════════════════
+   TOAST
+════════════════════════════════════════════ */
+#toast{position:fixed;bottom:36px;right:36px;background:var(--white);border-left:3px solid var(--mac-rose-d);padding:22px 28px;box-shadow:0 8px 48px rgba(200,112,144,.15);z-index:99999;transform:translateY(20px);opacity:0;pointer-events:none;transition:all .5s var(--ease-out);max-width:380px;}
+#toast.show{transform:translateY(0);opacity:1;}
+.toast-icon{font-size:20px;margin-bottom:10px;}
+.toast-title .zh{font-size:14px;font-weight:600;color:var(--charcoal);display:block;}
+.toast-title .en{font-size:11px;color:var(--grey);letter-spacing:.5px;display:block;margin-top:2px;}
+.toast-body{margin-top:8px;}
+.toast-body .zh{font-size:12px;color:var(--grey);line-height:1.7;}
+.toast-body .en{font-size:11px;color:var(--grey-l);font-style:italic;margin-top:4px;line-height:1.6;}
+
+/* ════════════════════════════════════════════
+   LUMINARA — 5-Tier Collection Integration
+════════════════════════════════════════════ */
+#luminara{background:linear-gradient(180deg,var(--mac-mint-bg) 0%,var(--mac-vanilla) 50%,var(--mac-caramel) 100%);border-top:1px solid rgba(80,152,120,.1);border-bottom:1px solid rgba(80,152,120,.1);}
+.lum-intro{max-width:680px;margin:0 auto 72px;text-align:center;}
+.lum-eyebrow{font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:var(--mac-mint-d);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px;}
+.lum-eyebrow::before,.lum-eyebrow::after{content:'';width:28px;height:1px;background:currentColor;opacity:.45;}
+.lum-heading .zh{font-family:var(--serif);font-size:clamp(26px,4vw,40px);font-weight:500;color:var(--charcoal);display:block;line-height:1.2;margin-bottom:10px;}
+.lum-heading .en{font-family:var(--display);font-size:clamp(18px,2.8vw,28px);font-style:italic;font-weight:300;color:var(--grey);display:block;margin-bottom:22px;}
+.lum-body .zh{font-size:13.5px;line-height:1.9;color:var(--grey);display:block;margin-bottom:6px;}
+.lum-body .en{font-size:12px;line-height:1.8;color:var(--grey-l);font-style:italic;display:block;}
+.lum-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid rgba(80,152,120,.12);overflow:hidden;}
+.lum-tier{padding:44px 24px 36px;position:relative;border-right:1px solid rgba(80,152,120,.1);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s;cursor:none;}
+.lum-tier:last-child{border-right:none;}
+.lum-tier:hover{transform:translateY(-8px);z-index:2;box-shadow:0 32px 80px rgba(30,22,20,.14);}
+.lum-tier::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.lt1{background:#FDFCFA;}.lt2{background:#F5FAF6;}.lt3{background:#EDF5EE;}
+.lt4{background:#1A2A1E;}.lt5{background:#0D1510;}
+.lt1::before{background:rgba(168,220,200,.5);}
+.lt2::before{background:var(--mac-mint);}
+.lt3::before{background:var(--mac-mint-d);}
+.lt4::before{background:linear-gradient(90deg,var(--mac-mint-d),var(--mac-mint),var(--mac-mint-d));}
+.lt5::before{background:linear-gradient(90deg,var(--gold-d),var(--gold-l),var(--gold-d));}
+.lum-halo{position:absolute;top:16px;right:14px;font-size:7px;letter-spacing:2px;text-transform:uppercase;padding:4px 8px;background:rgba(184,116,58,.08);border:1px solid rgba(184,116,58,.25);color:var(--gold);}
+.lum-tier-num{font-size:8px;letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:18px;}
+.lum-tier-num::after{content:'';flex:1;height:1px;}
+.lt1 .lum-tier-num,.lt2 .lum-tier-num{color:var(--mac-mint-d);}
+.lt1 .lum-tier-num::after,.lt2 .lum-tier-num::after{background:rgba(80,152,120,.18);}
+.lt3 .lum-tier-num{color:rgba(40,110,70,.7);}
+.lt3 .lum-tier-num::after{background:rgba(40,110,70,.15);}
+.lt4 .lum-tier-num{color:rgba(168,220,200,.5);}
+.lt4 .lum-tier-num::after{background:rgba(168,220,200,.15);}
+.lt5 .lum-tier-num{color:var(--gold-d);}
+.lt5 .lum-tier-num::after{background:rgba(184,116,58,.2);}
+.lum-tier-name{font-family:var(--serif);font-size:22px;font-weight:400;line-height:1.1;margin-bottom:4px;}
+.lt1 .lum-tier-name,.lt2 .lum-tier-name,.lt3 .lum-tier-name{color:var(--charcoal);}
+.lt4 .lum-tier-name,.lt5 .lum-tier-name{color:#EDF5EE;}
+.lt5 .lum-tier-name{color:var(--gold-l);}
+.lum-tier-sub{font-size:9.5px;line-height:1.4;margin-bottom:20px;}
+.lt1 .lum-tier-sub,.lt2 .lum-tier-sub,.lt3 .lum-tier-sub{color:var(--grey-l);}
+.lt4 .lum-tier-sub{color:rgba(168,220,200,.4);}
+.lt5 .lum-tier-sub{color:rgba(184,116,58,.5);}
+.lum-price{font-family:var(--display);font-size:28px;font-weight:300;letter-spacing:-.4px;line-height:1;}
+.lt1 .lum-price,.lt2 .lum-price,.lt3 .lum-price{color:var(--charcoal);}
+.lt4 .lum-price{color:#EDF5EE;}
+.lt5 .lum-price{color:var(--gold);}
+.lum-price-unit{font-size:8.5px;letter-spacing:.8px;margin-bottom:22px;margin-top:2px;}
+.lt1 .lum-price-unit,.lt2 .lum-price-unit,.lt3 .lum-price-unit{color:var(--grey-l);}
+.lt4 .lum-price-unit{color:rgba(168,220,200,.38);}
+.lt5 .lum-price-unit{color:rgba(184,116,58,.42);}
+.lum-sep{height:1px;margin-bottom:18px;}
+.lt1 .lum-sep,.lt2 .lum-sep,.lt3 .lum-sep{background:rgba(80,152,120,.12);}
+.lt4 .lum-sep{background:rgba(168,220,200,.12);}
+.lt5 .lum-sep{background:rgba(184,116,58,.18);}
+.lum-ings{margin-bottom:24px;display:flex;flex-direction:column;gap:7px;}
+.lum-ing{font-size:10.5px;line-height:1.4;display:flex;align-items:flex-start;gap:6px;}
+.lum-ing::before{content:'·';flex-shrink:0;}
+.lt1 .lum-ing,.lt2 .lum-ing,.lt3 .lum-ing{color:var(--grey);}
+.lt1 .lum-ing::before,.lt2 .lum-ing::before,.lt3 .lum-ing::before{color:var(--mac-mint-d);}
+.lt4 .lum-ing{color:rgba(168,220,200,.45);}
+.lt4 .lum-ing::before{color:rgba(168,220,200,.5);}
+.lt5 .lum-ing{color:rgba(232,212,158,.4);}
+.lt5 .lum-ing::before{color:var(--gold-d);}
+.lum-cta{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;padding:12px 16px;border:1px solid;transition:all .35s;cursor:none;display:block;text-align:center;width:100%;}
+.lt1 .lum-cta,.lt2 .lum-cta,.lt3 .lum-cta{color:var(--mac-mint-d);border-color:rgba(80,152,120,.3);}
+.lt1 .lum-cta:hover,.lt2 .lum-cta:hover,.lt3 .lum-cta:hover{background:var(--mac-mint-d);color:white;border-color:var(--mac-mint-d);}
+.lt4 .lum-cta{color:rgba(168,220,200,.7);border-color:rgba(168,220,200,.25);}
+.lt4 .lum-cta:hover{background:var(--mac-mint-d);color:white;border-color:var(--mac-mint-d);}
+.lt5 .lum-cta{color:var(--gold-l);border-color:rgba(184,116,58,.38);}
+.lt5 .lum-cta:hover{background:var(--gold);color:#0D1510;border-color:var(--gold);}
+.lum-footer{margin-top:0;background:rgba(26,42,30,.96);padding:24px 40px;text-align:center;}
+.lum-footer p{font-size:10.5px;color:rgba(168,220,200,.32);letter-spacing:.4px;line-height:1.9;font-style:italic;}
+.lum-footer a{color:rgba(168,220,200,.55);text-decoration:underline;text-underline-offset:3px;}
+/* Tier 6 — Club Exclusive Block */
+.lum-t6{margin-top:0;background:linear-gradient(135deg,#08100A 0%,#0F1A10 50%,#070D07 100%);padding:72px 60px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;position:relative;overflow:hidden;border-top:1px solid rgba(184,116,58,.12);}
+.lum-t6::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-d),var(--gold-l),var(--gold),var(--gold-l),var(--gold-d),transparent);}
+.lum-t6::after{content:'VI';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:var(--display);font-size:200px;font-weight:300;color:rgba(184,116,58,.04);line-height:1;pointer-events:none;}
+.lum-t6-badge{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,116,58,.3);display:inline-flex;align-items:center;gap:8px;padding:6px 14px;margin-bottom:24px;}
+.lum-t6-badge::before,.lum-t6-badge::after{content:'✦';font-size:6px;opacity:.6;}
+.lum-t6-num{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(184,116,58,.3);margin-bottom:10px;}
+.lum-t6-name{font-family:var(--serif);font-size:48px;font-weight:500;line-height:1;letter-spacing:-.5px;color:var(--gold-l);margin-bottom:6px;}
+.lum-t6-sub{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(184,116,58,.42);margin-bottom:28px;}
+.lum-t6-sep{width:36px;height:1px;background:rgba(184,116,58,.25);margin-bottom:24px;}
+.lum-t6-body .zh{font-family:var(--display);font-size:14px;line-height:2;color:rgba(232,212,158,.52);display:block;margin-bottom:8px;font-style:italic;}
+.lum-t6-body .en{font-size:12.5px;line-height:1.9;color:rgba(232,212,158,.35);display:block;font-style:italic;}
+.lum-t6-right{display:flex;flex-direction:column;gap:0;}
+.lum-t6-attr{padding:16px 0;border-bottom:1px solid rgba(184,116,58,.1);}
+.lum-t6-attr:first-child{border-top:1px solid rgba(184,116,58,.1);}
+.lum-t6-attr-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(184,116,58,.28);margin-bottom:4px;}
+.lum-t6-attr-val .zh{font-size:13px;color:rgba(232,212,158,.65);font-family:var(--display);font-weight:300;display:inline;}
+.lum-t6-attr-val .en{font-size:11px;color:rgba(232,212,158,.38);display:block;margin-top:2px;}
+.lum-t6-price{font-family:var(--display);font-size:20px;font-weight:300;color:var(--gold);margin-top:22px;margin-bottom:4px;}
+.lum-t6-price-note .zh{font-size:10px;color:rgba(184,116,58,.3);display:block;margin-bottom:24px;}
+.lum-t6-price-note .en{font-size:9.5px;color:rgba(184,116,58,.22);display:block;margin-bottom:24px;}
+.lum-t6-cta{display:inline-block;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;padding:15px 28px;border:1px solid rgba(184,116,58,.4);color:var(--gold-l);transition:all .4s;cursor:none;}
+.lum-t6-cta:hover{background:var(--gold);color:#080D08;border-color:var(--gold);}
+body.night .lum-t6{background:linear-gradient(135deg,#06100A 0%,#0F1808 50%,#060C06 100%)!important;}
+@media(max-width:900px){.lum-t6{grid-template-columns:1fr;gap:32px;padding:48px 28px;}.lum-t6::after{display:none;}}
+/* Night mode overrides */
+body.night #luminara{background:linear-gradient(180deg,#0F1F14 0%,#1A1820 50%,#191210 100%)!important;}
+body.night .lum-tier-name,.body.night .lt4 .lum-tier-name{color:#EDE8F5;}
+body.night .lt1,.body.night .lt2,.body.night .lt3{background:rgba(255,255,255,.04);}
+body.night .lt1 .lum-tier-name,.body.night .lt2 .lum-tier-name,.body.night .lt3 .lum-tier-name{color:#EDE8F5;}
+body.night .lt1 .lum-price,.body.night .lt2 .lum-price,.body.night .lt3 .lum-price{color:#EDE8F5;}
+body.night .lt1 .lum-ing,.body.night .lt2 .lum-ing,.body.night .lt3 .lum-ing{color:rgba(180,170,210,.6);}
+body.night .lum-eyebrow{color:rgba(168,220,200,.6);}
+body.night .lum-heading .zh{color:#EDE8F5;}
+body.night .lum-body .zh{color:rgba(210,200,230,.8);}
+body.night .lum-body .en{color:rgba(160,150,185,.55);}
+body.night .lum-grid{border-color:rgba(168,220,200,.1);}
+body.night .lum-tier{border-right-color:rgba(168,220,200,.08);}
+/* Responsive */
+@media(max-width:1024px){.lum-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:768px){.lum-grid{grid-template-columns:repeat(2,1fr);}.lum-tier{border-right:none;border-bottom:1px solid rgba(80,152,120,.1);}}
+@media(max-width:480px){.lum-grid{grid-template-columns:1fr;}}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .container{padding:0 36px;}
+  .exp-grid{grid-template-columns:1fr 1fr;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .formulation-inner,.privacy-inner{grid-template-columns:1fr;gap:52px;}
+  .form-visual{order:-1;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:36px;}
+}
+@media(max-width:768px){
+  #nav{padding:16px 24px;}
+  #nav.scrolled{padding:12px 24px;}
+  .nav-controls{gap:6px;}
+  .nav-icon-btn{width:30px;height:30px;font-size:13px;}
+  .nav-desktop{display:none;}
+  .hamburger{display:flex;}
+  .hero-line-top,.hero-line-bot{left:24px;right:24px;}
+  .container{padding:0 24px;}
+  .section-pad{padding:80px 0;}
+  .philosophy-inner{grid-template-columns:1fr;gap:36px;padding:80px 0;}
+  .philo-quote-mark{display:none;}
+  .exp-grid{grid-template-columns:1fr;}
+  .rituals-grid{grid-template-columns:1fr;}
+  .quotes-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:1fr 1fr;gap:12px;}
+  .privacy-vis{display:none;}
+  .privacy-inner{grid-template-columns:1fr;padding:80px 0;}
+  .f-row{grid-template-columns:1fr;}
+  .app-form{padding:32px 24px;}
+  .disclose-grid{grid-template-columns:1fr 1fr;padding:52px 0;}
+  .footer-top{grid-template-columns:1fr;gap:28px;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .rituals-footer{padding:24px;}
+  #toast{bottom:16px;right:16px;left:16px;max-width:none;}
+  body{cursor:auto;}
+  #cursor-dot,#cursor-ring{display:none;}
+  button,input,select,textarea,a{cursor:auto;}
+}
+@media(max-width:480px){
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .disclose-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- ══════════ MOBILE MENU ══════════ -->
+<div class="mobile-menu" id="mobileMenu">
+  <a class="mobile-nav-link" href="#philosophy" onclick="closeMenu()"><span class="zh">哲學</span><span class="en">Philosophy</span></a>
+  <a class="mobile-nav-link" href="#experience" onclick="closeMenu()"><span class="zh">體驗</span><span class="en">Experience</span></a>
+  <a class="mobile-nav-link" href="#formulation" onclick="closeMenu()"><span class="zh">精華</span><span class="en">Serum</span></a>
+  <a class="mobile-nav-link" href="#rituals" onclick="closeMenu()"><span class="zh">儀式</span><span class="en">Rituals</span></a>
+  <a class="mobile-nav-link" href="#privacy" onclick="closeMenu()"><span class="zh">隱私</span><span class="en">Privacy</span></a>
+  <button class="mobile-menu-cta" onclick="scrollToApply()"><span class="zh">申請入會</span><span class="en">Apply for Membership</span></button>
+</div>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="nav">
+  <a class="nav-logo" href="#hero">
+    <span class="logo-zh">繆思臻美</span>
+    <span class="logo-en">Muse Achieve™</span>
+  </a>
+  <div class="nav-desktop">
+    <a class="nav-link" href="#philosophy"><span class="zh">哲學</span><span class="en">Philosophy</span></a>
+    <a class="nav-link" href="#experience"><span class="zh">體驗</span><span class="en">Experience</span></a>
+    <a class="nav-link" href="#formulation"><span class="zh">精華</span><span class="en">Serum</span></a>
+    <a class="nav-link" href="#rituals"><span class="zh">儀式</span><span class="en">Rituals</span></a>
+    <a class="nav-link" href="#privacy"><span class="zh">隱私</span><span class="en">Privacy</span></a>
+    <a class="nav-cta" href="#application"><span class="zh">申請入會</span><span class="en">Apply</span></a>
+  </div>
+  <div class="nav-controls">
+    <button class="nav-icon-btn" id="themeToggle" onclick="toggleTheme()" title="切換日夜模式 · Day / Night">
+      <span id="themeIcon">🌙</span>
+    </button>
+    <button class="nav-icon-btn" id="fullscreenBtn" onclick="toggleFullscreen()" title="全螢幕 · Fullscreen">
+      <span id="fsIcon">⛶</span>
+    </button>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-gradient"></div>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="orb orb-c"></div>
+  <div class="orb orb-d"></div>
+  <div class="hero-line-top"></div>
+  <div class="hero-line-bot"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <div class="hero-eyebrow-text"><span class="zh">頂級私人美學會所</span><span class="en">Private Members' Beauty Sanctuary</span></div>
+      <div class="hero-eyebrow-line"></div>
+    </div>
+    <h1 class="hero-title">
+      <span class="zh">美麗，<br>尋得她的殿堂</span>
+      <span class="en">Where Beauty Finds<br>Its <em style="font-style:italic;color:var(--mac-rose-d)">Sanctuary</em></span>
+    </h1>
+    <div class="hero-tagline">
+      <span class="zh">一個由非凡女性組成的至密圈子，以優雅為名，以科學為器，以沉默為榮。</span>
+      <span class="en">An intimate circle of extraordinary women — united by grace, cared for by science, celebrated in silence.</span>
+    </div>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#application">
+        <span class="zh">申請入會</span>
+        <span class="en">Request Membership</span>
+      </a>
+      <a class="btn-ghost" href="#experience">
+        <span class="zh">探索更多 ↓</span>
+        <span class="en">Discover More</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll" onclick="document.getElementById('philosophy').scrollIntoView({behavior:'smooth'})">
+    <div class="scroll-track"></div>
+    <div class="scroll-label"><span class="zh">向下</span><span class="en">Scroll</span></div>
+  </div>
+  <div class="hero-stripe">
+    <span style="background:#F0B4C8"></span><span style="background:#C8B0E0"></span>
+    <span style="background:#9ED8C4"></span><span style="background:#F0C898"></span>
+    <span style="background:#A8C8EC"></span><span style="background:#B0D8A0"></span>
+    <span style="background:#F0B4C8"></span><span style="background:#C8B0E0"></span>
+    <span style="background:#9ED8C4"></span><span style="background:#F0C898"></span>
+  </div>
+</section>
+
+<!-- ══════════ PHILOSOPHY ══════════ -->
+<section id="philosophy">
+  <div class="container">
+    <div class="philosophy-inner">
+      <div class="philo-left reveal left">
+        <div class="philo-quote-mark">"</div>
+        <div class="philo-quote">
+          <span class="zh">「真正的奢華，無法購買。她只能被辨識，被珍視，被守護。」</span>
+          <span class="en">"True luxury is not purchased. It is recognised, cultivated, and quietly preserved for those who understand its weight."</span>
+        </div>
+      </div>
+      <div class="philo-right reveal right d2">
+        <div class="bi-label reveal d1">
+          <span class="zh">我們的哲學</span>
+          <span class="en">Our Philosophy</span>
+        </div>
+        <div class="philo-divider"></div>
+        <div class="philo-body">
+          <span class="zh">繆思臻美，是為真正懂得生活藝術的女性而誕生的。我們相信，美麗從不只是外在的修飾，而是一種由內而外、需要精心呵護的生命狀態。</span>
+          <span class="en">Muse Achieve was conceived as a response to a world saturated with ordinary. We created a space where the most discerning women could receive bespoke aesthetic care in absolute privacy — surrounded only by those who truly belong.</span>
+        </div>
+        <div style="height:24px;"></div>
+        <div class="philo-body">
+          <span class="zh">在這裡，你不是客人。你是我們精心策展的世界中，不可或缺的一部分。每一次到訪，都是一場為你量身訂造的蛻變。</span>
+          <span class="en">Here, you are not a client. You are an essential part of the world we have carefully curated. Every visit is a transformation designed exclusively for you.</span>
+        </div>
+        <div style="height:36px;"></div>
+        <div class="philo-facts">
+          <div class="philo-fact">
+            <div class="label"><span class="zh">頂尖圈子</span><span class="en">Inner Circle</span></div>
+            <div class="value">30</div>
+          </div>
+          <div class="philo-fact">
+            <div class="label"><span class="zh">邀請制</span><span class="en">By Invitation</span></div>
+            <div class="value">Only</div>
+          </div>
+          <div class="philo-fact">
+            <div class="label"><span class="zh">絕對隱私</span><span class="en">Total Discretion</span></div>
+            <div class="value">∞</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIPE -->
+<div class="mac-stripe">
+  <span style="background:#F0B4C8"></span><span style="background:#C8B0E0"></span>
+  <span style="background:#9ED8C4"></span><span style="background:#F0C898"></span>
+  <span style="background:#A8C8EC"></span><span style="background:#B0D8A0"></span>
+</div>
+
+<!-- ══════════ EXPERIENCE ══════════ -->
+<section id="experience" class="section-pad">
+  <div class="container">
+    <div class="exp-header">
+      <div class="bi-label reveal"><span class="zh">會員體驗</span><span class="en">Member Experience</span></div>
+      <div class="section-heading reveal d1" style="text-align:center;">
+        <span class="zh">每一次到訪，<br>都是一場蛻變</span>
+        <span class="en">Every Visit,<br>A Complete Transformation</span>
+      </div>
+      <div class="bi-body section-lead reveal d2" style="text-align:center;margin:16px auto 0;">
+        <span class="zh">六維度的頂級護理，為真正懂得欣賞非凡的女性而設。</span>
+        <span class="en">Six dimensions of bespoke care — crafted for women who expect nothing less than extraordinary.</span>
+      </div>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card reveal d0">
+        <div class="exp-card-bar"></div>
+        <span class="exp-icon">✦</span>
+        <div class="exp-title"><span class="zh">全維度光學護理</span><span class="en">Multi-Spectrum Optics</span></div>
+        <div class="exp-desc"><span class="zh">精選多種光學儀器矩陣，每種波長均針對你肌膚的獨特需求精準配置。沒有兩次療程是相同的，就如沒有兩位女性是相同的。</span><span class="en">A curated matrix of advanced light technologies — each wavelength selected to address your skin's unique narrative. No two treatments are ever identical.</span></div>
+        <div class="exp-tag"><span class="zh">量身訂製</span><span class="en">Bespoke Protocol</span></div>
+      </div>
+      <div class="exp-card reveal d1">
+        <div class="exp-card-bar"></div>
+        <span class="exp-icon">◈</span>
+        <div class="exp-title"><span class="zh">超聲波立體緊塑</span><span class="en">Ultrasonic Sculpting</span></div>
+        <div class="exp-desc"><span class="zh">醫療級超音波能量，由創始人實時精準調控，以外科手術般的精確度重塑輪廓——無需任何手術。</span><span class="en">Clinical-grade ultrasound energy, calibrated in real time by our founder, to redefine contours with surgical precision — no surgery required.</span></div>
+        <div class="exp-tag"><span class="zh">創始人監製</span><span class="en">Founder Curated</span></div>
+      </div>
+      <div class="exp-card reveal d2">
+        <div class="exp-card-bar"></div>
+        <span class="exp-icon">❋</span>
+        <div class="exp-title"><span class="zh">皮秒精雕修顏</span><span class="en">Picosecond Refinement</span></div>
+        <div class="exp-desc"><span class="zh">皮秒雷射技術——色素及質感修復的巔峰之作——由深諳「精準即一切」哲學的大師，從容施術。</span><span class="en">Picosecond laser — the pinnacle of pigmentation correction — delivered with the measured confidence of a craftsman who knows that less, applied perfectly, achieves infinitely more.</span></div>
+        <div class="exp-tag"><span class="zh">精準唯一</span><span class="en">Precision Only</span></div>
+      </div>
+      <div class="exp-card reveal d3">
+        <div class="exp-card-bar"></div>
+        <span class="exp-icon">⬡</span>
+        <div class="exp-title"><span class="zh">五級精華靈魂灌注</span><span class="en">Supreme Serum Infusion</span></div>
+        <div class="exp-desc"><span class="zh">由創始人研發的五階精華液系列，代表著多年生物科技研究的結晶。第五級終極配方，全球僅此一處可體驗。</span><span class="en">Our proprietary five-tier serum hierarchy — formulated by our founder — represents years of active biotechnology research. Level 5 is available exclusively within these walls.</span></div>
+        <div class="exp-tag"><span class="zh">獨家配方</span><span class="en">Proprietary Formula</span></div>
+      </div>
+      <div class="exp-card reveal d4">
+        <div class="exp-card-bar"></div>
+        <span class="exp-icon">✿</span>
+        <div class="exp-title"><span class="zh">絲滑肌底精準處理</span><span class="en">Silk Skin Refinement</span></div>
+        <div class="exp-desc"><span class="zh">完美肌膚始於最純粹的基底。我們的精準護理讓每一分子的頂級精華，都能滲透至它應抵達的深度。</span><span class="en">Flawless skin begins at the surface. Our precision protocols prepare the canvas so every molecule of our formulation reaches where it matters most.</span></div>
+        <div class="exp-tag"><span class="zh">全方位服務</span><span class="en">Full Service</span></div>
+      </div>
+      <div class="exp-card reveal d5">
+        <div class="exp-card-bar"></div>
+        <span class="exp-icon">◎</span>
+        <div class="exp-title"><span class="zh">大師攝影留影紀念</span><span class="en">Master Photography</span></div>
+        <div class="exp-desc"><span class="zh">對於特定的會員，創始人——一位造詣深厚的藝術攝影師——會發出罕有的邀請：在你最光芒四射的時刻，為你留下永恆的影像。</span><span class="en">For select members, our founder — an accomplished fine art photographer — extends a rare invitation to capture your luminescence at its absolute peak.</span></div>
+        <div class="exp-tag"><span class="zh">限定邀請</span><span class="en">By Invitation Only</span></div>
+      </div>
+      <div class="exp-card reveal d6" style="grid-column:1/-1;max-width:360px;margin:0 auto;width:100%;">
+        <div class="exp-card-bar" style="background:linear-gradient(90deg,var(--mac-lav),var(--mac-rose));"></div>
+        <span class="exp-icon">✦</span>
+        <div class="exp-title"><span class="zh">絲滑脫毛精細護理</span><span class="en">Silky Hair Removal</span></div>
+        <div class="exp-desc"><span class="zh">採用最先進的脫毛技術，為你帶來持久絲滑的肌膚體驗。精準、輕柔、有效——以最高標準呵護你最敏感的肌膚，讓每一寸都如玉般細膩。</span><span class="en">Advanced hair removal technology delivering lasting silkiness. Precise, gentle, and effective — caring for even your most sensitive areas to the highest standard, leaving skin as smooth as porcelain.</span></div>
+        <div class="exp-tag"><span class="zh">全身護理</span><span class="en">Full Body Available</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIPE -->
+<div class="mac-stripe">
+  <span style="background:#B0D8A0"></span><span style="background:#A8C8EC"></span>
+  <span style="background:#F0C898"></span><span style="background:#9ED8C4"></span>
+  <span style="background:#C8B0E0"></span><span style="background:#F0B4C8"></span>
+</div>
+
+<!-- ══════════ FORMULATION ══════════ -->
+<section id="formulation">
+  <div class="form-glow"></div>
+  <div class="container">
+    <div class="formulation-inner">
+      <div class="form-visual reveal left">
+        <div class="form-orb">
+          <div class="form-orb-glyph">◈</div>
+        </div>
+        <div class="form-levels">
+          <div class="form-level"><div class="form-level-bar" style="height:20px;background:rgba(245,192,208,.5)"></div><div class="form-level-label"><span class="zh">一</span></div></div>
+          <div class="form-level"><div class="form-level-bar" style="height:35px;background:rgba(208,188,232,.65)"></div><div class="form-level-label"><span class="zh">二</span></div></div>
+          <div class="form-level"><div class="form-level-bar" style="height:52px;background:rgba(168,220,200,.7)"></div><div class="form-level-label"><span class="zh">三</span></div></div>
+          <div class="form-level"><div class="form-level-bar" style="height:72px;background:rgba(245,208,168,.8)"></div><div class="form-level-label"><span class="zh">四</span></div></div>
+          <div class="form-level"><div class="form-level-bar" style="height:96px;background:var(--mac-rose-d)"></div><div class="form-level-label"><span class="zh">五</span></div></div>
+        </div>
+      </div>
+      <div class="form-content reveal right d2">
+        <div class="bi-label" style="color:var(--mac-peach-d);justify-content:flex-start;">
+          <span class="zh">獨家配方</span>
+          <span class="en">Signature Formulation</span>
+        </div>
+        <div style="height:20px;"></div>
+        <div class="section-heading light">
+          <span class="zh">世間最稀有的<br>配方，<br>只在這裡</span>
+          <span class="en">The Rarest Formulation in Existence — Available Nowhere Else</span>
+        </div>
+        <div class="form-body" style="margin-top:24px;">
+          <span class="zh">由創始人在私密實驗室中研發，歷經多年臨床驗證，我們的五階精華液系列代表了科學與美學的最高成就。第五級超級精華，在全球任何零售渠道均無法購得——它僅屬於這裡，僅屬於你。</span>
+          <span class="en">Conceived in private laboratories and refined over years of clinical research, our Level 5 Supreme Serum represents the highest achievement of our founder's scientific vision. Available nowhere in the world — it belongs here, and to you.</span>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+          <div style="background:rgba(255,255,255,.8);border:1px solid rgba(208,188,232,.45);padding:14px 18px;text-align:center;flex:1;min-width:80px;border-radius:2px;backdrop-filter:blur(8px);">
+            <div style="font-size:22px;margin-bottom:7px;">🇫🇷</div>
+            <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);"><span style="display:block;color:var(--charcoal);font-size:11px;font-weight:600;margin-bottom:2px;">France</span><span style="display:block;">法國</span></div>
+          </div>
+          <div style="background:rgba(255,255,255,.8);border:1px solid rgba(208,188,232,.45);padding:14px 18px;text-align:center;flex:1;min-width:80px;border-radius:2px;backdrop-filter:blur(8px);">
+            <div style="font-size:22px;margin-bottom:7px;">🇮🇹</div>
+            <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);"><span style="display:block;color:var(--charcoal);font-size:11px;font-weight:600;margin-bottom:2px;">Italy</span><span style="display:block;">意大利</span></div>
+          </div>
+          <div style="background:rgba(255,255,255,.8);border:1px solid rgba(208,188,232,.45);padding:14px 18px;text-align:center;flex:1;min-width:80px;border-radius:2px;backdrop-filter:blur(8px);">
+            <div style="font-size:22px;margin-bottom:7px;">🇺🇸</div>
+            <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);"><span style="display:block;color:var(--charcoal);font-size:11px;font-weight:600;margin-bottom:2px;">United States</span><span style="display:block;">美國</span></div>
+          </div>
+        </div>
+        <div style="margin-top:14px;font-size:10px;color:var(--grey);font-style:italic;letter-spacing:.3px;">
+          <span style="display:block;">精華液海外銷售僅限上述三個授權市場 · Serum available exclusively in authorised markets above</span>
+        </div>
+        <div class="form-attrs">
+          <div class="form-attr">
+            <div class="form-attr-val">5</div>
+            <div class="form-attr-label"><span class="zh">專屬等級</span><span class="en">Proprietary Tiers</span></div>
+          </div>
+          <div class="form-attr">
+            <div class="form-attr-val">Private</div>
+            <div class="form-attr-label"><span class="zh">配方研發</span><span class="en">Lab Formulated</span></div>
+          </div>
+          <div class="form-attr">
+            <div class="form-attr-val">Only</div>
+            <div class="form-attr-label"><span class="zh">唯此一處</span><span class="en">1 Club Worldwide</span></div>
+          </div>
+          <div class="form-attr">
+            <div class="form-attr-val">3</div>
+            <div class="form-attr-label"><span class="zh">海外銷售國家</span><span class="en">Countries of Sale</span></div>
+          </div>
+        </div>
+        <div class="form-note">
+          <span class="zh">繆思臻美精華液目前僅在三個海外市場設有正式授權銷售渠道：<strong style="color:var(--mac-rose-d)">法國 🇫🇷 · 意大利 🇮🇹 · 美國 🇺🇸</strong>。本會所為全球唯一體驗據點。未在上述國家的客戶，請向您的會員聯絡人查詢詳情。</span>
+          <span class="en">Muse Achieve Serum is available for purchase exclusively in three authorised international markets: <strong style="color:var(--mac-rose-d)">France 🇫🇷 · Italy 🇮🇹 · United States 🇺🇸</strong>. This club remains the sole physical experience location worldwide. For enquiries outside these territories, contact your member liaison.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RITUALS ══════════ -->
+<section id="rituals" class="section-pad">
+  <div class="container">
+    <div class="rituals-header">
+      <div class="bi-label reveal" style="justify-content:center;"><span class="zh">招待儀式</span><span class="en">Welcome Rituals</span></div>
+      <div class="section-heading reveal d1" style="text-align:center;">
+        <span class="zh">被接待的藝術</span>
+        <span class="en">The Art of Being Truly Received</span>
+      </div>
+      <div class="bi-body section-lead reveal d2" style="text-align:center;margin:14px auto 0;">
+        <span class="zh">因為療程後你的感受，與鏡中所見同等重要。</span>
+        <span class="en">Because how you feel after matters as much as what you see in the mirror.</span>
+      </div>
+    </div>
+    <div class="rituals-grid">
+      <div class="ritual-card reveal d0">
+        <span class="ritual-icon">🍸</span>
+        <div class="ritual-name"><span class="zh">特調迎賓雞尾酒</span><span class="en">Signature Cocktail</span></div>
+        <div class="ritual-desc">
+          <span class="zh">由創始人親自設計，每一杯都是一首詩。你可以選擇含酒精的版本，或同樣精心調製的無酒精特調——每一滴都承載著對你的理解。</span>
+          <span class="en">Crafted by our founder — a connoisseur of flavour as much as aesthetics. Choose your expression: classic or alcohol-free mocktail, each a small poem in a glass.</span>
+        </div>
+        <div class="ritual-tagline"><span class="zh">「一杯懂你的酒。」</span><span class="en">"A drink that understands you."</span></div>
+      </div>
+      <div class="ritual-card reveal d1">
+        <span class="ritual-icon">☕</span>
+        <div class="ritual-name"><span class="zh">正宗愛爾蘭咖啡</span><span class="en">Authentic Irish Coffee</span></div>
+        <div class="ritual-desc">
+          <span class="zh">熱壓濃縮咖啡，精量頂級愛爾蘭威士忌，再冠以手打鮮奶油。由創始人親手沖製，以同樣對待每一項工序的嚴謹，奉上這杯有溫度的奢華。</span>
+          <span class="en">Hot press coffee, finest Irish whiskey, and a crown of hand-whipped cream. Brewed by our founder with the same precision applied to every element of this space.</span>
+        </div>
+        <div class="ritual-tagline"><span class="zh">「溫暖，帶著一抹膽識。」</span><span class="en">"Warmth with a touch of audacity."</span></div>
+      </div>
+      <div class="ritual-card reveal d2">
+        <span class="ritual-icon">🍮</span>
+        <div class="ritual-name"><span class="zh">現烤法式舒芙蕾</span><span class="en">Fresh-Baked Soufflé</span></div>
+        <div class="ritual-desc">
+          <span class="zh">只存在於出爐後那短暫幾分鐘的完美——一如青春本身。創始人親手烘焙，它不會等候你；但美麗，也從不等候任何人。</span>
+          <span class="en">Perfection that exists for a fleeting moment only — like youth itself. Baked to order by our founder. It will not wait for you; but then, neither does beauty.</span>
+        </div>
+        <div class="ritual-tagline"><span class="zh">「在它消逝之前，細細品味。」</span><span class="en">"Savour it before it fades."</span></div>
+      </div>
+    </div>
+    <div class="rituals-footer reveal d2">
+      <span class="zh">所有到訪會員均享有免費招待。</span>
+      <span class="en">All visiting members receive complimentary hospitality.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRIVACY ══════════ -->
+<section id="privacy">
+  <div class="container">
+    <div class="privacy-inner">
+      <div class="privacy-vis reveal left">
+        <div class="priv-circle">
+          <div class="priv-circle-inner"></div>
+          <span class="priv-icon">🔮</span>
+        </div>
+      </div>
+      <div class="privacy-content reveal right d2">
+        <div class="bi-label" style="color:var(--mac-lav-d);justify-content:flex-start;"><span class="zh">絕對隱私</span><span class="en">Absolute Discretion</span></div>
+        <div style="height:20px;"></div>
+        <div class="priv-heading">
+          <span class="zh">你的蹤跡，<br>只屬於你。</span>
+          <span class="en">Your identity. Your secret. Always.</span>
+        </div>
+        <div class="priv-intro">
+          <span class="zh">在這個無處不在的可見世界裡，繆思臻美是你隱形的殿堂。我們將整個運作體系建立於一個核心原則之上：你在此的存在，僅屬於你自己。</span>
+          <span class="en">In a world where everything is visible, Muse Achieve is your invisible sanctuary. We built our entire operation around one founding principle: your presence here belongs only to you.</span>
+        </div>
+        <div class="priv-points">
+          <div class="priv-point">
+            <div class="priv-dot" style="background:var(--mac-lav-d)"></div>
+            <div class="priv-point-text">
+              <span class="zh">所有會員以專屬代碼識別，真實姓名及密碼由創始人獨自保管，任何工作人員均無從得知。</span>
+              <span class="en">Members are identified by exclusive codes only — real names and credentials are known solely to the founder, inaccessible to all staff.</span>
+            </div>
+          </div>
+          <div class="priv-point">
+            <div class="priv-dot" style="background:var(--mac-mint-d)"></div>
+            <div class="priv-point-text">
+              <span class="zh">零披露政策。我們的團隊無法，也不會確認任何個人的會員身份。</span>
+              <span class="en">Zero disclosure policy — our team cannot and will not confirm whether any individual holds membership with us.</span>
+            </div>
+          </div>
+          <div class="priv-point">
+            <div class="priv-dot" style="background:var(--mac-rose-d)"></div>
+            <div class="priv-point-text">
+              <span class="zh">私密入口，私密諮詢，私密檔案。隱私在這裡不是一項功能——它是地基。</span>
+              <span class="en">Private entrance, private consultation, private records. Discretion here is not a feature — it is the foundation upon which everything else rests.</span>
+            </div>
+          </div>
+          <div class="priv-point">
+            <div class="priv-dot" style="background:var(--mac-peach-d)"></div>
+            <div class="priv-point-text">
+              <span class="zh">任何影像或創作合作，均需會員親筆書面授權。沒有例外。</span>
+              <span class="en">Any creative or photographic collaboration requires explicit written consent from the member. No exceptions, under any circumstances.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIPE -->
+<div class="mac-stripe">
+  <span style="background:#F0B4C8"></span><span style="background:#C8B0E0"></span>
+  <span style="background:#9ED8C4"></span><span style="background:#F0C898"></span>
+  <span style="background:#A8C8EC"></span><span style="background:#B0D8A0"></span>
+</div>
+
+<!-- ══════════ THE CIRCLE ══════════ -->
+<section id="circle" class="section-pad">
+  <div class="container">
+    <div class="circle-header">
+      <div class="bi-label reveal" style="justify-content:center;"><span class="zh">這個圈子</span><span class="en">The Circle</span></div>
+      <div class="section-heading reveal d1" style="text-align:center;">
+        <span class="zh">非凡女性的<br>秘密花園</span>
+        <span class="en">A Secret Garden<br>of Remarkable Women</span>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card reveal d0">
+        <div class="stat-val" data-target="30" data-suffix="">0</div>
+        <div class="stat-label"><span class="zh">每月精選圈子</span><span class="en">Curated Inner Circle</span></div>
+      </div>
+      <div class="stat-card reveal d1">
+        <div class="stat-val" style="font-size:32px;padding-top:8px;"><span class="zh">邀請</span><br><span class="en" style="font-size:16px;letter-spacing:1px;">Invitation</span></div>
+        <div class="stat-label"><span class="zh">制會籍</span><span class="en">Only — No Walk-ins</span></div>
+      </div>
+      <div class="stat-card reveal d2">
+        <div class="stat-val" data-target="6" data-suffix="">0</div>
+        <div class="stat-label"><span class="zh">精華液等級</span><span class="en">Serum Tiers</span></div>
+      </div>
+      <div class="stat-card reveal d3">
+        <div class="stat-val">∞</div>
+        <div class="stat-label"><span class="zh">隱私保障</span><span class="en">Absolute Discretion</span></div>
+      </div>
+    </div>
+    <div class="quotes-grid">
+      <div class="quote-card reveal d0">
+        <div class="quote-mark">"</div>
+        <div class="quote-body">
+          <span class="zh">踏進去的時候，我只是一位客人。走出來的時候，我感覺自己成為了那個命中注定的自己。繆思臻美深諳一件大多數地方不明白的事——美麗不是固定的，它是可以被栽培的。</span>
+          <span class="en">Walking in, I was a client. Walking out, I felt like the woman I was always meant to be. Muse Achieve understands something most places don't — that beauty is not fixed. It is cultivated with patience and intention.</span>
+        </div>
+        <div class="quote-footer">
+          <div class="quote-author"><span class="zh">會員 No.088 · 內部圈子</span><span class="en">Member No.088 · Inner Circle</span></div>
+        </div>
+      </div>
+      <div class="quote-card reveal d1">
+        <div class="quote-mark">"</div>
+        <div class="quote-body">
+          <span class="zh">舒芙蕾恰好在療程結束的那一刻送到。這裡的每一件事都像是精心編排的——彷彿有人非常深思熟慮地思考過，什麼才是真正的對一位女性的照顧。</span>
+          <span class="en">The soufflé arrived exactly when my treatment ended. Everything here feels choreographed — as if someone thought very carefully about what it truly means to take care of a woman, completely.</span>
+        </div>
+        <div class="quote-footer">
+          <div class="quote-author"><span class="zh">會員 No.033 · 內部圈子</span><span class="en">Member No.033 · Inner Circle</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ LUMINARA COLLECTION ══════════ -->
+<section id="luminara" class="section-pad">
+  <div class="container">
+    <div class="lum-intro">
+      <div class="lum-eyebrow reveal">Luminara BioRegen Elixir™ · Exclusive to Muse Achieve</div>
+      <div class="lum-heading reveal d1">
+        <span class="zh">五層精華液系列</span>
+        <span class="en">Five Tiers of Regeneration</span>
+      </div>
+      <div class="lum-body reveal d2">
+        <span class="zh">每一瓶 Luminara 精華液，均承載我們的創辦信念——零合成成分、治療濃度精準配方，以及您可以信賴的活性植物萃取。您所選擇的層級，反映您對肌膚深度再生的渴望。</span>
+        <span class="en">Every Luminara formula carries our founding commitment — zero synthetics, therapeutic concentrations, botanical actives you can trust. The tier you choose reflects the depth of renewal you seek. All prices in USD.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lum-grid reveal d3">
+
+    <!-- LT1 BLOOM -->
+    <div class="lum-tier lt1">
+      <div class="lum-tier-num">I</div>
+      <div class="lum-tier-name">Bloom</div>
+      <div class="lum-tier-sub">Daily Radiance Serum · 日常光澤精華</div>
+      <div class="lum-price">$95</div>
+      <div class="lum-price-unit">USD · 30 ml</div>
+      <div class="lum-sep"></div>
+      <div class="lum-ings">
+        <div class="lum-ing">Aloe + Hyaluronic Complex</div>
+        <div class="lum-ing">Sea Kelp Hydration Seal</div>
+        <div class="lum-ing">12-hour moisture lock</div>
+        <div class="lum-ing">8 active botanicals</div>
+      </div>
+      <a class="lum-cta" href="https://luminara.com" target="_blank">Explore</a>
+    </div>
+
+    <!-- LT2 RENEW -->
+    <div class="lum-tier lt2">
+      <div class="lum-tier-num">II</div>
+      <div class="lum-tier-name">Renew</div>
+      <div class="lum-tier-sub">Restorative Repair Serum · 修護再生精華</div>
+      <div class="lum-price">$280</div>
+      <div class="lum-price-unit">USD · 30 ml</div>
+      <div class="lum-sep"></div>
+      <div class="lum-ings">
+        <div class="lum-ing">Bakuchiol Bio-Retinol</div>
+        <div class="lum-ing">Snow Mushroom + Ceramide</div>
+        <div class="lum-ing">Barrier repair +18%</div>
+        <div class="lum-ing">14 active botanicals</div>
+      </div>
+      <a class="lum-cta" href="https://luminara.com" target="_blank">Explore</a>
+    </div>
+
+    <!-- LT3 RESERVE -->
+    <div class="lum-tier lt3">
+      <div class="lum-tier-num">III</div>
+      <div class="lum-tier-name">Reserve</div>
+      <div class="lum-tier-sub">Advanced Regeneration Serum · 進階再生精華</div>
+      <div class="lum-price">$580</div>
+      <div class="lum-price-unit">USD · 30 ml</div>
+      <div class="lum-sep"></div>
+      <div class="lum-ings">
+        <div class="lum-ing">Tremella + Turmeric Ferment</div>
+        <div class="lum-ing">Vitamin C Tetra Complex</div>
+        <div class="lum-ing">Barrier repair +28%</div>
+        <div class="lum-ing">20 active botanicals</div>
+      </div>
+      <a class="lum-cta" href="https://luminara.com" target="_blank">Explore</a>
+    </div>
+
+    <!-- LT4 ÉLITE -->
+    <div class="lum-tier lt4">
+      <div class="lum-tier-num">IV</div>
+      <div class="lum-tier-name">Élite</div>
+      <div class="lum-tier-sub">Clinical Prestige Serum · 臨床頂級精華</div>
+      <div class="lum-price">$1,500</div>
+      <div class="lum-price-unit">USD · 30 ml</div>
+      <div class="lum-sep"></div>
+      <div class="lum-ings">
+        <div class="lum-ing">Gold Peptide Matrix</div>
+        <div class="lum-ing">Centella Stem Cell Extract</div>
+        <div class="lum-ing">Barrier repair +35%</div>
+        <div class="lum-ing">24 active botanicals</div>
+      </div>
+      <a class="lum-cta" href="https://luminara.com" target="_blank">Explore</a>
+    </div>
+
+    <!-- LT5 BIORE GEN ELIXIR -->
+    <div class="lum-tier lt5">
+      <div class="lum-halo">Halo Edition</div>
+      <div class="lum-tier-num">V</div>
+      <div class="lum-tier-name">BioRegen Elixir™</div>
+      <div class="lum-tier-sub">The Founding Formula · 創始配方</div>
+      <div class="lum-price">$3,000</div>
+      <div class="lum-price-unit">USD · 30 ml</div>
+      <div class="lum-sep"></div>
+      <div class="lum-ings">
+        <div class="lum-ing">26 Rarest Actives · Zero Synthetics</div>
+        <div class="lum-ing">Swiss Glacier Meltwater Base</div>
+        <div class="lum-ing">72-hour hydration sustained</div>
+        <div class="lum-ing">Barrier repair +40%</div>
+      </div>
+      <a class="lum-cta" href="https://luminara.com" target="_blank">Explore</a>
+    </div>
+
+  </div><!-- .lum-grid -->
+
+  <!-- TIER 6 — CLUB EXCLUSIVE -->
+  <div class="lum-t6 reveal">
+    <div class="lum-t6-left">
+      <div class="lum-t6-badge">繆思臻美 · Club Exclusive</div>
+      <div class="lum-t6-num">Level VI</div>
+      <div class="lum-t6-name">Atelier</div>
+      <div class="lum-t6-sub">Bespoke Regeneration · 定制再生精華</div>
+      <div class="lum-t6-sep"></div>
+      <div class="lum-t6-body">
+        <span class="zh">Atelier 是 Luminara 最私密的表達。每一瓶均為繆思臻美會員量身調配——根據您肌膚獨特的生理狀態、所在環境與再生目標。它不被出售，不被陳列，僅屬於您。</span>
+        <span class="en">Atelier is the most intimate expression of Luminara. Every formula composed exclusively for the individual member — calibrated to your skin's unique biology, environment, and regenerative vision. Not sold. Not listed. Yours alone.</span>
+      </div>
+    </div>
+    <div class="lum-t6-right">
+      <div class="lum-t6-attr">
+        <div class="lum-t6-attr-label">Active Botanicals</div>
+        <div class="lum-t6-attr-val">
+          <span class="zh">最多 34 種 · 諮詢後選定</span>
+          <span class="en">Up to 34 — Selected by Consultation</span>
+        </div>
+      </div>
+      <div class="lum-t6-attr">
+        <div class="lum-t6-attr-label">Formulation</div>
+        <div class="lum-t6-attr-val">
+          <span class="zh">個人化配方 · 單批次生產</span>
+          <span class="en">Bespoke · Single-Batch · Non-Repeatable</span>
+        </div>
+      </div>
+      <div class="lum-t6-attr">
+        <div class="lum-t6-attr-label">Availability</div>
+        <div class="lum-t6-attr-val">
+          <span class="zh">僅限繆思臻美會員</span>
+          <span class="en">Muse Achieve Members Only</span>
+        </div>
+      </div>
+      <div class="lum-t6-attr">
+        <div class="lum-t6-attr-label">Access</div>
+        <div class="lum-t6-attr-val">
+          <span class="zh">不對外開放 · 不接受公開詢問</span>
+          <span class="en">Not publicly available · Internal to club</span>
+        </div>
+      </div>
+      <div class="lum-t6-price">By Private Arrangement</div>
+      <div class="lum-t6-price-note">
+        <span class="zh">需要會籍 · 每份訂單皆以私人諮詢為前提</span>
+        <span class="en">Membership required · Private consultation precedes every commission</span>
+      </div>
+      <a class="lum-t6-cta" href="#application">
+        <span class="zh">申請會籍</span>
+        <span class="en" style="display:inline;">Apply for Membership</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="lum-footer">
+    <p>Luminara BioRegen Elixir™ is an exclusive Henderson Transpacific creation · Tiers I–V available at <a href="https://luminara.com" target="_blank">luminara.com</a> · Tier VI (Atelier) is reserved for Muse Achieve members only · All formulas independently third-party tested · Zero synthetics, parabens &amp; SLS</p>
+  </div>
+</section>
+
+<!-- ══════════ APPLICATION ══════════ -->
+<section id="application">
+  <div class="app-glow"></div>
+  <div class="container">
+    <div class="app-inner">
+      <div class="app-eyebrow reveal">
+        <div class="app-eyebrow-line"></div>
+        <div class="app-eyebrow-text"><span class="zh">申請入會</span><span class="en">Apply for Membership</span></div>
+        <div class="app-eyebrow-line"></div>
+      </div>
+      <div class="app-heading reveal d1">
+        <span class="zh">你，準備好了嗎？</span>
+        <span class="en">Are You Ready to Be Seen?</span>
+      </div>
+      <div class="app-sub reveal d2">
+        <span class="zh">會籍由創始人親自審核，不設對外銷售。每一位申請者的資料，均受到最嚴格的保密處理。我們的篩選是嚴格的——因為我們必須保護那些已在其中的女性的體驗。</span>
+        <span class="en">Membership is curated, not sold. Every application is reviewed personally by our founder. We are selective because we must — to protect the experience of those already within the circle.</span>
+      </div>
+
+      <!-- FORM -->
+      <form class="app-form reveal d2" id="appForm" novalidate onsubmit="handleSubmit(event)">
+        <div class="form-banner" id="formErr">
+          <span>⚠ </span>
+          <span><span class="zh">請填寫所有必填項目，並上載至少 3 張照片及 1 段短片。</span><span class="en">Please complete all required fields and upload at least 3 photos and 1 video.</span></span>
+        </div>
+        <div class="f-row">
+          <div class="f-group" id="fg-salutation">
+            <label class="f-label"><span class="zh">稱呼</span><span class="en">How to Address You</span></label>
+            <select class="f-input" name="salutation">
+              <option value="">選擇 / Select...</option>
+              <option>女士 Ms.</option>
+              <option>博士 Dr.</option>
+              <option>教授 Prof.</option>
+              <option>其他 Other</option>
+            </select>
+          </div>
+          <div class="f-group" id="fg-contact">
+            <label class="f-label"><span class="zh">聯繫方式 *</span><span class="en">Contact — WhatsApp / Signal *</span></label>
+            <input class="f-input" type="tel" name="contact" placeholder="+852 / +86 / +1..." required>
+            <span class="f-err"><span class="zh">請提供聯繫方式</span><span class="en">Contact required</span></span>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-group" id="fg-email">
+            <label class="f-label"><span class="zh">電郵 *</span><span class="en">Email Address *</span></label>
+            <input class="f-input" type="email" name="email" placeholder="Private email preferred..." required>
+            <span class="f-err"><span class="zh">請提供有效電郵地址</span><span class="en">Valid email required</span></span>
+          </div>
+          <div class="f-group" id="fg-source">
+            <label class="f-label"><span class="zh">您如何得知我們 *</span><span class="en">How Did You Hear of Us *</span></label>
+            <select class="f-input" name="source" required>
+              <option value="">選擇 / Select...</option>
+              <option>現有會員推薦 Referred by a Member</option>
+              <option>私人邀請函 Private Invitation</option>
+              <option>社交媒體 Social Media</option>
+              <option>業界口耳相傳 Word of Mouth</option>
+              <option>不方便透露 Prefer Not to Say</option>
+            </select>
+            <span class="f-err"><span class="zh">請選擇</span><span class="en">Please select</span></span>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-group full" id="fg-referral">
+            <label class="f-label"><span class="zh">推薦人代碼</span><span class="en">Referral Code (If Applicable — Leave Blank if Direct)</span></label>
+            <input class="f-input" type="text" name="referral" placeholder="No.XXX — 如無可留空 Leave blank if direct application">
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-group full" id="fg-about">
+            <label class="f-label"><span class="zh">關於您 *</span><span class="en">About You — In Your Own Words *</span></label>
+            <textarea class="f-input f-textarea" name="about" placeholder="分享您認為合適的一切。這裡沒有標準答案——只有你的真實。&#10;Share whatever you feel comfortable sharing. There are no wrong answers — only the truth of who you are." required></textarea>
+            <span class="f-err"><span class="zh">請告訴我們關於您自己</span><span class="en">Please tell us about yourself</span></span>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-group full" id="fg-seek">
+            <label class="f-label"><span class="zh">您在這裡尋求什麼？</span><span class="en">What Do You Seek Here?</span></label>
+            <textarea class="f-input f-textarea" name="seek" placeholder="一個庇護所，一場蛻變，一個圈子……告訴我們是什麼讓你來到我們的門前。&#10;A sanctuary, a transformation, a community... tell us what brought you to our door."></textarea>
+          </div>
+        </div>
+
+        <div class="f-divider" style="margin:32px 0 24px;">
+          <span class="zh">真實影像</span><span class="en">Authentic Images</span>
+        </div>
+
+        <div class="f-upload-note" style="background:linear-gradient(135deg,var(--mac-rose-bg),var(--mac-lav-bg));border:1px solid rgba(208,188,232,.4);padding:20px 24px;margin-bottom:20px;text-align:center;">
+          <div style="font-size:20px;margin-bottom:10px;">📷</div>
+          <div style="font-size:12px;color:var(--charcoal);font-weight:500;margin-bottom:6px;">
+            <span class="zh">請上載數張未經修圖的真實照片及一段短片</span>
+            <span class="en" style="display:block;font-style:italic;font-weight:300;color:var(--grey);margin-top:4px;">Please upload a few unretouched photos and a short video — no filters, no editing, just you.</span>
+          </div>
+          <div style="font-size:11px;color:var(--grey);font-style:italic;margin-top:8px;">
+            <span class="zh">所有影像受最高保密協議保護，僅供創始人審閱，審核後即時銷毀。</span>
+            <span class="en" style="display:block;margin-top:3px;">All media is protected under absolute confidentiality — reviewed solely by the founder and destroyed immediately after.</span>
+          </div>
+        </div>
+
+        <div class="f-row">
+          <div class="f-group full" id="fg-photos">
+            <label class="f-label">
+              <span class="zh">📸 真實照片（至少 3 張，不得修圖）*</span>
+              <span class="en">Unretouched Photos — Minimum 3, no filters *</span>
+            </label>
+            <label class="f-file-label" for="upload-photos" id="fl-photos">
+              <div class="f-file-icon">🖼</div>
+              <div class="f-file-text">
+                <span class="zh">點擊選擇照片 / 可多選</span>
+                <span class="en">Click to select photos · Multiple allowed</span>
+              </div>
+              <div class="f-file-hint">
+                <span class="zh">接受 JPG · PNG · HEIC · 每張最大 20MB</span>
+                <span class="en">JPG · PNG · HEIC · Max 20MB each</span>
+              </div>
+            </label>
+            <input class="f-file-input" type="file" id="upload-photos" name="photos" accept="image/jpeg,image/png,image/heic,image/webp" multiple onchange="handleFileSelect(this,'fl-photos','photos-count')">
+            <div class="f-file-count" id="photos-count"></div>
+            <span class="f-err"><span class="zh">請上載至少 3 張照片</span><span class="en">Please upload at least 3 photos</span></span>
+          </div>
+        </div>
+
+        <div class="f-row">
+          <div class="f-group full" id="fg-video">
+            <label class="f-label">
+              <span class="zh">🎥 短片（5–30 秒，真實自拍，不得剪輯）*</span>
+              <span class="en">Short Video — 5–30 seconds, unedited self-recording *</span>
+            </label>
+            <label class="f-file-label" for="upload-video" id="fl-video">
+              <div class="f-file-icon">🎬</div>
+              <div class="f-file-text">
+                <span class="zh">點擊選擇短片</span>
+                <span class="en">Click to select your video</span>
+              </div>
+              <div class="f-file-hint">
+                <span class="zh">接受 MP4 · MOV · 最大 200MB</span>
+                <span class="en">MP4 · MOV accepted · Max 200MB</span>
+              </div>
+            </label>
+            <input class="f-file-input" type="file" id="upload-video" name="video" accept="video/mp4,video/quicktime,video/mov" onchange="handleFileSelect(this,'fl-video','video-count')">
+            <div class="f-file-count" id="video-count"></div>
+            <span class="f-err"><span class="zh">請上載一段短片</span><span class="en">Please upload a video</span></span>
+          </div>
+        </div>
+
+        <button type="submit" class="f-submit">
+          <span class="f-submit-zh">遞交申請</span>
+          <span class="f-submit-en">Submit My Application</span>
+        </button>
+        <div class="f-note">
+          <span class="zh">所有申請資料絕對保密處理。申請成功者，我們將以私下方式聯繫。無論結果如何，申請資料均在審核後銷毀，不作任何其他用途。</span>
+          <span class="en">All applications are treated in absolute confidence. Successful applicants will be contacted privately. Regardless of outcome, application data is destroyed after review and never repurposed.</span>
+        </div>
+      </form>
+
+      <div class="f-divider reveal">
+        <span class="zh">或者</span><span class="en">Or</span>
+      </div>
+
+      <div class="ref-note reveal d1">
+        <span class="zh">加入的最佳方式，是透過一位已在其中的人。<br>「若有人認為你應該在這裡，她自然知道如何帶你進來。」</span>
+        <span class="en">The most powerful way to join is through someone who already belongs.<br><strong>If a member believes you should be here, she knows how to bring you in.</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DISCLOSURE ══════════ -->
+<section id="disclose">
+  <div class="container">
+    <div class="disclose-grid">
+      <div class="reveal d0">
+        <div class="disc-icon">🌸</div>
+        <div class="disc-title"><span class="zh">服務內容</span><span class="en">Services Offered</span></div>
+        <div class="disc-body"><span class="zh">多光譜光學療程・皮秒雷射・超音波提拉（HIFU）・CO₂點陣雷射・精準護理・一至五級精華液灌注。所有療程均由持牌美容師在創始人直接監督下進行。精華液海外銷售僅設 🇫🇷 法國、🇮🇹 意大利、🇺🇸 美國三個授權市場。</span><span class="en">Multi-spectrum light therapy · Pico laser · Ultrasonic HIFU · CO₂ fractional · Precision care · Level 1–5 serum infusion. All treatments are administered by certified practitioners under the founder's direct supervision. Serum is sold internationally in authorised markets only: 🇫🇷 France · 🇮🇹 Italy · 🇺🇸 United States.</span></div>
+      </div>
+      <div class="reveal d1">
+        <div class="disc-icon">🔒</div>
+        <div class="disc-title"><span class="zh">隱私政策</span><span class="en">Privacy Policy</span></div>
+        <div class="disc-body"><span class="zh">我們僅收集服務你所必需的最少資料。任何資料均不會與第三方分享。會員身份受代碼匿名系統保護。一切影像創作合作均須書面授權。</span><span class="en">We collect only what is necessary to serve you. No data is shared with third parties. Member identities are protected by a code-based anonymity system. Creative content requires explicit written consent.</span></div>
+      </div>
+      <div class="reveal d2">
+        <div class="disc-icon">✦</div>
+        <div class="disc-title"><span class="zh">會籍條款</span><span class="en">Membership Terms</span></div>
+        <div class="disc-body"><span class="zh">會籍審批由創始人全權決定。我們不保證向任何申請者開放。會所有權隨時要求任何會員暫停或終止其會籍，無需提供原因。</span><span class="en">Membership is at the sole discretion of our founder. We do not guarantee admission to any applicant. Members may be requested to pause or discontinue membership at any time. No reason need be given.</span></div>
+      </div>
+      <div class="reveal d3">
+        <div class="disc-icon">™</div>
+        <div class="disc-title"><span class="zh">商標聲明</span><span class="en">Trademark Notice</span></div>
+        <div class="disc-body"><span class="zh">繆思臻美™ 及 Muse Achieve™ 均為專有品牌名稱。所有知識產權，包括配方、攝影及品牌識別，均為創始人的專有財產。商標注冊申請中（CNIPA 第44類及第3類）。</span><span class="en">Muse Achieve™ and 繆思臻美™ are proprietary brand names. All IP including formulations, photography, and brand identity are the exclusive property of the founder. CNIPA Class 44 & 3 registration pending.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-mac-bar">
+    <span style="background:#F0B4C8"></span><span style="background:#C8B0E0"></span>
+    <span style="background:#9ED8C4"></span><span style="background:#F0C898"></span>
+    <span style="background:#A8C8EC"></span><span style="background:#B0D8A0"></span>
+  </div>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-zh">繆思臻美</div>
+          <div class="logo-en">Muse Achieve™</div>
+          <div class="tagline">
+            <span class="zh">「美麗不是終點。它是你旅程的質地。」</span>
+            <span class="en">"Beauty is not a destination. It is the quality of your journey."</span>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title"><span class="zh">探索</span><span class="en">Explore</span></div>
+          <div class="footer-links-list">
+            <a class="footer-link" href="#philosophy"><span class="zh">我們的哲學</span><span class="en">Philosophy</span></a>
+            <a class="footer-link" href="#experience"><span class="zh">會員體驗</span><span class="en">Experience</span></a>
+            <a class="footer-link" href="#formulation"><span class="zh">精華配方</span><span class="en">The Serum</span></a>
+            <a class="footer-link" href="#rituals"><span class="zh">招待儀式</span><span class="en">Rituals</span></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title"><span class="zh">會籍</span><span class="en">Membership</span></div>
+          <div class="footer-links-list">
+            <a class="footer-link" href="#privacy"><span class="zh">隱私承諾</span><span class="en">Privacy Pledge</span></a>
+            <a class="footer-link" href="#circle"><span class="zh">這個圈子</span><span class="en">The Circle</span></a>
+            <a class="footer-link" href="#application"><span class="zh">申請入會</span><span class="en">Apply Now</span></a>
+            <a class="footer-link" href="#disclose"><span class="zh">條款聲明</span><span class="en">Disclosures</span></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title"><span class="zh">品牌</span><span class="en">Brand</span></div>
+          <div class="footer-links-list">
+            <a class="footer-link" href="#"><span class="zh">創始人</span><span class="en">Our Founder</span></a>
+            <a class="footer-link" href="#"><span class="zh">攝影工作室</span><span class="en">Photography Studio</span></a>
+            <a class="footer-link" href="#formulation"><span class="zh">精華液（法 · 意 · 美）</span><span class="en">Serum — FR · IT · US</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          <span class="zh">© 2025 繆思臻美 Muse Achieve™. 版權所有 All rights reserved.</span>
+          <span class="en">Hong Kong Private Members' Club · 香港頂級私人美學會所</span>
+        </div>
+        <div class="footer-tm">
+          <span class="zh">商標注冊申請中 · CNIPA 第44類 & 第3類</span>
+          <span class="en">Trademark registration pending · Class 44 & 3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ TOAST ══════════ -->
+<div id="toast">
+  <div class="toast-icon">✦</div>
+  <div class="toast-title"><span class="zh">申請已收到</span><span class="en">Application Received</span></div>
+  <div class="toast-body">
+    <span class="zh">您的申請已以最高機密方式處理完畢。創始人將親自審閱每一份申請。我們將以私下方式與您聯繫。</span>
+    <span class="en">Your application has been submitted in absolute confidence. Our founder reviews each one personally. We will be in touch — discretely and only if appropriate.</span>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════
+   CUSTOM CURSOR
+════════════════════════════════════ */
+const dot=document.getElementById('cursor-dot');
+const ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  dot.style.left=mx+'px';dot.style.top=my+'px';
+});
+function animRing(){
+  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+document.querySelectorAll('a,button,.exp-card,.ritual-card,.stat-card,.quote-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+});
+
+/* ════════════════════════════════════
+   NAV SCROLL
+════════════════════════════════════ */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>60);
+},{ passive:true });
+
+/* ════════════════════════════════════
+   MOBILE MENU
+════════════════════════════════════ */
+let menuOpen=false;
+function toggleMenu(){
+  menuOpen=!menuOpen;
+  nav.classList.toggle('menu-open',menuOpen);
+  document.getElementById('mobileMenu').classList.toggle('open',menuOpen);
+  document.body.style.overflow=menuOpen?'hidden':'';
+}
+function closeMenu(){
+  if(!menuOpen)return;
+  menuOpen=false;
+  nav.classList.remove('menu-open');
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.body.style.overflow='';
+}
+function scrollToApply(){
+  closeMenu();
+  setTimeout(()=>document.getElementById('application').scrollIntoView({behavior:'smooth'}),300);
+}
+
+/* ════════════════════════════════════
+   SMOOTH SCROLL (all anchors)
+════════════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href').slice(1);
+    if(!id)return;
+    const el=document.getElementById(id);
+    if(el){
+      e.preventDefault();
+      const offset=id==='hero'?0:80;
+      const top=el.getBoundingClientRect().top+window.scrollY-offset;
+      window.scrollTo({top,behavior:'smooth'});
+    }
+  });
+});
+
+/* ════════════════════════════════════
+   ACTIVE NAV LINKS
+════════════════════════════════════ */
+const landingNavLinks=document.querySelectorAll('.nav-link[href^="#"]');
+const landingSections=Array.from(document.querySelectorAll('section[id]'));
+function updateLandingNav(){
+  const scrollY=window.scrollY;
+  const offset=90;
+  let current='';
+  landingSections.forEach(s=>{
+    if(s.offsetTop-offset<=scrollY) current=s.id;
+  });
+  landingNavLinks.forEach(l=>{
+    l.classList.toggle('active',l.getAttribute('href')==='#'+current);
+  });
+}
+window.addEventListener('scroll',updateLandingNav,{passive:true});
+updateLandingNav();
+
+/* ════════════════════════════════════
+   SCROLL REVEAL (IntersectionObserver)
+════════════════════════════════════ */
+const revObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}
+  });
+},{threshold:.1,rootMargin:'0px 0px -48px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+/* ════════════════════════════════════
+   COUNTER ANIMATION
+════════════════════════════════════ */
+function animateCounter(el){
+  const target=parseInt(el.getAttribute('data-target'));
+  if(isNaN(target))return;
+  const suffix=el.getAttribute('data-suffix')||'';
+  let start=0;const dur=1200;const startTime=performance.now();
+  function step(now){
+    const pct=Math.min((now-startTime)/dur,1);
+    const ease=1-Math.pow(1-pct,3);
+    el.textContent=Math.round(ease*target)+suffix;
+    if(pct<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const cntObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&e.target.hasAttribute('data-target')){
+      animateCounter(e.target);cntObs.unobserve(e.target);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>cntObs.observe(el));
+
+/* ════════════════════════════════════
+   FILE UPLOAD HANDLER
+════════════════════════════════════ */
+function handleFileSelect(input,labelId,countId){
+  const label=document.getElementById(labelId);
+  const count=document.getElementById(countId);
+  const files=Array.from(input.files);
+  if(files.length>0){
+    label.classList.add('has-files');
+    label.querySelector('.f-file-icon').textContent=input.accept.includes('video')
+      ? (files.length>0?'✅':'🎬') : (files.length>0?'✅':'🖼');
+    label.querySelector('.f-file-text .zh').textContent=files.length+'個檔案已選擇';
+    label.querySelector('.f-file-text .en').textContent=files.length+' file'+(files.length>1?'s':'')+' selected';
+    if(countId==='photos-count'){
+      const names=files.slice(0,3).map(f=>f.name).join(' · ')+(files.length>3?' +更多':'');
+      count.textContent=names;
+    } else {
+      count.textContent=files[0].name;
+    }
+    // Clear error on the group
+    const grp=input.closest('.f-group');
+    if(grp)grp.classList.remove('has-err');
+  } else {
+    label.classList.remove('has-files');
+    count.textContent='';
+  }
+}
+
+/* ════════════════════════════════════
+   FORM VALIDATION & SUBMIT
+════════════════════════════════════ */
+function validateEmail(email){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);}
+function setErr(groupId,show){
+  const g=document.getElementById('fg-'+groupId);
+  if(!g)return;
+  g.classList.toggle('has-err',show);
+}
+function showToast(){
+  const t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),6000);
+}
+function handleSubmit(e){
+  e.preventDefault();
+  const form=document.getElementById('appForm');
+  const data=new FormData(form);
+  let valid=true;
+  // Clear all errors
+  ['contact','email','source','about','photos','video'].forEach(f=>setErr(f,false));
+  document.getElementById('formErr').style.display='none';
+  // Validate text fields
+  if(!data.get('contact')||data.get('contact').trim().length<5){setErr('contact',true);valid=false;}
+  if(!validateEmail(data.get('email'))){setErr('email',true);valid=false;}
+  if(!data.get('source')){setErr('source',true);valid=false;}
+  if(!data.get('about')||data.get('about').trim().length<10){setErr('about',true);valid=false;}
+  // Validate photos — at least 3
+  const photoInput=document.getElementById('upload-photos');
+  if(!photoInput.files||photoInput.files.length<3){setErr('photos',true);valid=false;}
+  // Validate video — at least 1
+  const videoInput=document.getElementById('upload-video');
+  if(!videoInput.files||videoInput.files.length<1){setErr('video',true);valid=false;}
+  if(!valid){
+    document.getElementById('formErr').style.display='flex';
+    const firstErr=form.querySelector('.has-err');
+    if(firstErr)firstErr.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  // Success
+  form.reset();
+  // Reset upload labels
+  ['fl-photos','fl-video'].forEach(id=>{
+    const lbl=document.getElementById(id);
+    if(lbl){
+      lbl.classList.remove('has-files');
+      lbl.querySelector('.f-file-icon').textContent=id==='fl-video'?'🎬':'🖼';
+    }
+  });
+  document.getElementById('photos-count').textContent='';
+  document.getElementById('video-count').textContent='';
+  showToast();
+  form.scrollIntoView({behavior:'smooth',block:'start'});
+}
+// Live clear errors on input
+document.querySelectorAll('.f-input').forEach(inp=>{
+  inp.addEventListener('input',()=>{
+    const grp=inp.closest('.f-group');
+    if(grp)grp.classList.remove('has-err');
+  });
+});
+
+/* ════════════════════════════════════
+   CLOSE MOBILE MENU ON OUTSIDE CLICK
+════════════════════════════════════ */
+document.getElementById('mobileMenu').addEventListener('click',e=>{
+  if(e.target===document.getElementById('mobileMenu'))closeMenu();
+});
+
+/* ════════════════════════════════════
+   DAY / NIGHT THEME TOGGLE
+════════════════════════════════════ */
+let isNight=(localStorage.getItem('muse-theme')==='night');
+function applyTheme(animate){
+  if(animate){
+    document.body.classList.add('theme-trans');
+    setTimeout(()=>document.body.classList.remove('theme-trans'),500);
+  }
+  document.body.classList.toggle('night',isNight);
+  document.getElementById('themeIcon').textContent=isNight?'☀️':'🌙';
+  // keep cursor ring visible in night
+  const ring=document.getElementById('cursor-ring');
+  if(ring)ring.style.borderColor=isNight?'rgba(200,112,144,.55)':'';
+}
+function toggleTheme(){
+  isNight=!isNight;
+  localStorage.setItem('muse-theme',isNight?'night':'day');
+  applyTheme(true);
+}
+// Apply on load (no animation — instant)
+applyTheme(false);
+
+/* ════════════════════════════════════
+   FULLSCREEN TOGGLE
+════════════════════════════════════ */
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  } else {
+    if(document.exitFullscreen)document.exitFullscreen().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  document.getElementById('fsIcon').textContent=document.fullscreenElement?'✕':'⛶';
+});
+// Keyboard shortcut: F key for fullscreen, D for day/night
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT')return;
+  if(e.key==='f'||e.key==='F')toggleFullscreen();
+  if(e.key==='d'||e.key==='D')toggleTheme();
+});
+</script>
+</body>
+</html>
