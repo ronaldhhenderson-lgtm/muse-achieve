@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muse Achieve 繆思致臻 — 店長管理面板 Manager Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body,body *{transition:background-color .35s ease,border-color .35s ease,color .35s ease,box-shadow .35s ease;}
+svg,.live-dot,.toggle-thumb,.sbar,.lb-bar,.prog-fill,.bar-rect{transition:none!important;}
+
+/* ══ NIGHT MODE (default) ══ */
+body{
+  --bg:#07070a;--card:#101014;--elevated:#1c1c22;
+  --border:#222228;--border2:#2e2e38;--sidebar-bg:#08080c;
+  --accent:#C9A84C;--accent-l:#E8C97A;--accent-d:#8B7432;
+  --text:#F5F5F7;--text2:#AEAEB2;--muted:#8E8E93;
+  --red:#FF453A;--green:#32D74B;--blue:#0A84FF;--purple:#BF5AF2;--teal:#5AC8FA;
+  --red-bg:rgba(255,69,58,.12);--green-bg:rgba(50,215,75,.12);
+  --blue-bg:rgba(10,132,255,.12);--purple-bg:rgba(191,90,242,.12);
+  --gold-bg:rgba(201,168,76,.14);--grey-bg:rgba(142,142,147,.1);
+  --shadow:none;--kpi-top:linear-gradient(90deg,var(--accent),transparent);
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);min-height:100vh;display:flex;
+}
+
+/* ══ DAY MODE (Macaron) ══ */
+body.day-mode{
+  --bg:#FBF5F2;--card:#FFFFFF;--elevated:#F5EAE4;
+  --border:#EBD5CC;--border2:#D9C0B4;--sidebar-bg:#FFF8F5;
+  --accent:#C07848;--accent-l:#D49868;--accent-d:#986040;
+  --text:#2D1F1A;--text2:#6A4A40;--muted:#9A7A70;
+  --red:#C85858;--green:#5A9E7A;--blue:#5880B8;--purple:#8868B0;--teal:#4898A8;
+  --red-bg:rgba(200,88,88,.1);--green-bg:rgba(90,158,122,.1);
+  --blue-bg:rgba(88,128,184,.1);--purple-bg:rgba(136,104,176,.1);
+  --gold-bg:rgba(192,120,72,.1);--grey-bg:rgba(154,122,112,.08);
+  --shadow:0 2px 16px rgba(180,120,90,.07);--kpi-top:linear-gradient(90deg,var(--accent),transparent);
+}
+/* Macaron pill overrides */
+body.day-mode .pill-gold{background:rgba(192,120,72,.12);color:var(--accent);}
+body.day-mode .pill-green{background:rgba(90,158,122,.12);color:var(--green);}
+body.day-mode .pill-red{background:rgba(200,88,88,.12);color:var(--red);}
+body.day-mode .pill-grey{background:rgba(154,122,112,.1);color:var(--muted);}
+body.day-mode .pill-blue{background:rgba(88,128,184,.12);color:var(--blue);}
+body.day-mode .pill-purple{background:rgba(136,104,176,.12);color:var(--purple);}
+/* Macaron KPI card top borders */
+body.day-mode .kpi-card:nth-child(1)::before{background:linear-gradient(90deg,#C4B0D8,transparent);}
+body.day-mode .kpi-card:nth-child(2)::before{background:linear-gradient(90deg,#F0B8C8,transparent);}
+body.day-mode .kpi-card:nth-child(3)::before{background:linear-gradient(90deg,#A8D8C0,transparent);}
+body.day-mode .kpi-card:nth-child(4)::before{background:linear-gradient(90deg,#F0C8A0,transparent);}
+body.day-mode .kpi-card:nth-child(5)::before{background:linear-gradient(90deg,#B0C8E8,transparent);}
+/* Macaron rank badges */
+body.day-mode .r1{background:linear-gradient(135deg,#E8C498,#F8E4C0);}
+body.day-mode .r2{background:linear-gradient(135deg,#C8B8D8,#E0D0EC);}
+body.day-mode .r3{background:linear-gradient(135deg,#D4B090,#E8C8A8);}
+/* Day fills */
+body.day-mode .prog-fill{background:linear-gradient(90deg,var(--accent),var(--accent-l));}
+body.day-mode .lb-bar{background:linear-gradient(90deg,#D09868,#E8C090);}
+body.day-mode .sbar{background:var(--accent);}
+/* Day sidebar */
+body.day-mode .sidebar{box-shadow:2px 0 20px rgba(180,120,90,.06);}
+body.day-mode .nav-item.active{background:rgba(192,120,72,.08);border-left-color:var(--accent);}
+/* Day alert */
+body.day-mode .alert{background:rgba(192,120,72,.06);border-color:rgba(192,120,72,.2);}
+body.day-mode .alert strong{color:var(--accent);}
+/* Day rule */
+body.day-mode .rule-gold{background:rgba(192,120,72,.06);}
+body.day-mode .rule-white{background:var(--elevated);}
+/* Scrollbar */
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+
+/* ══ SIDEBAR ══ */
+.sidebar{width:216px;min-height:100vh;background:var(--sidebar-bg);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100;}
+.sb-logo{padding:20px 18px;border-bottom:1px solid var(--border);}
+.sb-logo-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:5px;}
+.sb-logo-name{font-family:'Playfair Display',serif;font-size:16px;color:var(--text);font-weight:600;}
+.sb-logo-en{font-size:10px;color:var(--muted);margin-top:2px;}
+.sb-logo-role{font-size:9px;color:var(--muted);margin-top:4px;padding:3px 8px;background:var(--elevated);border-radius:10px;display:inline-block;}
+.sb-nav{padding:12px 0;flex:1;overflow-y:auto;}
+.sb-section{margin-bottom:16px;}
+.sb-section-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:0 18px;margin-bottom:5px;}
+.nav-item{display:flex;align-items:center;gap:9px;padding:8px 18px;cursor:pointer;transition:all .2s;color:var(--text2);border-left:2px solid transparent;user-select:none;}
+.nav-item svg{width:14px;height:14px;flex-shrink:0;opacity:.7;}
+.nav-item-text{}
+.nav-item-label{font-size:12px;font-weight:500;line-height:1.2;}
+.nav-item-en{font-size:9px;color:var(--muted);}
+.nav-item:hover{background:rgba(201,168,76,.05);color:var(--text);}
+body.day-mode .nav-item:hover{background:rgba(192,120,72,.05);}
+.nav-item.active{color:var(--accent);background:rgba(201,168,76,.07);border-left-color:var(--accent);}
+body.day-mode .nav-item.active{background:rgba(192,120,72,.08);}
+.nav-item.active svg{opacity:1;}
+.nav-badge{margin-left:auto;background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:2px 5px;border-radius:8px;transition:none!important;}
+.nav-badge-g{margin-left:auto;background:var(--gold-bg);color:var(--accent);font-size:9px;font-weight:700;padding:2px 5px;border-radius:8px;transition:none!important;}
+.sb-footer{padding:14px 18px;border-top:1px solid var(--border);}
+.sb-user{display:flex;align-items:center;gap:9px;}
+.sb-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#8868B0,#5858B8);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;}
+.sb-user-name{font-size:11px;color:var(--text);font-weight:600;}
+.sb-user-role{font-size:9px;color:var(--muted);}
+
+/* ══ MAIN ══ */
+.main{margin-left:216px;flex:1;display:flex;flex-direction:column;}
+
+/* ══ TOPBAR ══ */
+.topbar{padding:13px 22px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:var(--bg);position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);}
+.topbar-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--text);}
+.topbar-sub{font-size:10px;color:var(--muted);margin-top:1px;}
+.topbar-right{display:flex;align-items:center;gap:9px;}
+.live-badge{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);padding:4px 9px;background:var(--elevated);border-radius:20px;border:1px solid var(--border);}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* ══ THEME TOGGLE ══ */
+.theme-toggle{display:flex;align-items:center;gap:6px;background:var(--elevated);border:1px solid var(--border);border-radius:20px;padding:5px 11px;cursor:pointer;user-select:none;font-size:10px;color:var(--text2);}
+.theme-toggle:hover{border-color:var(--accent);color:var(--text);}
+.fs-btn{background:var(--elevated);border:1px solid var(--border);border-radius:8px;padding:4px 9px;cursor:pointer;font-size:15px;color:var(--text2);transition:all .2s;line-height:1;}
+.fs-btn:hover{border-color:var(--accent);color:var(--text);}
+.toggle-track{width:34px;height:18px;border-radius:9px;background:var(--border2);position:relative;transition:background .35s;}
+body.day-mode .toggle-track{background:linear-gradient(90deg,#F0C870,#E8A060);}
+.toggle-thumb{width:14px;height:14px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px;display:flex;align-items:center;justify-content:center;font-size:9px;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .3s;}
+body.day-mode .toggle-thumb{left:18px;}
+
+/* ══ CONTENT ══ */
+.content{padding:18px 22px;flex:1;}
+.tab-content{display:none;}
+.tab-content.active{display:block;animation:fi .2s ease;}
+@keyframes fi{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══ ALERT ══ */
+.alert{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px;margin-bottom:16px;font-size:11px;color:var(--text2);}
+.alert strong{color:var(--accent);}
+
+/* ══ KPI ══ */
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px;}
+.kpi-4{grid-template-columns:repeat(4,1fr);}
+.kpi-3{grid-template-columns:repeat(3,1fr);}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;position:relative;overflow:hidden;box-shadow:var(--shadow);}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--kpi-top);}
+.kpi-label{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+.kpi-label-en{font-size:8px;color:var(--muted);opacity:.7;margin-bottom:7px;}
+.kpi-val{font-size:22px;font-weight:700;color:var(--text);line-height:1;margin-bottom:4px;}
+.kpi-val.gold{color:var(--accent);}
+.kpi-val.red{color:var(--red);}
+.kpi-val.green{color:var(--green);}
+.kpi-val.purple{color:var(--purple);}
+.kpi-change{font-size:10px;color:var(--green);}
+.kpi-change.neg{color:var(--red);}
+.kpi-change.neu{color:var(--muted);}
+
+/* ══ LAYOUTS ══ */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px;}
+.grid-2-1{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:12px;}
+.vstack{display:flex;flex-direction:column;gap:12px;}
+
+/* ══ CARD ══ */
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow);}
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;}
+.card-title{font-size:12px;font-weight:700;color:var(--text);}
+.card-title-en{font-size:8px;color:var(--muted);font-weight:400;margin-left:4px;}
+
+/* ══ PILLS ══ */
+.pill{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;}
+.pill-gold{background:var(--gold-bg);color:var(--accent);}
+.pill-green{background:var(--green-bg);color:var(--green);}
+.pill-red{background:var(--red-bg);color:var(--red);}
+.pill-grey{background:var(--grey-bg);color:var(--muted);}
+.pill-blue{background:var(--blue-bg);color:var(--blue);}
+.pill-purple{background:var(--purple-bg);color:var(--purple);}
+
+/* ══ BTN ══ */
+.btn{padding:6px 14px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;border:none;transition:all .2s;}
+.btn-gold{background:var(--accent);color:#fff;}
+.btn-gold:hover{background:var(--accent-l);}
+.btn-outline{background:transparent;border:1px solid var(--border2);color:var(--text2);}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+.btn-sm{padding:3px 10px;font-size:10px;border-radius:5px;}
+.btn-danger{background:var(--red-bg);border:1px solid rgba(255,69,58,.2);color:var(--red);}
+.btn-danger:hover{background:rgba(255,69,58,.2);}
+.btn-green-outline{background:var(--green-bg);border:1px solid rgba(50,215,75,.2);color:var(--green);}
+body.day-mode .btn-danger{border-color:rgba(200,88,88,.2);}
+body.day-mode .btn-green-outline{border-color:rgba(90,158,122,.2);}
+
+/* ══ TABLE ══ */
+.dt{width:100%;border-collapse:collapse;font-size:11px;}
+.dt th{text-align:left;padding:6px 7px;color:var(--muted);font-weight:500;border-bottom:1px solid var(--border);font-size:9px;letter-spacing:.4px;text-transform:uppercase;background:rgba(255,255,255,.01);}
+body.day-mode .dt th{background:rgba(0,0,0,.02);}
+.dt td{padding:9px 7px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:middle;}
+.dt tr:last-child td{border-bottom:none;}
+.dt tr:hover td{background:rgba(255,255,255,.02);}
+body.day-mode .dt tr:hover td{background:rgba(0,0,0,.015);}
+.td-code{color:var(--text)!important;font-weight:700;}
+.td-score{color:var(--accent)!important;font-weight:700;}
+.table-wrap{overflow-x:auto;}
+.table-wrap table{min-width:560px;}
+
+/* ══ LEADERBOARD ══ */
+.lb-item{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);}
+.lb-item:last-child{border-bottom:none;}
+.rank-badge{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;}
+.r1{background:linear-gradient(135deg,#D4AF37,#FFF1A0);color:#000;}
+.r2{background:linear-gradient(135deg,#A8A8A8,#E0E0E0);color:#000;}
+.r3{background:linear-gradient(135deg,#CD7F32,#E8A05A);color:#fff;}
+.rn{background:var(--elevated);color:var(--muted);font-size:8px;}
+.lb-info{flex:1;min-width:0;}
+.lb-code{font-size:11px;font-weight:700;color:var(--text);}
+.lb-tag{font-size:9px;color:var(--muted);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lb-bar-wrap{width:55px;height:3px;background:var(--elevated);border-radius:2px;overflow:hidden;flex-shrink:0;}
+.lb-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-l));border-radius:2px;}
+.lb-score{font-size:11px;font-weight:700;color:var(--accent);flex-shrink:0;}
+
+/* ══ PROGRESS ══ */
+.prog-item{margin-bottom:11px;}
+.prog-head{display:flex;justify-content:space-between;font-size:10px;margin-bottom:4px;}
+.prog-label{color:var(--text2);}
+.prog-val{color:var(--text);font-weight:700;}
+.prog-bar{height:5px;background:var(--elevated);border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),var(--accent-l));}
+
+/* ══ SERUM BAR ══ */
+.serum-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);}
+.serum-row:last-child{border-bottom:none;}
+.sbar-wrap{flex:1;height:6px;background:var(--elevated);border-radius:3px;overflow:hidden;}
+.sbar{height:100%;border-radius:3px;}
+
+/* ══ TIMELINE ══ */
+.tl-item{display:flex;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);}
+.tl-item:last-child{border-bottom:none;}
+.tl-time{font-size:10px;color:var(--muted);width:38px;flex-shrink:0;padding-top:2px;}
+.tl-dot{width:6px;height:6px;border-radius:50%;margin-top:3px;flex-shrink:0;}
+.tl-info{flex:1;}
+.tl-title{font-size:11px;color:var(--text);font-weight:500;}
+.tl-sub{font-size:9px;color:var(--muted);margin-top:1px;}
+
+/* ══ HOSPITALITY ══ */
+.hosp-row{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);}
+.hosp-row:last-child{border-bottom:none;}
+
+/* ══ REV ITEM ══ */
+.rev-item{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);}
+.rev-item:last-child{border-bottom:none;}
+
+/* ══ RULE CARD ══ */
+.rule-card{padding:9px 12px;border-radius:7px;margin-bottom:7px;border-left:3px solid transparent;font-size:11px;}
+.rule-gold{background:rgba(201,168,76,.06);border-left-color:var(--accent);}
+.rule-white{background:var(--elevated);border-left-color:var(--muted);}
+.rule-blue{background:var(--blue-bg);border-left-color:var(--blue);}
+.rule-green{background:var(--green-bg);border-left-color:var(--green);}
+.rule-purple{background:var(--purple-bg);border-left-color:var(--purple);}
+.rule-title{color:var(--text);font-weight:600;margin-bottom:3px;}
+.rule-desc{color:var(--muted);line-height:1.4;}
+
+/* ══ STAT BOX ══ */
+.stat-box{background:var(--elevated);border-radius:9px;padding:16px;text-align:center;}
+.stat-val{font-size:20px;font-weight:700;color:var(--accent);margin-bottom:2px;}
+.stat-label{font-size:9px;color:var(--muted);line-height:1.4;}
+
+/* ══ SEARCH ══ */
+.inp{background:var(--elevated);border:1px solid var(--border2);border-radius:7px;padding:6px 10px;font-size:11px;color:var(--text);font-family:'Inter',sans-serif;outline:none;width:100%;}
+.inp:focus{border-color:var(--accent);}
+select.inp option{background:var(--elevated);}
+
+/* ══ TAG CHIP ══ */
+.tag-chip{display:inline-flex;background:var(--gold-bg);color:var(--accent);font-size:9px;padding:2px 6px;border-radius:9px;margin:1px;}
+
+/* ══ IMMUNITY BAR ══ */
+.immunity-bar{height:4px;background:var(--elevated);border-radius:2px;overflow:hidden;margin-top:4px;}
+.immunity-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--green),#90EEB0);}
+code{background:var(--elevated);padding:2px 6px;border-radius:4px;font-size:10px;color:var(--accent);}
+</style>
+</head>
+<body>
+
+<!-- ══════════ SIDEBAR ══════════ -->
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-tag">✦ Manager Panel 店長面板</div>
+    <div class="sb-logo-name">繆思致臻</div>
+    <div class="sb-logo-en">Muse Achieve™</div>
+    <div class="sb-logo-role">匿名代碼系統 Anonymous Code System</div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-section">
+      <div class="sb-section-title">申請審核 Applications</div>
+      <div class="nav-item active" data-tab="queue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <div class="nav-item-text"><div class="nav-item-label">申請佇列</div><div class="nav-item-en">Application Queue</div></div>
+        <span class="nav-badge">21</span>
+      </div>
+      <div class="nav-item" data-tab="members">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a7 7 0 0 1 14 0v2"/></svg>
+        <div class="nav-item-text"><div class="nav-item-label">會員資料庫</div><div class="nav-item-en">Member Database</div></div>
+      </div>
+      <div class="nav-item" data-tab="top30">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div class="nav-item-text"><div class="nav-item-label">Top 30 女神榜</div><div class="nav-item-en">Goddess Ranking</div></div>
+        <span class="nav-badge-g">30</span>
+      </div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-section-title">日常營運 Daily Ops</div>
+      <div class="nav-item" data-tab="schedule">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <div class="nav-item-text"><div class="nav-item-label">預約日程</div><div class="nav-item-en">Appointments</div></div>
+      </div>
+      <div class="nav-item" data-tab="treatments">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="nav-item-text"><div class="nav-item-label">療程記錄</div><div class="nav-item-en">Treatment Records</div></div>
+      </div>
+      <div class="nav-item" data-tab="referral">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="nav-item-text"><div class="nav-item-label">伯樂推薦追蹤</div><div class="nav-item-en">Referral Tracker</div></div>
+      </div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-section-title">庫存招待 Stock</div>
+      <div class="nav-item" data-tab="serum">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+        <div class="nav-item-text"><div class="nav-item-label">精華液庫存</div><div class="nav-item-en">Serum Inventory</div></div>
+      </div>
+      <div class="nav-item" data-tab="hospitality">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        <div class="nav-item-text"><div class="nav-item-label">招待佇列</div><div class="nav-item-en">Hospitality Queue</div></div>
+        <span class="nav-badge-g">4</span>
+      </div>
+    </div>
+  </nav>
+  <div class="sb-footer">
+    <div class="sb-user">
+      <div class="sb-avatar">MGR</div>
+      <div>
+        <div class="sb-user-name">店長 Manager</div>
+        <div class="sb-user-role">店長權限 Manager Access</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ══════════ MAIN ══════════ -->
+<main class="main">
+  <div class="topbar">
+    <div>
+      <div class="topbar-title" id="pageTitle">申請佇列 Application Queue</div>
+      <div class="topbar-sub" id="pageDate"></div>
+    </div>
+    <div class="topbar-right">
+      <div class="live-badge"><div class="live-dot"></div>AI 運行中 Live</div>
+
+      <!-- ☀️ 🌙 THEME TOGGLE -->
+      <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Day/Night · 日夜切換">
+        <div class="toggle-track">
+          <div class="toggle-thumb"><span id="toggleIcon">☀️</span></div>
+        </div>
+        <span id="toggleLabel">日間 Day</span>
+      </div>
+
+      <a href="ceo_dashboard.html" target="_blank"><button class="btn btn-outline btn-sm">CEO 儀表板 →</button></a>
+      <button class="fs-btn" id="mgFsBtn" onclick="toggleFs()" title="全螢幕 Fullscreen · F">⛶</button>
+      <button class="btn btn-gold btn-sm" onclick="switchTab('schedule')">+ 新增預約 Book</button>
+    </div>
+  </div>
+
+  <!-- ══ APPLICATION QUEUE ══ -->
+  <div id="tab-queue" class="tab-content active content">
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">本月申請 Total</div><div class="kpi-label-en">Applications</div><div class="kpi-val">89</div><div class="kpi-change neu">AI 初篩 Screened</div></div>
+      <div class="kpi-card"><div class="kpi-label">待店長覆核</div><div class="kpi-label-en">Manager Review</div><div class="kpi-val red">21</div><div class="kpi-change neg">待處理 Pending</div></div>
+      <div class="kpi-card"><div class="kpi-label">已批准 Approved</div><div class="kpi-label-en">This Month</div><div class="kpi-val green">51</div><div class="kpi-change">↑ 入會 Enrolled</div></div>
+      <div class="kpi-card"><div class="kpi-label">AI 自動拒絕</div><div class="kpi-label-en">Auto Rejected</div><div class="kpi-val">17</div><div class="kpi-change neu">60分以下</div></div>
+      <div class="kpi-card"><div class="kpi-label">CEO 終審</div><div class="kpi-label-en">Divine Review</div><div class="kpi-val gold">3</div><div class="kpi-change">神級 90分↑</div></div>
+    </div>
+    <div class="alert">⚡ 今日 <strong>3 位神級候選人（90分↑ Divine）</strong>已自動通知 CEO 終審，店長無需操作。以下為需店長覆核的申請 Manager review required below.</div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">待覆核申請 Pending Applications <span class="card-title-en">AI-passed · 70-89 pts</span></div>
+        <div style="display:flex;gap:7px;">
+          <select class="inp" style="width:110px;padding:4px 8px;font-size:10px;"><option>全部 All</option><option>85-89分</option><option>70-84分</option></select>
+          <button class="btn btn-outline btn-sm">批量批准 Bulk ✓</button>
+        </div>
+      </div>
+      <div class="table-wrap"><table class="dt">
+        <thead><tr><th>代號 Code</th><th>AI 分 Score</th><th>等級 Tier</th><th>AI 標籤 Tags</th><th>推薦人 Ref</th><th>日期 Date</th><th>折扣 Disc</th><th>操作 Action</th></tr></thead>
+        <tbody id="queueTable"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ══ MEMBER DATABASE ══ -->
+  <div id="tab-members" class="tab-content content">
+    <div class="kpi-grid kpi-4">
+      <div class="kpi-card"><div class="kpi-label">總會員 Total</div><div class="kpi-val">147</div><div class="kpi-change">↑ 12</div></div>
+      <div class="kpi-card"><div class="kpi-label">席位保護 Immunity</div><div class="kpi-val gold">2</div><div class="kpi-change">Queen Maker</div></div>
+      <div class="kpi-card"><div class="kpi-label">本月新增 New</div><div class="kpi-val green">12</div><div class="kpi-change">↑ 34%</div></div>
+      <div class="kpi-card"><div class="kpi-label">男賓特批 Male VIP</div><div class="kpi-val">1</div><div class="kpi-change neu">CEO 親批</div></div>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:12px;">
+      <input class="inp" type="text" placeholder="搜尋代號 Search code (e.g. No.012)..." style="flex:1;">
+      <select class="inp" style="width:140px;"><option>全部等級 All Tiers</option><option>Top 30</option><option>極致名媛 85-99</option><option>高雅 70-84</option><option>標準 60-74</option></select>
+      <button class="btn btn-gold btn-sm">搜尋 Search</button>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">會員資料庫 Member Database <span class="card-title-en">— All names/passwords known only to CEO · 姓名密碼僅老闆知曉</span></div><span class="pill pill-red">🔒 最高機密 Top Secret</span></div>
+      <div class="table-wrap"><table class="dt">
+        <thead><tr><th>代號 Code</th><th>評分 Score</th><th>等級 Tier</th><th>標籤 Tags</th><th>席位狀態 Immunity</th><th>推薦人 Ref</th><th>入會 Date</th><th>折扣 Disc</th><th>操作</th></tr></thead>
+        <tbody id="memberTable"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ══ TOP 30 ══ -->
+  <div id="tab-top30" class="tab-content content">
+    <div class="alert">本月 Top 30 已滿額 Full。下次結算 Next ranking: <strong>8 天後 days</strong>。末位 5 名如無積分改善將於月底降級 Bottom 5 at risk of demotion.</div>
+    <div class="grid-2-1">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">♛ 璀璨女神榜 Goddess Ranking</div>
+          <div style="display:flex;gap:6px;">
+            <span class="pill pill-gold">30/30 已滿 Full</span>
+            <button class="btn btn-outline btn-sm">發惋惜信 Near-miss Letter</button>
+          </div>
+        </div>
+        <div id="top30List"></div>
+      </div>
+      <div class="vstack">
+        <div class="card">
+          <div class="card-header"><div class="card-title">⚠️ 末位危險區 At Risk (28-30)</div></div>
+          <div style="font-size:11px;">
+            <div style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;"><div><div style="color:var(--text);font-weight:700;">No.066 · #28 · 80分</div><div style="color:var(--muted);margin-top:1px;font-size:9px;">距 #27 差 1分 1pt behind</div></div><span class="pill pill-green">安全 Safe</span></div>
+            <div style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;"><div><div style="color:var(--text);font-weight:700;">No.101 · #29 · 79分</div><div style="color:var(--muted);margin-top:1px;font-size:9px;">連續 1 月末位 1 month bottom</div></div><span class="pill pill-red">警告 Warn</span></div>
+            <div style="padding:8px 0;display:flex;justify-content:space-between;align-items:center;"><div><div style="color:var(--text);font-weight:700;">No.114 · #30 · 78分</div><div style="color:var(--muted);margin-top:1px;font-size:9px;">連續 2 月末位 2 months bottom</div></div><span class="pill pill-red">危險 Critical</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">🔔 意難平區 Near-Miss (31-35)</div></div>
+          <div style="font-size:11px;">
+            <div style="padding:6px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;"><div><div style="color:var(--text)">No.055 · #31 · 77分 · 差 1分</div><div style="color:var(--muted);font-size:9px;margin-top:1px;">已發惋惜信 Letter sent</div></div><span class="pill pill-grey">已通知</span></div>
+            <div style="padding:6px 0;display:flex;justify-content:space-between;align-items:center;"><div><div style="color:var(--text)">No.082 · #32 · 76分 · 差 2分</div><div style="color:var(--muted);font-size:9px;margin-top:1px;">待發惋惜信 Pending</div></div><button class="btn btn-outline btn-sm">發送 Send</button></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">🛡️ 席位保護 Immunity Active</div></div>
+          <div style="font-size:11px;">
+            <div style="padding:7px 0;border-bottom:1px solid var(--border);">
+              <div style="display:flex;justify-content:space-between;align-items:center;"><span style="color:var(--text);font-weight:700;">No.012</span><span class="pill pill-green">3 mths left</span></div>
+              <div style="color:var(--muted);font-size:9px;margin-top:1px;">Queen Maker · 席位保護中 Protected</div>
+              <div class="immunity-bar"><div class="immunity-fill" style="width:100%"></div></div>
+            </div>
+            <div style="padding:7px 0;">
+              <div style="display:flex;justify-content:space-between;align-items:center;"><span style="color:var(--text);font-weight:700;">No.033</span><span class="pill pill-green">3 mths left</span></div>
+              <div style="color:var(--muted);font-size:9px;margin-top:1px;">Queen Maker · 席位保護中 Protected</div>
+              <div class="immunity-bar"><div class="immunity-fill" style="width:100%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SCHEDULE ══ -->
+  <div id="tab-schedule" class="tab-content content">
+    <div class="card" style="margin-bottom:12px;">
+      <div class="card-header"><div class="card-title">➕ 新增預約 New Appointment</div></div>
+      <div class="grid-3" style="margin-bottom:10px;gap:8px;">
+        <div><div style="font-size:9px;color:var(--muted);margin-bottom:3px;">會員代號 Code</div><input class="inp" type="text" placeholder="No.XXX"></div>
+        <div><div style="font-size:9px;color:var(--muted);margin-bottom:3px;">日期 Date</div><input class="inp" type="date"></div>
+        <div><div style="font-size:9px;color:var(--muted);margin-bottom:3px;">時間 Time</div><input class="inp" type="time" value="14:00"></div>
+      </div>
+      <div class="grid-3" style="margin-bottom:10px;gap:8px;">
+        <div><div style="font-size:9px;color:var(--muted);margin-bottom:3px;">療程 Treatment</div>
+          <select class="inp"><option>全光譜矩陣 Full Spectrum</option><option>皮秒雷射 Pico Laser</option><option>超音波提拉 HIFU</option><option>光子嫩膚 IPL</option><option>CO2 點陣 CO2</option><option>Queen Maker 全套</option></select></div>
+        <div><div style="font-size:9px;color:var(--muted);margin-bottom:3px;">精華液 Serum</div>
+          <select class="inp"><option>Level 1</option><option>Level 2</option><option>Level 3</option><option>Level 4</option><option selected>Level 5</option></select></div>
+        <div><div style="font-size:9px;color:var(--muted);margin-bottom:3px;">主理 By</div>
+          <select class="inp"><option>老闆親自 Boss</option><option>林美容師 Lin</option><option>王美容師 Wang</option></select></div>
+      </div>
+      <div style="display:flex;gap:7px;justify-content:flex-end;">
+        <button class="btn btn-outline btn-sm">清除 Clear</button>
+        <button class="btn btn-gold btn-sm">確認預約 Confirm</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">今日療程 Today's Schedule</div><span class="pill pill-green">6 個 appointments</span></div>
+      <div id="schedTimeline"></div>
+    </div>
+  </div>
+
+  <!-- ══ TREATMENTS ══ -->
+  <div id="tab-treatments" class="tab-content content">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">療程記錄 Treatment Records</div>
+        <div style="display:flex;gap:7px;">
+          <input class="inp" type="text" placeholder="搜尋代號..." style="width:120px;padding:4px 8px;font-size:10px;">
+          <input class="inp" type="month" style="width:120px;padding:4px 8px;font-size:10px;">
+        </div>
+      </div>
+      <div class="table-wrap"><table class="dt">
+        <thead><tr><th>日期 Date</th><th>代號 Code</th><th>分 Score</th><th>療程 Treatment</th><th>精華 Serum</th><th>主理 By</th><th>定價 Price</th><th>折扣 Disc</th><th>實收 Paid</th><th>備注 Note</th></tr></thead>
+        <tbody id="treatTable"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ══ REFERRAL ══ -->
+  <div id="tab-referral" class="tab-content content">
+    <div class="kpi-grid kpi-4">
+      <div class="kpi-card"><div class="kpi-label">本月推薦 Referrals</div><div class="kpi-val">8</div></div>
+      <div class="kpi-card"><div class="kpi-label">成功觸發 Success</div><div class="kpi-val gold">3</div></div>
+      <div class="kpi-card"><div class="kpi-label">Queen Maker</div><div class="kpi-val purple">2</div></div>
+      <div class="kpi-card"><div class="kpi-label">席位保護 Immunity</div><div class="kpi-val green">2</div></div>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <div class="card-header"><div class="card-title">🎁 伯樂推薦追蹤 Referral Tracker</div><span class="pill pill-gold">自動分紅 Auto Bonus</span></div>
+      <div class="table-wrap"><table class="dt">
+        <thead><tr><th>推薦人 Referrer</th><th>被推薦人 Referee</th><th>評分 Score</th><th>入 Top 30 In Top30</th><th>推薦分紅 Bonus</th><th>獎勵 Reward</th><th>席位保護 Immunity</th><th>狀態 Status</th></tr></thead>
+        <tbody id="referralTable"></tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">ℹ️ 伯樂制度規則 Referral Rules</div></div>
+      <div class="grid-2" style="margin-bottom:0;">
+        <div class="rule-card rule-gold"><div class="rule-title">永久積分綁定 Lifetime Bonus</div><div class="rule-desc">推薦人永久獲被推薦人每月總分的 <strong>15%</strong> 作附加分。被推薦人越美，推薦人分越高。Referrer gets 15% of referee's monthly score forever.</div></div>
+        <div class="rule-card rule-purple"><div class="rule-title">Queen Maker 特權服務 Supreme Reward</div><div class="rule-desc">被推薦人空降 Top 30，推薦人立即獲「全光譜+脫毛+Level 5 全新塗抹」一次。Referee enters Top 30 → Referrer gets full supreme treatment.</div></div>
+        <div class="rule-card rule-green"><div class="rule-title">席位保護免死金牌 Immunity Shield</div><div class="rule-desc">推薦成功，推薦人自動獲 <strong>3 個月</strong>席位保護，不受新成員影響。Referrer receives 3-month immunity from demotion.</div></div>
+        <div class="rule-card rule-blue"><div class="rule-title">社交貢獻榜 Social Contribution Track</div><div class="rule-desc">每月 30 個名額中，5 個獨立劃給社交貢獻榜，純看推薦質量，與顏值榜各走各賽道。5 of 30 spots reserved for top referrers.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SERUM INVENTORY ══ -->
+  <div id="tab-serum" class="tab-content content">
+    <div class="kpi-grid kpi-3">
+      <div class="kpi-card"><div class="kpi-label">總庫存估值 Total Value</div><div class="kpi-val gold">HK$441K</div></div>
+      <div class="kpi-card"><div class="kpi-label">Level 5 剩餘 Remaining</div><div class="kpi-val red">8 支</div><div class="kpi-change neg">庫存低 Low stock</div></div>
+      <div class="kpi-card"><div class="kpi-label">本月耗用 Used</div><div class="kpi-val">HK$112K</div></div>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <div class="card-header"><div class="card-title">💎 五級精華液庫存 5-Level Serum Inventory</div><button class="btn btn-gold btn-sm">申請補貨 Reorder</button></div>
+      <div id="serumDisplay"></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><div class="card-title">使用規則 Usage Rules</div></div>
+        <div style="font-size:11px;">
+          <div class="rev-item"><span style="color:var(--text2)">璀璨女神 Goddess Top 30</span><span class="pill pill-gold">Level 5 默認 Default</span></div>
+          <div class="rev-item"><span style="color:var(--text2)">極致名媛 Elite 85-99</span><span class="pill pill-grey">Level 4</span></div>
+          <div class="rev-item"><span style="color:var(--text2)">高雅 Prestige 70-84</span><span class="pill pill-grey">Level 3</span></div>
+          <div class="rev-item"><span style="color:var(--text2)">標準 Standard 60-69</span><span class="pill pill-grey">Level 1-2</span></div>
+          <div class="rev-item"><span style="color:var(--text2)">Queen Maker 特殊獎勵</span><span class="pill pill-purple">Level 5 大面積塗抹</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">定價參考 Pricing ($2,700 USD/100ml)</div></div>
+        <div style="font-size:11px;">
+          <div class="rev-item"><span style="color:var(--muted)">Level 5 (100ml)</span><span style="color:var(--accent);font-weight:700">HK$21,060</span></div>
+          <div class="rev-item"><span style="color:var(--muted)">Level 4 (100ml)</span><span style="color:var(--text2);font-weight:600">HK$14,000</span></div>
+          <div class="rev-item"><span style="color:var(--muted)">Level 3 (100ml)</span><span style="color:var(--text2);font-weight:600">HK$8,500</span></div>
+          <div class="rev-item"><span style="color:var(--muted)">Level 2 (100ml)</span><span style="color:var(--text2);font-weight:600">HK$4,200</span></div>
+          <div class="rev-item"><span style="color:var(--muted)">Level 1 (100ml)</span><span style="color:var(--text2);font-weight:600">HK$1,800</span></div>
+        </div>
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-size:10px;color:var(--muted);">
+          <div style="font-weight:600;color:var(--text2);margin-bottom:6px;">🌍 授權海外銷售市場 Authorised Export Markets</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="background:var(--gold-bg);color:var(--accent);padding:3px 10px;border-radius:10px;font-size:10px;letter-spacing:.5px;">🇫🇷 法國 France</span>
+            <span style="background:var(--gold-bg);color:var(--accent);padding:3px 10px;border-radius:10px;font-size:10px;letter-spacing:.5px;">🇮🇹 意大利 Italy</span>
+            <span style="background:var(--gold-bg);color:var(--accent);padding:3px 10px;border-radius:10px;font-size:10px;letter-spacing:.5px;">🇺🇸 美國 United States</span>
+          </div>
+          <div style="margin-top:8px;font-style:italic;line-height:1.5;">僅限上述三個授權市場銷售，不在其他地區發售。<br>Sale restricted exclusively to the above 3 authorised markets.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HOSPITALITY ══ -->
+  <div id="tab-hospitality" class="tab-content content">
+    <div class="kpi-grid kpi-3">
+      <div class="kpi-card"><div class="kpi-label">今日招待 Today</div><div class="kpi-val">6</div></div>
+      <div class="kpi-card"><div class="kpi-label">待準備 Pending</div><div class="kpi-val gold">4</div></div>
+      <div class="kpi-card"><div class="kpi-label">已送達 Served</div><div class="kpi-val green">2</div></div>
+    </div>
+    <div class="alert">🍸 所有到訪會員均可免費享用招待之一 All members receive complimentary hospitality. <strong>來賓須自備乾淨衣物 Bring clean outfit</strong>，療程後換上方可進入休息區。</div>
+    <div class="card" style="margin-bottom:12px;">
+      <div class="card-header"><div class="card-title">今日招待佇列 Today's Queue</div><button class="btn btn-gold btn-sm">+ 新增 Add</button></div>
+      <div id="hospDisplay"></div>
+    </div>
+    <div class="grid-3" style="margin-bottom:0;">
+      <div class="stat-box" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;">
+        <div style="font-size:28px;margin-bottom:8px;">🍸</div>
+        <div class="stat-val">特調雞尾酒</div>
+        <div class="stat-label">Signature Cocktail<br>含酒精 / 無酒精 Mocktail<br>老闆親自調配 Boss crafted</div>
+      </div>
+      <div class="stat-box" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;">
+        <div style="font-size:28px;margin-bottom:8px;">☕</div>
+        <div class="stat-val">愛爾蘭咖啡</div>
+        <div class="stat-label">Irish Coffee<br>老闆親手沖製 Boss brewed<br>威士忌・熱咖啡・冰奶油</div>
+      </div>
+      <div class="stat-box" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;">
+        <div style="font-size:28px;margin-bottom:8px;">🍮</div>
+        <div class="stat-val">法式舒芙蕾</div>
+        <div class="stat-label">French Soufflé<br>老闆親手烘焙 Boss baked<br>出爐 5-10 分鐘最佳</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+// ── Date
+const d=new Date();
+document.getElementById('pageDate').textContent=d.toLocaleDateString('zh-HK',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
+
+// ── Theme Toggle
+let isDay=false;
+function toggleTheme(){
+  isDay=!isDay;
+  document.body.classList.toggle('day-mode',isDay);
+  document.getElementById('toggleIcon').textContent=isDay?'🌙':'☀️';
+  document.getElementById('toggleLabel').textContent=isDay?'夜間 Night':'日間 Day';
+}
+
+// ── Tab Switching
+const titles={
+  queue:'申請佇列 Application Queue',members:'會員資料庫 Member Database',
+  top30:'Top 30 女神榜 Goddess Ranking',schedule:'預約日程 Appointments',
+  treatments:'療程記錄 Treatment Records',referral:'伯樂推薦 Referral Tracker',
+  serum:'精華液庫存 Serum Inventory',hospitality:'招待佇列 Hospitality Queue'
+};
+function switchTab(id){
+  document.querySelectorAll('.tab-content').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(e=>e.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  document.getElementById('pageTitle').textContent=titles[id]||'';
+  const ni=document.querySelector('[data-tab="'+id+'"]');
+  if(ni)ni.classList.add('active');
+}
+document.querySelectorAll('.nav-item[data-tab]').forEach(item=>item.addEventListener('click',()=>switchTab(item.dataset.tab)));
+
+// ── Application Queue
+const queueData=[
+  {id:'APL-2025-086',score:88,tier:'極致名媛 Elite',tags:'舞蹈系 Dance · 170cm',ref:'No.021',date:'04-20',disc:'3折 30%'},
+  {id:'APL-2025-087',score:85,tier:'極致名媛 Elite',tags:'播音 Broadcast · 高挑 Tall',ref:'No.012',date:'04-20',disc:'3折'},
+  {id:'APL-2025-088',score:82,tier:'高雅 Prestige',tags:'服裝表演 Fashion Show',ref:'直接 Direct',date:'04-21',disc:'5折 50%'},
+  {id:'APL-2025-090',score:78,tier:'高雅 Prestige',tags:'航空系 Aviation · 品味高 Stylish',ref:'No.099',date:'04-21',disc:'5折'},
+  {id:'APL-2025-092',score:75,tier:'高雅 Prestige',tags:'模特兒 Model · 168cm',ref:'直接',date:'04-22',disc:'5折'},
+  {id:'APL-2025-093',score:72,tier:'高雅 Prestige',tags:'影視廣播 Film & TV',ref:'No.044',date:'04-22',disc:'5折'},
+  {id:'APL-2025-095',score:68,tier:'標準 Standard',tags:'舞蹈生 Dance Student',ref:'直接',date:'04-23',disc:'7折 70%'},
+  {id:'APL-2025-096',score:64,tier:'標準 Standard',tags:'藝術系 Arts',ref:'直接',date:'04-23',disc:'7折'},
+];
+const qt=document.getElementById('queueTable');
+if(qt)queueData.forEach(r=>{
+  const tc=r.score>=85?'pill-gold':r.score>=70?'pill-blue':'pill-grey';
+  qt.innerHTML+=`<tr><td class="td-code">${r.id}</td><td class="td-score">${r.score}</td><td><span class="pill ${tc}">${r.tier}</span></td><td><span class="tag-chip">${r.tags}</span></td><td style="color:var(--text2)">${r.ref}</td><td style="color:var(--muted)">${r.date}</td><td style="color:var(--accent);font-weight:700">${r.disc}</td><td><div style="display:flex;gap:4px;"><button class="btn btn-green-outline btn-sm">批准 ✓</button><button class="btn btn-danger btn-sm">拒絕 ✗</button></div></td></tr>`;
+});
+
+// ── Member Table
+const members=[
+  {code:'No.012',score:96,tier:'璀璨女神',tags:'航空系 · Top 30',prot:'3個月 3mo',ref:'—',date:'2025-02-10',disc:'免費 Free'},
+  {code:'No.088',score:94,tier:'璀璨女神',tags:'職業模特 Model',prot:'—',ref:'—',date:'2025-01-15',disc:'免費'},
+  {code:'No.033',score:91,tier:'璀璨女神',tags:'Queen Maker',prot:'3個月 3mo',ref:'—',date:'2025-03-05',disc:'免費'},
+  {code:'No.055',score:89,tier:'極致名媛',tags:'舞蹈系 Dance',prot:'—',ref:'No.012',date:'2025-03-20',disc:'3折'},
+  {code:'No.007',score:87,tier:'極致名媛',tags:'KOL · 播音系',prot:'—',ref:'直接',date:'2025-04-01',disc:'3折'},
+  {code:'No.099',score:85,tier:'極致名媛',tags:'播音主持 Broadcast',prot:'—',ref:'—',date:'2025-02-28',disc:'3折'},
+  {code:'No.021',score:83,tier:'高雅會員',tags:'服裝表演 · 超跑 Supercar',prot:'—',ref:'—',date:'2025-01-20',disc:'5折'},
+  {code:'No.044',score:82,tier:'高雅會員',tags:'KOL 5.3萬粉',prot:'—',ref:'No.033',date:'2025-03-15',disc:'5折'},
+];
+const mt=document.getElementById('memberTable');
+if(mt)members.forEach(r=>{
+  const tc=r.score>=90?'pill-gold':r.score>=85?'pill-blue':r.score>=70?'pill-grey':'pill-grey';
+  mt.innerHTML+=`<tr><td class="td-code">${r.code}</td><td class="td-score">${r.score}</td><td><span class="pill ${tc}">${r.tier}</span></td><td><span class="tag-chip">${r.tags}</span></td><td>${r.prot!=='—'?`<span class="pill pill-green">${r.prot}</span>`:r.prot}</td><td style="color:var(--text2)">${r.ref}</td><td style="color:var(--muted)">${r.date}</td><td style="color:var(--accent);font-weight:700">${r.disc}</td><td><button class="btn btn-outline btn-sm">詳情</button></td></tr>`;
+});
+
+// ── Top 30 Leaderboard
+const top30=[
+  {code:'No.012',tag:'航空系 Aviation · 175cm · L5 常客',score:96,prot:true},
+  {code:'No.088',tag:'職業模特 Model · 完美 S 曲線',score:94,prot:false},
+  {code:'No.033',tag:'Queen Maker · 引薦頂級新血 Top referral',score:91,prot:true},
+  {code:'No.055',tag:'舞蹈系 Dance · CEO 特評清冷感天花板',score:89,prot:false},
+  {code:'No.007',tag:'KOL 8.2萬 · 播音主持 Broadcast',score:87,prot:false},
+  {code:'No.099',tag:'播音系 · 衣著品味永遠滿分 Perfect style',score:85,prot:false},
+  {code:'No.021',tag:'服裝表演 Fashion · 超跑車主 Supercar',score:83,prot:false},
+  {code:'No.044',tag:'KOL · 5.3萬粉絲 followers',score:82,prot:false},
+  {code:'No.066',tag:'每週愛爾蘭咖啡常客 Irish Coffee reg.',score:80,prot:false},
+  {code:'No.077',tag:'影視廣播 Film · 氣質天花板',score:79,prot:false},
+  {code:'No.101',tag:'舞蹈生 Dance · 腰臀比完美',score:79,prot:false},
+  {code:'No.114',tag:'模特兒 Model · 168cm',score:78,prot:false},
+];
+const tl=document.getElementById('top30List');
+if(tl)top30.forEach((m,i)=>{
+  const rc=i===0?'r1':i===1?'r2':i===2?'r3':'rn';
+  tl.innerHTML+=`<div class="lb-item">
+    <div class="rank-badge ${rc}">${i+1}</div>
+    <div class="lb-info"><div class="lb-code">${m.code}${m.prot?' 🛡️':''}</div><div class="lb-tag">${m.tag}</div></div>
+    <div class="lb-bar-wrap"><div class="lb-bar" style="width:${m.score}%"></div></div>
+    <div class="lb-score">${m.score}</div>
+  </div>`;
+});
+
+// ── Schedule Timeline
+const sched=[
+  {t:'10:00',code:'No.012',treat:'全光譜 Full Spectrum + Level 5',staff:'老闆 Boss',status:'完成 Done',sc:'pill-green'},
+  {t:'11:30',code:'No.088',treat:'皮秒 Pico + 超音波 HIFU + L5',staff:'林 Lin',status:'完成 Done',sc:'pill-green'},
+  {t:'13:00',code:'No.055',treat:'皮秒 Pico + Level 4',staff:'老闆 Boss',status:'進行中 Live',sc:'pill-gold'},
+  {t:'14:30',code:'No.099',treat:'光子 IPL + Level 4',staff:'王 Wang',status:'待開始',sc:'pill-grey'},
+  {t:'15:30',code:'No.021',treat:'超音波 HIFU + Level 3',staff:'林 Lin',status:'待開始',sc:'pill-grey'},
+  {t:'17:00',code:'No.033',treat:'攝影 Photography 📸 Boss',staff:'老闆 Boss',status:'特殊 Special',sc:'pill-purple'},
+];
+const sl=document.getElementById('schedTimeline');
+if(sl)sched.forEach(r=>{
+  const dotColor=r.status.includes('Done')?'var(--green)':r.status.includes('Live')?'var(--accent)':r.status.includes('Special')?'var(--purple)':'var(--muted)';
+  sl.innerHTML+=`<div class="tl-item"><div class="tl-time">${r.t}</div><div class="tl-dot" style="background:${dotColor}"></div><div class="tl-info"><div class="tl-title">${r.code} — ${r.treat}</div><div class="tl-sub">主理 By: ${r.staff}</div></div><span class="pill ${r.sc}">${r.status}</span></div>`;
+});
+
+// ── Treatment Records
+const treats=[
+  {date:'04-23',code:'No.012',score:96,treat:'全光譜 + L5',serum:'L5',staff:'Boss',fee:'HK$25K',disc:'免費',paid:'HK$0',note:'Queen Maker'},
+  {date:'04-22',code:'No.088',score:94,treat:'皮秒 Pico + HIFU + L5',serum:'L5',staff:'Lin',fee:'HK$18K',disc:'免費',paid:'HK$0',note:'Top 30'},
+  {date:'04-21',code:'No.055',score:89,treat:'皮秒 Pico + L4',serum:'L4',staff:'Boss',fee:'HK$12K',disc:'3折',paid:'HK$3,600',note:'—'},
+  {date:'04-20',code:'No.021',score:83,treat:'光子 IPL + L3',serum:'L3',staff:'Wang',fee:'HK$8K',disc:'5折',paid:'HK$4,000',note:'—'},
+  {date:'04-19',code:'No.044',score:82,treat:'HIFU + L3',serum:'L3',staff:'Lin',fee:'HK$9.5K',disc:'5折',paid:'HK$4,750',note:'推薦分紅 Ref bonus'},
+];
+const tt=document.getElementById('treatTable');
+if(tt)treats.forEach(r=>{
+  tt.innerHTML+=`<tr><td style="color:var(--muted)">${r.date}</td><td class="td-code">${r.code}</td><td class="td-score">${r.score}</td><td style="color:var(--text2)">${r.treat}</td><td style="color:var(--accent);font-weight:700">${r.serum}</td><td style="color:var(--muted)">${r.staff}</td><td style="color:var(--text2)">${r.fee}</td><td style="color:var(--accent)">${r.disc}</td><td style="color:var(--green);font-weight:700">${r.paid}</td><td style="color:var(--muted)">${r.note}</td></tr>`;
+});
+
+// ── Referral Table
+const refs=[
+  {from:'No.012',to:'APL-089',score:96,top30:true,bonus:'14.4分',type:'Queen Maker',prot:'3個月',status:'已觸發 Done'},
+  {from:'No.033',to:'APL-091',score:93,top30:true,bonus:'13.95分',type:'Queen Maker',prot:'3個月',status:'已觸發 Done'},
+  {from:'No.099',to:'APL-090',score:78,top30:false,bonus:'11.7分',type:'一般推薦 Regular',prot:'—',status:'進行中'},
+  {from:'No.021',to:'APL-088',score:82,top30:false,bonus:'12.3分',type:'一般推薦',prot:'—',status:'進行中'},
+  {from:'No.044',to:'APL-093',score:72,top30:false,bonus:'10.8分',type:'一般推薦',prot:'—',status:'進行中'},
+];
+const rt=document.getElementById('referralTable');
+if(rt)refs.forEach(r=>{
+  rt.innerHTML+=`<tr><td class="td-code">${r.from}</td><td class="td-code">${r.to}</td><td class="td-score">${r.score}</td><td>${r.top30?'<span class="pill pill-gold">✓ 空降 Top 30</span>':'<span class="pill pill-grey">未進 Not yet</span>'}</td><td style="color:var(--accent);font-weight:700">${r.bonus}</td><td><span class="pill ${r.type.includes('Queen')?'pill-purple':'pill-grey'}">${r.type}</span></td><td style="color:var(--green)">${r.prot}</td><td><span class="pill ${r.status.includes('Done')?'pill-green':'pill-blue'}">${r.status}</span></td></tr>`;
+});
+
+// ── Serum Inventory
+const serums=[
+  {level:'Level 5',hex:'#C9A84C',stock:8,total:20,price:'HK$21,060'},
+  {level:'Level 4',hex:'#A89068',stock:15,total:30,price:'HK$14,000'},
+  {level:'Level 3',hex:'#8A7248',stock:22,total:40,price:'HK$8,500'},
+  {level:'Level 2',hex:'#666666',stock:35,total:50,price:'HK$4,200'},
+  {level:'Level 1',hex:'#444444',stock:48,total:60,price:'HK$1,800'},
+];
+const sd=document.getElementById('serumDisplay');
+if(sd)serums.forEach(s=>{
+  const pct=Math.round(s.stock/s.total*100);
+  const low=pct<50;
+  sd.innerHTML+=`<div class="serum-row">
+    <div style="width:56px;font-size:10px;font-weight:700;color:${s.hex};flex-shrink:0">${s.level}</div>
+    <div class="sbar-wrap"><div class="sbar" style="width:${pct}%;background:${s.hex}"></div></div>
+    <div style="font-size:10px;font-weight:700;color:${low?'var(--red)':'var(--text)'};width:80px;text-align:right;flex-shrink:0">${s.stock}/${s.total} 支 ${low?'⚠️':''}</div>
+    <div style="font-size:10px;color:var(--muted);width:80px;text-align:right;flex-shrink:0">${s.price}/100ml</div>
+  </div>`;
+});
+
+// ── Hospitality Queue
+const hosp=[
+  {code:'No.012',item:'愛爾蘭咖啡 Irish Coffee',time:'10:45',status:'已送達 Served',sc:'pill-green'},
+  {code:'No.088',item:'現烤舒芙蕾 Soufflé',time:'12:00',status:'已送達 Served',sc:'pill-green'},
+  {code:'No.055',item:'現烤舒芙蕾 Soufflé',time:'13:30',status:'準備中 Preparing',sc:'pill-gold'},
+  {code:'No.099',item:'特調雞尾酒 Cocktail (含酒精)',time:'15:00',status:'待準備 Queue',sc:'pill-grey'},
+  {code:'No.021',item:'Mocktail 無酒精雞尾酒',time:'16:00',status:'待準備 Queue',sc:'pill-grey'},
+  {code:'No.033',item:'愛爾蘭咖啡 Irish Coffee',time:'17:30',status:'待準備 Queue',sc:'pill-grey'},
+];
+const hd=document.getElementById('hospDisplay');
+if(hd)hosp.forEach(r=>{
+  const dc=r.status.includes('Served')?'var(--green)':r.status.includes('Prep')?'var(--accent)':'var(--muted)';
+  hd.innerHTML+=`<div class="hosp-row">
+    <div style="width:5px;height:5px;border-radius:50%;background:${dc};flex-shrink:0;margin-top:2px;"></div>
+    <div style="flex:1;"><div style="font-size:11px;color:var(--text);font-weight:700">${r.code}</div><div style="font-size:9px;color:var(--muted);margin-top:1px">${r.item}</div></div>
+    <div style="font-size:10px;color:var(--muted);margin-right:10px">${r.time}</div>
+    <span class="pill ${r.sc}">${r.status}</span>
+  </div>`;
+});
+
+// ── Fullscreen
+function toggleFs(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  }else{
+    document.exitFullscreen().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  document.getElementById('mgFsBtn').textContent=document.fullscreenElement?'✕':'⛶';
+});
+// Keyboard: F = fullscreen, D = day/night
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT')return;
+  if(e.key==='f'||e.key==='F')toggleFs();
+  if(e.key==='d'||e.key==='D')toggleTheme();
+});
+</script>
+</body>
+</html>
