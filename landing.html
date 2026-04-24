@@ -1763,19 +1763,29 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 ════════════════════════════════════ */
 const landingNavLinks=document.querySelectorAll('.nav-link[href^="#"]');
 const landingSections=Array.from(document.querySelectorAll('section[id]'));
+// Immediately highlight on click — no waiting for scroll events
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const id=a.getAttribute('href').slice(1);
+    if(!id)return;
+    landingNavLinks.forEach(l=>l.classList.remove('active'));
+    const clicked=document.querySelector('.nav-link[href="#'+id+'"]');
+    if(clicked)clicked.classList.add('active');
+  });
+});
 function updateLandingNav(){
-  const scrollY=window.scrollY;
-  const offset=90;
+  // getBoundingClientRect — always correct, independent of offsetParent
+  const threshold=130;
   let current='';
   landingSections.forEach(s=>{
-    if(s.offsetTop-offset<=scrollY) current=s.id;
+    if(s.getBoundingClientRect().top<=threshold) current=s.id;
   });
   landingNavLinks.forEach(l=>{
     l.classList.toggle('active',l.getAttribute('href')==='#'+current);
   });
 }
 window.addEventListener('scroll',updateLandingNav,{passive:true});
-updateLandingNav();
+setTimeout(updateLandingNav,300);
 
 /* ════════════════════════════════════
    SCROLL REVEAL (IntersectionObserver)
@@ -1939,18 +1949,4 @@ function toggleFullscreen(){
   if(!document.fullscreenElement){
     document.documentElement.requestFullscreen().catch(()=>{});
   } else {
-    if(document.exitFullscreen)document.exitFullscreen().catch(()=>{});
-  }
-}
-document.addEventListener('fullscreenchange',()=>{
-  document.getElementById('fsIcon').textContent=document.fullscreenElement?'✕':'⛶';
-});
-// Keyboard shortcut: F key for fullscreen, D for day/night
-document.addEventListener('keydown',e=>{
-  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT')return;
-  if(e.key==='f'||e.key==='F')toggleFullscreen();
-  if(e.key==='d'||e.key==='D')toggleTheme();
-});
-</script>
-</body>
-</html>
+    if(document.exitFullscreen)document.exitFullscreen().cat
