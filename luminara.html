@@ -643,7 +643,7 @@ body.night .pdiv{opacity:.35;}
   <a class="mob-link" href="#science" onclick="closeMob()">Science</a>
   <a class="mob-link" href="#ritual" onclick="closeMob()">Ritual</a>
   <a class="mob-link" href="#availability" onclick="closeMob()">Stockists</a>
-  <button class="mob-cta" onclick="closeMob();scrollTo('inquiry')">Request Inquiry</button>
+  <button class="mob-cta" onclick="closeMob();navScrollTo('inquiry')">Request Inquiry</button>
 </div>
 
 <!-- NAV -->
@@ -1354,7 +1354,7 @@ function closeMob(){
 /* ════════════════════════════════
    SMOOTH SCROLL
 ════════════════════════════════ */
-function scrollTo(id){
+function navScrollTo(id){
   const el=document.getElementById(id);
   if(el){
     const top=el.getBoundingClientRect().top+window.scrollY-80;
@@ -1373,7 +1373,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
       document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
       const clicked=document.querySelector('.nav-link[href="#'+id+'"]');
       if(clicked)clicked.classList.add('active');
-      scrollTo(id);
+      navScrollTo(id);
     }
   });
 });
@@ -1480,4 +1480,3 @@ document.addEventListener('keydown',e=>{
 });
 </script>
 </body>
-</html>
