@@ -61,14 +61,19 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;font-size:16px;}
-body{background:var(--ivory);color:var(--charcoal);font-family:var(--body);overflow-x:hidden;cursor:none;}
+body{background:var(--ivory);color:var(--charcoal);font-family:var(--body);overflow-x:hidden;}
 ::selection{background:rgba(139,169,142,.22);color:var(--charcoal);}
 ::-webkit-scrollbar{width:2px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--sage-d);border-radius:2px;}
 a{text-decoration:none;color:inherit;}
-button{cursor:none;font-family:var(--body);border:none;background:none;}
-input,select,textarea{cursor:none;font-family:var(--body);}
+button{font-family:var(--body);border:none;background:none;}
+input,select,textarea{font-family:var(--body);}
+/* Custom cursor only on true pointer devices after JS is ready */
+@media(hover:hover) and (pointer:fine){
+  body.js-ready{cursor:none;}
+  body.js-ready button,body.js-ready a,body.js-ready input,body.js-ready select,body.js-ready textarea{cursor:none;}
+}
 
 /* ═══════════════════════════════════════════════════════
    CUSTOM CURSOR
@@ -1302,13 +1307,15 @@ body.night .pdiv{opacity:.35;}
 /* ════════════════════════════════
    PRELOADER
 ════════════════════════════════ */
-window.addEventListener('load',()=>{
-  setTimeout(()=>document.getElementById('preloader').classList.add('gone'),2000);
-});
+function hidePreloader(){document.getElementById('preloader').classList.add('gone');}
+window.addEventListener('load',()=>setTimeout(hidePreloader,2000));
+// Hard fallback: hide after 5s regardless of font/resource loading
+setTimeout(hidePreloader,5000);
 
 /* ════════════════════════════════
    CUSTOM CURSOR
 ════════════════════════════════ */
+document.body.classList.add('js-ready');
 const dot=document.getElementById('cdot');
 const ring=document.getElementById('cring');
 let mx=0,my=0,rx=0,ry=0;
@@ -1386,6 +1393,8 @@ const revObs=new IntersectionObserver(entries=>{
     if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}
   });
 },{threshold:.1,rootMargin:'0px 0px -44px 0px'});
+// Fallback: show all reveal elements after 4s if observer hasn't fired
+setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),4000);
 document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 
 /* ════════════════════════════════
@@ -1463,20 +1472,4 @@ function toggleLumiTheme(){
 /* ════════════════════════════════
    FULLSCREEN
 ════════════════════════════════ */
-function toggleLumiFs(){
-  if(!document.fullscreenElement){
-    document.documentElement.requestFullscreen().catch(()=>{});
-  }else{
-    document.exitFullscreen().catch(()=>{});
-  }
-}
-document.addEventListener('fullscreenchange',()=>{
-  document.getElementById('lumiFsIcon').textContent=document.fullscreenElement?'✕':'⛶';
-});
-document.addEventListener('keydown',e=>{
-  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT')return;
-  if(e.key==='f'||e.key==='F')toggleLumiFs();
-  if(e.key==='d'||e.key==='D')toggleLumiTheme();
-});
-</script>
-</body>
+function toggleLumiFs
