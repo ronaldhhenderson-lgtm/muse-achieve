@@ -51,7 +51,7 @@ input,select,textarea{font-family:var(--body);}
    CUSTOM CURSOR
 ════════════════════════════════════════════ */
 #cursor-dot{width:6px;height:6px;background:var(--mac-rose-d);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;}
-#cursor-ring{width:32px;height:32px;border:1px solid rgba(200,112,144,.45);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s var(--ease-out),height .3s var(--ease-out),border-color .3s,top .08s linear,left .08s linear;}
+#cursor-ring{width:32px;height:32px;border:1px solid rgba(200,112,144,.45);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s var(--ease-out),height .3s var(--ease-out),border-color .3s;}
 body.cursor-hover #cursor-dot{width:10px;height:10px;background:var(--mac-lav-d);}
 body.cursor-hover #cursor-ring{width:48px;height:48px;border-color:rgba(144,112,192,.35);}
 
@@ -796,9 +796,9 @@ body.night .lum-tier{border-right-color:rgba(168,220,200,.08);}
   .footer-bottom{flex-direction:column;align-items:flex-start;}
   .rituals-footer{padding:24px;}
   #toast{bottom:16px;right:16px;left:16px;max-width:none;}
-  body{cursor:auto;}
+  body.js-ready,body.js-ready button,body.js-ready input,body.js-ready select,body.js-ready textarea,body.js-ready a{cursor:auto!important;}
   #cursor-dot,#cursor-ring{display:none;}
-  button,input,select,textarea,a{cursor:auto;}
+  .nav-cta,.hamburger,.hero-scroll,.exp-card,.nav-icon-btn,.lum-tier,.lum-cta,.lum-t6-cta{cursor:auto!important;}
 }
 @media(max-width:480px){
   .stats-row{grid-template-columns:1fr 1fr;}
@@ -1943,11 +1943,4 @@ function applyTheme(animate){
   if(ring)ring.style.borderColor=isNight?'rgba(200,112,144,.55)':'';
 }
 function toggleTheme(){
-  isNight=!isNight;
-  localStorage.setItem('muse-theme',isNight?'night':'day');
-  applyTheme(true);
-}
-// Apply on load (no animation — instant)
-applyTheme(false);
-
-/* �
+  isNight=!isNigh
