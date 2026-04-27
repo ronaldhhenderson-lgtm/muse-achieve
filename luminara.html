@@ -622,8 +622,9 @@ body.night .pdiv{opacity:.35;}
   .inq-form{padding:36px 24px;}
   .prov-l{padding:64px 24px;}
   .prov-r{padding:36px 24px;}
-  body{cursor:auto;}#cdot,#cring{display:none;}
-  a,button,input,select,textarea{cursor:auto;}
+  body.js-ready,body.js-ready a,body.js-ready button,body.js-ready input,body.js-ready select,body.js-ready textarea{cursor:auto!important;}
+  #cdot,#cring{display:none;}
+  .nav-cta,.lumi-icon-btn,.nav-ham,.mob-cta,.btn-p,.btn-g,.h-scroll,.fg,.stk,.if-btn,.tier,.tier-btn,.t6-btn,.ch-cta{cursor:auto!important;}
 }
 </style>
 </head>
@@ -1469,7 +1470,4 @@ function toggleLumiTheme(){
   localStorage.setItem('luminara-theme',lumiNight?'night':'day');
 }
 
-/* ════════════════════════════════
-   FULLSCREEN
-════════════════════════════════ */
-function toggleLumiFs
+/* ═════
