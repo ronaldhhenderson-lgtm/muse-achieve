@@ -86,11 +86,12 @@ body.chover #cring{width:46px;height:46px;border-color:rgba(196,160,90,.35);}
 /* ═══════════════════════════════════════════════════════
    REVEAL SYSTEM
 ═══════════════════════════════════════════════════════ */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out);}
-.reveal.rl{transform:translateX(-26px);}
-.reveal.rr{transform:translateX(26px);}
-.reveal.rs{transform:scale(.96);}
-.reveal.in{opacity:1;transform:none;}
+.reveal{transition:opacity .9s var(--ease-out),transform .9s var(--ease-out);}
+.js-ready .reveal:not(.in){opacity:0;transform:translateY(26px);}
+.js-ready .reveal.rl:not(.in){transform:translateX(-26px);}
+.js-ready .reveal.rr:not(.in){transform:translateX(26px);}
+.js-ready .reveal.rs:not(.in){transform:scale(.96);}
+.reveal.in{opacity:1!important;transform:none!important;}
 .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.32s;}
 .d4{transition-delay:.44s;}.d5{transition-delay:.56s;}.d6{transition-delay:.68s;}
 
@@ -1393,10 +1394,17 @@ const revObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}
   });
-},{threshold:.1,rootMargin:'0px 0px -44px 0px'});
-// Fallback: show all reveal elements after 4s if observer hasn't fired
-setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),4000);
+},{threshold:0,rootMargin:'0px 0px -10px 0px'});
+// Fallback: show all reveal elements after 1.5s if observer has not fired
+setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),1500);
 document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+// Immediately reveal elements already in viewport
+requestAnimationFrame(()=>{
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.top<window.innerHeight&&r.bottom>0){el.classList.add('in');}
+  });
+});
 
 /* ════════════════════════════════
    ACTIVE NAV LINKS
@@ -1470,4 +1478,24 @@ function toggleLumiTheme(){
   localStorage.setItem('luminara-theme',lumiNight?'night':'day');
 }
 
-/* ═════
+/* ════════════════════════════════
+   FULLSCREEN
+════════════════════════════════ */
+function toggleLumiFs(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  }else{
+    document.exitFullscreen().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  document.getElementById('lumiFsIcon').textContent=document.fullscreenElement?'✕':'⛶';
+});
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT')return;
+  if(e.key==='f'||e.key==='F')toggleLumiFs();
+  if(e.key==='d'||e.key==='D')toggleLumiTheme();
+});
+</script>
+</body>
+</html>
