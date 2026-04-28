@@ -1,1019 +1,689 @@
 <!DOCTYPE html>
-<!--
-═══════════════════════════════════════════════════════════════
-  LUMINARA BIORE GEN ELIXIR™ — Official Brand Website
-  Henderson Transpacific LLC
-  Warm Botanical Palette · Sage × Forest × Amber Gold
-═══════════════════════════════════════════════════════════════
-
-  GITHUB PAGES — FREE HOSTING IN 4 STEPS:
-  ──────────────────────────────────────────────────────────────
-  1. Go to github.com → Sign in (or create free account)
-  2. Click "+" → "New repository" → name it e.g. "luminara"
-     ✓ Set to PUBLIC · ✓ No README needed
-  3. Rename THIS FILE to "index.html"
-     Upload it: click "uploading an existing file" → drag & drop
-  4. Go to Settings → Pages → Source: "Deploy from branch"
-     Branch: main · Folder: / (root) → Save
-
-  Your site goes live at:
-  https://[yourusername].github.io/luminara
-
-  Custom domain (optional):
-  Settings → Pages → Custom domain → enter your domain
-  Then add a CNAME record at your DNS provider pointing to:
-  [yourusername].github.io
-═══════════════════════════════════════════════════════════════
--->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="Luminara BioRegen Elixir™ — The world's finest 100% natural regenerative serum. 72-hour hydration. Barrier repair +40%. By Henderson Transpacific LLC. Available in USA, France &amp; Italy.">
-<meta name="theme-color" content="#0E1A10">
-<meta property="og:title" content="Luminara BioRegen Elixir™ | Henderson Transpacific">
-<meta property="og:description" content="Where biotechnology meets nature's finest hour. 26 ingredients. Zero synthetics. $3,000 USD.">
-<meta property="og:type" content="website">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Luminara BioRegen Elixir™ — The world's finest 100% natural regenerative serum. 72-hour hydration. Barrier repair +40%. By Henderson Transpacific LLC.">
 <title>Luminara BioRegen Elixir™ | Henderson Transpacific LLC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════════════════
-   ROOT — Warm Botanical Identity System
-═══════════════════════════════════════════════════════ */
-:root{
-  /* Signature — Warm Botanical Sage */
-  --sage:#8BA98E;--sage-d:#5A7A5E;--sage-dd:#3A5A3E;
-  --sage-l:#AECBB2;--sage-pale:#EDF3EE;--sage-mid:#9DBBA0;
-  /* Depth — Forest */
-  --forest:#0E1A10;--forest-m:#162418;--forest-l:#1E3022;--forest-s:#060D07;
-  /* Warmth */
-  --gold:#C4A05A;--gold-l:#E8D49E;--gold-d:#9A7830;--gold-pale:#F7F0E2;
-  /* Neutrals */
-  --ivory:#FAF6ED;--cream:#F3E9D8;--white:#FFFFFF;
-  --charcoal:#1A1510;--ink:#2A2218;--grey:#6B6458;--grey-l:#9A9088;--grey-ll:#C8C0B5;
-  /* Type */
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --display:'Playfair Display',Georgia,serif;
-  --body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-  /* Motion */
-  --ease-out:cubic-bezier(.16,1,.3,1);--ease-io:cubic-bezier(.4,0,.2,1);
-}
+/* ═══ RESET ══════════════════════════════════════════════════════ */
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;font-size:16px;}
-body{background:var(--ivory);color:var(--charcoal);font-family:var(--body);overflow-x:hidden;}
-::selection{background:rgba(139,169,142,.22);color:var(--charcoal);}
-::-webkit-scrollbar{width:2px;}
-::-webkit-scrollbar-track{background:transparent;}
-::-webkit-scrollbar-thumb{background:var(--sage-d);border-radius:2px;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:'Inter',-apple-system,sans-serif;overflow-x:hidden;background:#F8F7F3;color:#130E0A;}
 a{text-decoration:none;color:inherit;}
-button{font-family:var(--body);border:none;background:none;}
-input,select,textarea{font-family:var(--body);}
-/* Custom cursor only on true pointer devices after JS is ready */
-@media(hover:hover) and (pointer:fine){
-  body.js-ready{cursor:none;}
-  body.js-ready button,body.js-ready a,body.js-ready input,body.js-ready select,body.js-ready textarea{cursor:none;}
+button{font-family:inherit;border:none;background:none;cursor:pointer;}
+input,select,textarea{font-family:inherit;}
+
+/* ═══ TOKENS ══════════════════════════════════════════════════════ */
+:root{
+  --ivory:#F8F7F3;
+  --cream:#F0EAE0;
+  --white:#FFFFFF;
+  --forest:#0C1C0E;
+  --forest-m:#162418;
+  --ink:#130E0A;
+  --charcoal:#2A2018;
+  --grey:#6B6258;
+  --grey-l:#9A9088;
+  --sage:#789E7B;
+  --sage-d:#537A56;
+  --sage-dd:#2E5230;
+  --sage-pale:#EDF4EE;
+  --gold:#C4A358;
+  --gold-l:#DFC07C;
+  --gold-pale:#F8F0E0;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --body:'Inter',-apple-system,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
 
-/* ═══════════════════════════════════════════════════════
-   CUSTOM CURSOR
-═══════════════════════════════════════════════════════ */
-#cdot{width:5px;height:5px;background:var(--sage-d);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .25s;}
-#cring{width:30px;height:30px;border:1px solid rgba(139,169,142,.45);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s var(--ease-out),height .3s var(--ease-out),border-color .3s;}
-body.chover #cdot{width:9px;height:9px;background:var(--gold);}
-body.chover #cring{width:46px;height:46px;border-color:rgba(196,160,90,.35);}
+/* ═══ SCROLLBAR ═══════════════════════════════════════════════════ */
+::-webkit-scrollbar{width:2px;}
+::-webkit-scrollbar-thumb{background:var(--sage-d);}
+::selection{background:rgba(120,158,123,.18);}
 
-/* ═══════════════════════════════════════════════════════
-   REVEAL SYSTEM
-═══════════════════════════════════════════════════════ */
-.reveal{transition:opacity .9s var(--ease-out),transform .9s var(--ease-out);}
-.js-ready .reveal:not(.in){opacity:0;transform:translateY(26px);}
-.js-ready .reveal.rl:not(.in){transform:translateX(-26px);}
-.js-ready .reveal.rr:not(.in){transform:translateX(26px);}
-.js-ready .reveal.rs:not(.in){transform:scale(.96);}
-.reveal.in{opacity:1!important;transform:none!important;}
-.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.32s;}
-.d4{transition-delay:.44s;}.d5{transition-delay:.56s;}.d6{transition-delay:.68s;}
+/* ═══ NAV ════════════════════════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:64px;padding:0 56px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid transparent;
+  transition:background .4s,backdrop-filter .4s,border-color .4s;
+}
+#nav.scrolled{
+  background:rgba(248,247,243,.94);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-color:rgba(120,158,123,.15);
+  box-shadow:0 2px 32px rgba(12,28,14,.06);
+}
+.nav-brand{display:flex;flex-direction:column;gap:2px;}
+.nav-brand-main{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--white);letter-spacing:5px;text-transform:uppercase;transition:color .4s;}
+#nav.scrolled .nav-brand-main{color:var(--forest);}
+.nav-brand-sub{font-size:7.5px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);opacity:.7;}
+.nav-links{display:flex;gap:2px;}
+.nav-link{font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;padding:9px 14px;color:rgba(255,255,255,.5);border-bottom:1px solid transparent;transition:color .25s,border-color .25s;white-space:nowrap;}
+#nav.scrolled .nav-link{color:var(--grey);}
+.nav-link:hover{color:rgba(255,255,255,.9);}
+#nav.scrolled .nav-link:hover{color:var(--charcoal);}
+.nav-link.active{color:var(--sage);border-bottom-color:rgba(120,158,123,.4);}
+.nav-ctrl{display:flex;align-items:center;gap:6px;}
+.icon-btn{width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.55);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .25s;}
+#nav.scrolled .icon-btn{border-color:rgba(120,158,123,.3);color:var(--grey);}
+.icon-btn:hover{border-color:var(--sage);color:var(--sage-d);}
+.nav-cta{font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.85);padding:9px 22px;margin-left:4px;transition:all .3s;}
+#nav.scrolled .nav-cta{border-color:rgba(120,158,123,.45);color:var(--sage-d);}
+.nav-cta:hover{background:var(--sage);border-color:var(--sage);color:var(--white);}
+.nav-ham{display:none;flex-direction:column;gap:5px;padding:4px;}
+.nav-ham span{display:block;width:22px;height:1px;background:var(--white);transition:all .3s;}
+#nav.scrolled .nav-ham span{background:var(--charcoal);}
 
-/* ═══════════════════════════════════════════════════════
-   PRELOADER
-═══════════════════════════════════════════════════════ */
-#preloader{position:fixed;inset:0;background:var(--forest-s);z-index:99990;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;transition:opacity .9s var(--ease-out),visibility .9s;}
-#preloader.gone{opacity:0;visibility:hidden;pointer-events:none;}
-.pl-wordmark{font-family:var(--serif);font-size:30px;font-weight:300;color:var(--sage-l);letter-spacing:10px;text-transform:uppercase;opacity:0;animation:plFade .7s var(--ease-out) .4s forwards;}
-.pl-bar{width:0;height:1px;background:linear-gradient(90deg,transparent,var(--sage),transparent);animation:plExpand 1.2s var(--ease-out) .7s forwards;}
-.pl-sub{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(139,169,142,.35);opacity:0;animation:plFade .6s var(--ease-out) 1.1s forwards;}
-.pl-dots{display:flex;gap:6px;margin-top:4px;opacity:0;animation:plFade .5s var(--ease-out) 1.3s forwards;}
-.pl-dot{width:4px;height:4px;border-radius:50%;background:var(--sage-d);animation:plPulse 1.2s ease-in-out infinite;}
-.pl-dot:nth-child(2){animation-delay:.2s;}.pl-dot:nth-child(3){animation-delay:.4s;}
-@keyframes plFade{to{opacity:1;}}
-@keyframes plExpand{to{width:180px;}}
-@keyframes plPulse{0%,100%{opacity:.3;}50%{opacity:1;}}
-
-/* ═══════════════════════════════════════════════════════
-   NAVIGATION
-═══════════════════════════════════════════════════════ */
-#nav{position:fixed;top:0;left:0;right:0;z-index:9000;padding:26px 64px;display:flex;justify-content:space-between;align-items:center;transition:all .5s var(--ease-io);}
-#nav.scrolled{background:rgba(6,13,7,.9);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:15px 64px;border-bottom:1px solid rgba(139,169,142,.1);box-shadow:0 4px 40px rgba(0,0,0,.3);}
-.nav-logo{display:flex;flex-direction:column;gap:3px;}
-.nl-main{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--white);letter-spacing:6px;text-transform:uppercase;}
-.nl-sub{font-size:7.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(--sage);opacity:.65;}
-.nav-center{display:flex;align-items:center;gap:4px;}
-.nav-link{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.48);padding:9px 15px;transition:color .3s,border-bottom-color .3s;white-space:nowrap;border-bottom:1px solid transparent;}
-.nav-link:hover{color:var(--sage-l);}
-.nav-link.active{color:var(--sage-l);border-bottom-color:rgba(139,169,142,.45);}
-.nav-cta{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage-l);border:1px solid rgba(139,169,142,.38);padding:11px 26px;transition:all .35s;margin-left:6px;cursor:none;white-space:nowrap;}
-.nav-cta:hover{background:var(--sage);border-color:var(--sage);color:var(--forest);}
-.nav-ctrl{display:flex;align-items:center;gap:6px;margin-left:10px;}
-.lumi-icon-btn{width:28px;height:28px;border-radius:50%;border:1px solid rgba(139,169,142,.22);background:transparent;color:rgba(174,203,178,.6);font-size:13px;cursor:none;display:flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0;}
-.lumi-icon-btn:hover{border-color:var(--sage);color:var(--white);background:rgba(139,169,142,.1);}
-.nav-ham{display:none;flex-direction:column;gap:5px;cursor:none;padding:4px;}
-.nav-ham span{display:block;width:24px;height:1px;background:var(--white);transition:all .35s;}
-#nav.mopen .nav-ham span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-#nav.mopen .nav-ham span:nth-child(2){opacity:0;}
-#nav.mopen .nav-ham span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-
-/* Mobile drawer */
-.mob-drawer{position:fixed;inset:0;background:rgba(6,13,7,.97);z-index:8900;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;opacity:0;pointer-events:none;transition:opacity .4s var(--ease-io);}
+/* ═══ MOBILE DRAWER ═══════════════════════════════════════════════ */
+.mob-drawer{position:fixed;inset:0;z-index:999;background:rgba(12,28,14,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;opacity:0;pointer-events:none;transition:opacity .35s;}
 .mob-drawer.open{opacity:1;pointer-events:all;}
-.mob-link{font-family:var(--serif);font-size:30px;color:rgba(255,255,255,.65);letter-spacing:2px;padding:14px 40px;text-align:center;transition:color .3s;}
-.mob-link:hover{color:var(--sage-l);}
-.mob-cta{margin-top:16px;border:1px solid rgba(139,169,142,.35);color:var(--sage-l);font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:16px 48px;transition:all .3s;cursor:none;}
-.mob-cta:hover{background:var(--sage);color:var(--forest);}
+.mob-link{font-family:var(--serif);font-size:28px;color:rgba(255,255,255,.65);padding:14px 40px;text-align:center;transition:color .25s;}
+.mob-link:hover{color:var(--sage);}
+.mob-close{position:absolute;top:22px;right:22px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);font-size:16px;display:flex;align-items:center;justify-content:center;}
 
-/* ═══════════════════════════════════════════════════════
-   HERO — Full Forest Immersion
-═══════════════════════════════════════════════════════ */
-#hero{min-height:100vh;background:linear-gradient(155deg,#060D07 0%,#0A160C 35%,#0D1E10 65%,#060D07 100%);position:relative;display:flex;align-items:center;overflow:hidden;}
+/* ═══ HERO ════════════════════════════════════════════════════════ */
+#hero{
+  min-height:100vh;
+  background:linear-gradient(155deg,#080F09 0%,#0A1509 38%,#0D1E0D 68%,#080F09 100%);
+  position:relative;display:flex;align-items:center;overflow:hidden;
+}
+.h-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 80% at 68% 50%,rgba(120,158,123,.13) 0%,transparent 55%),radial-gradient(ellipse 50% 60% at 18% 25%,rgba(83,122,86,.08) 0%,transparent 50%),radial-gradient(ellipse 40% 50% at 50% 95%,rgba(196,163,88,.05) 0%,transparent 48%);animation:glowBreath 14s ease-in-out infinite alternate;}
+@keyframes glowBreath{0%{opacity:.6;}100%{opacity:1;}}
+.h-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(120,158,123,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(120,158,123,.03) 1px,transparent 1px);background-size:88px 88px;pointer-events:none;}
+.h-orb1{position:absolute;width:480px;height:480px;border-radius:50%;background:rgba(120,158,123,.12);filter:blur(80px);top:-10%;right:-4%;animation:orbF 18s ease-in-out infinite;pointer-events:none;}
+.h-orb2{position:absolute;width:340px;height:340px;border-radius:50%;background:rgba(46,82,48,.1);filter:blur(70px);bottom:-8%;left:-6%;animation:orbF 14s ease-in-out infinite;animation-delay:-6s;pointer-events:none;}
+@keyframes orbF{0%,100%{transform:translate(0,0);}50%{transform:translate(18px,-22px);}}
 
-/* Atmospheric radial glows */
-.h-atmo{position:absolute;inset:0;background:
-  radial-gradient(ellipse 75% 85% at 72% 48%,rgba(139,169,142,.11) 0%,transparent 55%),
-  radial-gradient(ellipse 55% 65% at 18% 25%,rgba(90,122,94,.08) 0%,transparent 52%),
-  radial-gradient(ellipse 45% 55% at 50% 95%,rgba(196,160,90,.05) 0%,transparent 48%);
-  animation:atmoBreath 16s ease-in-out infinite alternate;pointer-events:none;}
-@keyframes atmoBreath{0%{opacity:.65;}100%{opacity:1;}}
+/* CSS Bottle */
+.bottle-stage{position:absolute;right:9%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;animation:bottleFloat 7s ease-in-out infinite;filter:drop-shadow(0 50px 70px rgba(120,158,123,.18));}
+@keyframes bottleFloat{0%,100%{transform:translateY(-50%);}50%{transform:translateY(calc(-50% - 16px));}}
+.b-cap{width:52px;height:32px;background:linear-gradient(165deg,var(--gold-l) 0%,var(--gold) 55%,#9A7A30 100%);border-radius:5px 5px 2px 2px;box-shadow:inset 1px 0 4px rgba(255,255,255,.35),0 -4px 20px rgba(196,163,88,.25);}
+.b-neck{width:38px;height:20px;background:linear-gradient(90deg,rgba(165,200,168,.45) 0%,rgba(120,158,123,.85) 40%,rgba(83,122,86,.95) 65%,rgba(120,158,123,.5) 100%);}
+.b-body{width:104px;height:278px;position:relative;border-radius:10px 10px 14px 14px;overflow:hidden;}
+.b-fill{position:absolute;inset:0;background:linear-gradient(175deg,rgba(180,215,183,.18) 0%,rgba(120,158,123,.4) 22%,rgba(83,122,86,.62) 50%,rgba(46,82,48,.8) 76%,rgba(18,42,20,.93) 100%);}
+.b-shine{position:absolute;top:0;left:13px;width:14px;height:100%;background:linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.09) 45%,transparent 100%);border-radius:4px;}
+.b-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:78px;}
+.b-mono{font-family:var(--serif);font-size:42px;color:rgba(220,240,222,.78);font-weight:300;line-height:1;margin-bottom:5px;}
+.b-bname{font-family:var(--serif);font-size:9px;color:rgba(228,205,158,.8);letter-spacing:2px;text-transform:uppercase;line-height:1.8;}
+.b-border{position:absolute;top:26px;left:7px;right:7px;bottom:26px;border:1px solid rgba(120,158,123,.1);border-radius:6px;}
+.b-shadow{width:72px;height:14px;background:radial-gradient(ellipse,rgba(120,158,123,.22) 0%,transparent 75%);margin-top:4px;filter:blur(4px);}
 
-/* Subtle grid */
-.h-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(139,169,142,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(139,169,142,.035) 1px,transparent 1px);background-size:90px 90px;pointer-events:none;}
+.h-content{position:relative;z-index:3;padding:0 56px;max-width:620px;}
+.h-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:32px;opacity:0;animation:fadeUp .7s var(--ease) 1.5s forwards;}
+.h-ey-line{width:32px;height:1px;background:linear-gradient(90deg,transparent,var(--sage));}
+.h-ey-text{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--sage);opacity:.85;}
+.h-title{font-family:var(--serif);font-size:clamp(42px,6.5vw,82px);color:var(--white);font-weight:300;line-height:1.05;letter-spacing:.3px;margin-bottom:8px;opacity:0;animation:fadeUp 1s var(--ease) 1.8s forwards;}
+.h-title em{font-style:italic;color:rgba(180,215,183,.75);}
+.h-sub{font-family:var(--serif);font-size:clamp(16px,2vw,22px);color:rgba(120,158,123,.75);font-style:italic;margin-bottom:32px;opacity:0;animation:fadeUp .7s var(--ease) 2s forwards;}
+.h-body{font-size:13px;color:rgba(255,255,255,.35);line-height:1.95;max-width:460px;margin-bottom:38px;font-weight:300;opacity:0;animation:fadeUp .8s var(--ease) 2.2s forwards;}
+.h-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:40px;opacity:0;animation:fadeUp .6s var(--ease) 2.4s forwards;}
+.h-price{font-family:var(--serif);font-size:28px;color:var(--gold-l);font-weight:400;}
+.h-price-s{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.22);}
+.h-ctas{display:flex;gap:14px;align-items:center;flex-wrap:wrap;opacity:0;animation:fadeUp .6s var(--ease) 2.6s forwards;}
+.btn-p{padding:15px 40px;background:transparent;border:1px solid rgba(120,158,123,.45);color:rgba(180,215,183,.9);font-size:9px;letter-spacing:3px;text-transform:uppercase;transition:all .4s var(--ease);display:inline-block;}
+.btn-p:hover{background:var(--sage);border-color:var(--sage);color:var(--white);}
+.btn-g{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.28);padding:15px 12px;transition:color .3s;}
+.btn-g:hover{color:rgba(255,255,255,.65);}
+.h-scroll{position:absolute;bottom:36px;left:56px;display:flex;align-items:center;gap:12px;opacity:0;animation:fadeUp .6s var(--ease) 3s forwards;}
+.h-scroll-track{width:40px;height:1px;background:rgba(120,158,123,.18);position:relative;overflow:hidden;}
+.h-scroll-track::after{content:'';position:absolute;top:0;left:-40px;width:40px;height:100%;background:var(--sage);animation:trackSlide 2.2s ease-in-out infinite;}
+@keyframes trackSlide{to{left:40px;}}
+.h-scroll-text{font-size:7.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.2);}
+.h-stripe{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--sage-dd),var(--sage-d),var(--sage),var(--sage-d),var(--sage-dd),transparent);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
 
-/* Orbs */
-.h-orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;}
-.h-orb1{width:520px;height:520px;background:rgba(139,169,142,.14);top:-12%;right:-6%;animation:orbDrift 20s ease-in-out infinite;}
-.h-orb2{width:380px;height:380px;background:rgba(58,90,62,.12);bottom:-8%;left:-8%;animation:orbDrift 15s ease-in-out infinite;animation-delay:-7s;}
-.h-orb3{width:260px;height:260px;background:rgba(196,160,90,.07);top:42%;left:38%;animation:orbDrift 22s ease-in-out infinite;animation-delay:-12s;}
-@keyframes orbDrift{0%,100%{transform:translate(0,0);}33%{transform:translate(22px,-28px);}66%{transform:translate(-16px,14px);}}
-
-/* CSS Serum Bottle */
-.bottle-stage{position:absolute;right:10%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:0;animation:bottleHover 7s ease-in-out infinite;filter:drop-shadow(0 60px 80px rgba(139,169,142,.18));}
-@keyframes bottleHover{0%,100%{transform:translateY(-50%) translateY(0);}50%{transform:translateY(-50%) translateY(-18px);}}
-.b-cap{width:54px;height:34px;background:linear-gradient(170deg,var(--gold-l) 0%,var(--gold) 55%,var(--gold-d) 100%);border-radius:5px 5px 2px 2px;box-shadow:0 -6px 24px rgba(196,160,90,.3),inset 1px 0 4px rgba(255,255,255,.35),inset -1px 0 2px rgba(0,0,0,.15);}
-.b-neck{width:40px;height:22px;background:linear-gradient(90deg,rgba(175,210,178,.45) 0%,rgba(139,169,142,.85) 35%,rgba(90,122,94,.95) 65%,rgba(139,169,142,.5) 100%);}
-.b-body{width:108px;height:290px;position:relative;border-radius:10px 10px 14px 14px;overflow:hidden;}
-.b-fill{position:absolute;inset:0;background:linear-gradient(175deg,rgba(190,220,195,.2) 0%,rgba(139,169,142,.42) 20%,rgba(90,122,94,.65) 48%,rgba(58,90,62,.82) 74%,rgba(22,50,26,.94) 100%);}
-.b-shine{position:absolute;top:0;left:14px;width:16px;height:100%;background:linear-gradient(180deg,rgba(255,255,255,.28) 0%,rgba(255,255,255,.1) 45%,transparent 100%);border-radius:4px;}
-.b-shine2{position:absolute;top:25%;right:16px;width:5px;height:38%;background:linear-gradient(180deg,rgba(255,255,255,.14) 0%,transparent 100%);border-radius:3px;}
-.b-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:82px;}
-.b-mono{font-family:var(--serif);font-size:44px;color:rgba(220,240,222,.8);font-weight:300;line-height:1;margin-bottom:6px;letter-spacing:-1px;}
-.b-name{font-family:var(--serif);font-size:9.5px;color:rgba(232,213,168,.82);letter-spacing:2.5px;text-transform:uppercase;line-height:1.8;}
-.b-border{position:absolute;top:28px;left:8px;right:8px;bottom:28px;border:1px solid rgba(139,169,142,.12);border-radius:6px;pointer-events:none;}
-.b-refl{position:absolute;bottom:0;left:0;right:0;height:28%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.05));}
-.b-shadow{width:80px;height:16px;background:radial-gradient(ellipse,rgba(139,169,142,.25) 0%,transparent 75%);margin-top:6px;filter:blur(4px);}
-
-/* Hero copy */
-.h-content{position:relative;z-index:3;padding:0 64px;max-width:660px;}
-.h-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:34px;opacity:0;animation:slideUp .7s var(--ease-out) 1.7s forwards;}
-.h-ey-line{width:36px;height:1px;background:linear-gradient(90deg,transparent,var(--sage));}
-.h-ey-text{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--sage);opacity:.9;}
-.h-lang{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(139,169,142,.5);margin-bottom:16px;opacity:0;animation:slideUp .7s var(--ease-out) 1.9s forwards;}
-.h-title{font-family:var(--serif);font-size:clamp(44px,6.5vw,86px);color:var(--white);font-weight:300;line-height:1.04;letter-spacing:.5px;margin-bottom:10px;opacity:0;animation:slideUp 1s var(--ease-out) 2.1s forwards;}
-.h-title em{font-style:italic;color:var(--sage-l);}
-.h-sub{font-family:var(--serif);font-size:clamp(17px,2.2vw,25px);color:var(--sage-mid);font-style:italic;font-weight:300;margin-bottom:34px;letter-spacing:.3px;opacity:0;animation:slideUp .7s var(--ease-out) 2.3s forwards;}
-.h-body{font-size:13px;color:rgba(255,255,255,.38);line-height:1.95;max-width:500px;margin-bottom:40px;font-weight:300;opacity:0;animation:slideUp .8s var(--ease-out) 2.5s forwards;}
-.h-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:44px;opacity:0;animation:slideUp .6s var(--ease-out) 2.7s forwards;}
-.h-price{font-family:var(--serif);font-size:30px;color:var(--gold-l);font-weight:400;letter-spacing:1px;}
-.h-price-sub{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);}
-.h-ctas{display:flex;gap:14px;align-items:center;flex-wrap:wrap;opacity:0;animation:slideUp .6s var(--ease-out) 2.9s forwards;}
-.btn-p{padding:16px 42px;background:transparent;border:1px solid rgba(139,169,142,.45);color:var(--sage-l);font-size:9.5px;letter-spacing:3px;text-transform:uppercase;transition:all .4s var(--ease-out);cursor:none;display:inline-block;}
-.btn-p:hover{background:var(--sage);border-color:var(--sage);color:var(--forest);box-shadow:0 0 48px rgba(139,169,142,.28);}
-.btn-g{font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.32);padding:16px 12px;transition:color .3s;cursor:none;}
-.btn-g:hover{color:rgba(255,255,255,.7);}
-/* Scroll pill */
-.h-scroll{position:absolute;bottom:38px;left:64px;display:flex;align-items:center;gap:14px;opacity:0;animation:slideUp .6s var(--ease-out) 3.3s forwards;cursor:none;}
-.h-scroll-track{width:44px;height:1px;background:rgba(139,169,142,.2);position:relative;overflow:hidden;}
-.h-scroll-track::after{content:'';position:absolute;top:0;left:-44px;width:44px;height:100%;background:var(--sage);animation:trackSlide 2.2s ease-in-out infinite;}
-@keyframes trackSlide{to{left:44px;}}
-.h-scroll-text{font-size:7.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);}
-/* Base stripe */
-.h-stripe{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,var(--sage-dd) 15%,var(--sage-d) 35%,var(--sage) 50%,var(--sage-l) 65%,var(--sage) 80%,var(--sage-dd) 90%,transparent 100%);}
-@keyframes slideUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
-
-/* ═══════════════════════════════════════════════════════
-   SECTION COMMONS
-═══════════════════════════════════════════════════════ */
+/* ═══ SECTION COMMONS ════════════════════════════════════════════ */
 section{position:relative;}
-.wrap{max-width:1180px;margin:0 auto;padding:0 64px;}
-.pad{padding:128px 0;}.pad-sm{padding:88px 0;}
-.s-label{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--sage-d);display:flex;align-items:center;gap:14px;margin-bottom:14px;}
-.s-label::before{content:'';width:28px;height:1px;background:currentColor;opacity:.5;flex-shrink:0;}
-.s-title{font-family:var(--serif);font-size:clamp(30px,4.5vw,58px);font-weight:300;line-height:1.1;letter-spacing:-.2px;color:var(--charcoal);}
+.wrap{max-width:1160px;margin:0 auto;padding:0 56px;}
+.pad{padding:120px 0;}
+.s-label{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--sage-d);display:flex;align-items:center;gap:14px;margin-bottom:12px;}
+.s-label::before{content:'';width:26px;height:1px;background:currentColor;opacity:.5;flex-shrink:0;}
+.s-title{font-family:var(--serif);font-size:clamp(28px,4.5vw,54px);font-weight:300;line-height:1.1;color:var(--charcoal);}
 .s-title em{font-style:italic;color:var(--sage-d);}
-.s-lead{font-size:14px;color:var(--grey);line-height:1.9;font-weight:300;max-width:600px;margin-top:18px;}
+.s-lead{font-size:14px;color:var(--grey);line-height:1.9;font-weight:300;max-width:580px;margin-top:16px;}
+.div-line{height:1px;background:linear-gradient(90deg,transparent,rgba(120,158,123,.25),rgba(120,158,123,.4),rgba(120,158,123,.25),transparent);}
 
-/* Botanical divider */
-.pdiv{height:2px;background:linear-gradient(90deg,transparent,var(--sage-pale),var(--sage-mid),var(--sage),var(--sage-d),var(--sage),var(--sage-mid),var(--sage-pale),transparent);}
-
-/* ═══════════════════════════════════════════════════════
-   PROVENANCE — Dark-to-Light Transition
-═══════════════════════════════════════════════════════ */
+/* ═══ PROVENANCE ══════════════════════════════════════════════════ */
 #provenance{background:linear-gradient(180deg,var(--forest) 0%,#162418 40%,var(--ivory) 100%);}
-.prov-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;padding:148px 0 128px;}
-.prov-l{}
-.prov-quote-mark{font-family:var(--serif);font-size:180px;line-height:.5;color:rgba(139,169,142,.08);margin-left:-12px;user-select:none;}
-.prov-quote{font-family:var(--serif);font-size:clamp(20px,2.5vw,30px);color:var(--white);line-height:1.55;font-weight:300;font-style:italic;margin-top:-60px;position:relative;z-index:1;}
-.prov-quote em{color:var(--sage-l);font-style:normal;}
-.prov-attr{margin-top:28px;font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(139,169,142,.4);border-left:2px solid var(--sage-d);padding-left:14px;line-height:1.8;}
-.prov-r{background:var(--ivory);padding:52px;border-top:3px solid var(--sage);}
-.prov-body{font-size:14px;color:var(--ink);line-height:1.95;font-weight:300;margin-bottom:20px;}
+.prov-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;padding:140px 0 120px;}
+.prov-qmark{font-family:var(--serif);font-size:170px;line-height:.5;color:rgba(120,158,123,.08);margin-left:-10px;user-select:none;}
+.prov-quote{font-family:var(--serif);font-size:clamp(19px,2.4vw,28px);color:var(--white);line-height:1.55;font-weight:300;font-style:italic;margin-top:-56px;position:relative;z-index:1;}
+.prov-quote em{color:rgba(180,215,183,.85);font-style:normal;}
+.prov-attr{margin-top:26px;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(120,158,123,.4);border-left:2px solid var(--sage-d);padding-left:12px;line-height:1.8;}
+.prov-card{background:var(--ivory);padding:48px;border-top:3px solid var(--sage);}
+.prov-body{font-size:14px;color:var(--ink);line-height:1.95;font-weight:300;margin-bottom:18px;}
 .prov-body strong{color:var(--charcoal);font-weight:500;}
 .prov-body em{font-style:italic;color:var(--sage-dd);}
-.prov-badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;padding-top:28px;border-top:1px solid rgba(139,169,142,.18);}
-.prov-badge{display:flex;align-items:center;gap:8px;background:var(--sage-pale);border:1px solid rgba(139,169,142,.22);padding:8px 14px;}
-.prov-badge-icon{font-size:14px;}
-.prov-badge-text{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--sage-dd);font-weight:500;}
+.prov-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;padding-top:24px;border-top:1px solid rgba(120,158,123,.18);}
+.prov-badge{display:flex;align-items:center;gap:7px;background:var(--sage-pale);border:1px solid rgba(120,158,123,.22);padding:7px 12px;}
+.pb-icon{font-size:13px;}
+.pb-text{font-size:8.5px;letter-spacing:1px;text-transform:uppercase;color:var(--sage-dd);font-weight:500;}
 
-/* ═══════════════════════════════════════════════════════
-   FORMULA — 26 Ingredients, 6 Groups
-═══════════════════════════════════════════════════════ */
-#formula{background:var(--ivory);}
-.formula-header{text-align:center;margin-bottom:80px;}
-.formula-header .s-label{justify-content:center;}
-.formula-header .s-label::before{display:none;}
-.formula-header .s-label::after{content:'';width:28px;height:1px;background:currentColor;opacity:.5;}
-.fgroups{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.fg{background:var(--white);padding:38px 32px;border-top:3px solid transparent;cursor:none;transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out);}
-.fg:hover{transform:translateY(-7px);box-shadow:0 24px 72px rgba(26,21,16,.09);}
-.fg:nth-child(1){border-top-color:#8BA98E;}
-.fg:nth-child(2){border-top-color:#5A7A5E;}
-.fg:nth-child(3){border-top-color:#C4A05A;}
-.fg:nth-child(4){border-top-color:#3A5A3E;}
-.fg:nth-child(5){border-top-color:#9A7830;}
-.fg:nth-child(6){border-top-color:#162418;}
-.fg-icon{font-size:26px;margin-bottom:18px;display:block;}
-.fg-title{font-family:var(--serif);font-size:16px;color:var(--charcoal);font-weight:500;margin-bottom:3px;}
-.fg-sub{font-size:8px;letter-spacing:1.5px;color:var(--grey-l);display:block;margin-bottom:22px;font-style:italic;line-height:1.7;}
-.ings{display:flex;flex-direction:column;}
-.ing{padding:7px 0;border-bottom:1px solid rgba(139,169,142,.1);font-size:12.5px;color:var(--ink);line-height:1.4;}
-.ing:last-child{border-bottom:none;}
-.fg-note{margin-top:22px;padding:14px 16px;font-size:11px;color:var(--grey);line-height:1.75;font-weight:300;}
-.fg-note.sage{background:rgba(139,169,142,.07);border-left:2px solid var(--sage-d);}
-.fg-note.gold{background:rgba(196,160,90,.07);border-left:2px solid var(--gold);}
-/* Formula footer strip */
-.formula-foot{margin-top:20px;padding:32px 44px;background:var(--sage-pale);border-top:2px solid var(--sage);text-align:center;}
-.formula-foot-main{font-family:var(--serif);font-size:19px;color:var(--charcoal);margin-bottom:8px;font-weight:400;}
-.formula-foot-sub{font-size:11px;color:var(--grey-l);letter-spacing:.5px;line-height:1.7;}
-
-/* ═══════════════════════════════════════════════════════
-   SCIENCE — Dark, Metrics
-═══════════════════════════════════════════════════════ */
-#science{background:linear-gradient(180deg,var(--forest-m) 0%,var(--forest) 100%);}
-.sci-head{text-align:center;margin-bottom:80px;}
-.sci-head .s-label{justify-content:center;color:var(--sage);}
-.sci-head .s-label::before{display:none;}
-.sci-head .s-label::after{content:'';width:28px;height:1px;background:currentColor;opacity:.5;}
-.sci-head .s-title{color:var(--white);}
-.sci-head .s-lead{color:rgba(139,169,142,.5);margin:18px auto 0;text-align:center;}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(139,169,142,.08);}
-.metric{background:rgba(14,26,16,.85);padding:56px 24px;text-align:center;position:relative;overflow:hidden;transition:background .35s;}
-.metric:hover{background:rgba(22,36,24,.9);}
-.metric::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;}
-.metric:nth-child(1)::after{background:var(--sage-l);}
-.metric:nth-child(2)::after{background:var(--sage);}
-.metric:nth-child(3)::after{background:var(--gold);}
-.metric:nth-child(4)::after{background:var(--sage-mid);}
-.met-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);margin-bottom:18px;}
-.met-val{font-family:var(--serif);font-size:clamp(44px,5vw,64px);color:var(--white);font-weight:300;line-height:1;margin-bottom:14px;}
-.met-val sup{font-size:28px;vertical-align:super;line-height:0;}
-.met-desc{font-size:11px;color:rgba(139,169,142,.42);line-height:1.7;font-weight:300;max-width:160px;margin:0 auto;}
-.sci-note{text-align:center;font-size:11px;color:rgba(139,169,142,.25);font-style:italic;margin-top:48px;border-top:1px solid rgba(139,169,142,.07);padding-top:36px;}
-
-/* ═══════════════════════════════════════════════════════
-   RITUAL — Warm Cream
-═══════════════════════════════════════════════════════ */
-#ritual{background:var(--cream);}
-.ritual-grid{display:grid;grid-template-columns:5fr 4fr;gap:88px;align-items:center;}
-.ritual-steps{margin-top:44px;display:flex;flex-direction:column;}
-.rstep{display:flex;gap:32px;align-items:flex-start;padding:30px 0;border-bottom:1px solid rgba(139,169,142,.16);}
-.rstep:last-child{border-bottom:none;}
-.rs-num{font-family:var(--serif);font-size:48px;color:rgba(139,169,142,.2);font-weight:300;line-height:.9;flex-shrink:0;width:42px;}
-.rs-body{}
-.rs-title{font-family:var(--serif);font-size:19px;color:var(--charcoal);font-weight:500;margin-bottom:8px;}
-.rs-desc{font-size:13px;color:var(--grey);line-height:1.85;font-weight:300;}
-/* Visual */
-.ritual-vis{display:flex;align-items:center;justify-content:center;}
-.r-orb{width:340px;height:340px;border-radius:50%;background:linear-gradient(135deg,var(--sage-pale) 0%,var(--ivory) 50%,var(--sage-pale) 100%);border:1px solid rgba(139,169,142,.22);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 0 80px rgba(139,169,142,.1),0 24px 72px rgba(14,26,16,.05);}
-.r-orb::before{content:'';position:absolute;inset:-18px;border-radius:50%;border:1px dashed rgba(139,169,142,.18);animation:slowSpin 32s linear infinite;}
-.r-orb::after{content:'';position:absolute;inset:-36px;border-radius:50%;border:1px dashed rgba(196,160,90,.09);animation:slowSpin 22s linear infinite reverse;}
-@keyframes slowSpin{to{transform:rotate(360deg);}}
-.r-orb-inner{text-align:center;}
-.r-orb-glyph{font-size:64px;display:block;filter:drop-shadow(0 8px 24px rgba(139,169,142,.4));}
-.r-orb-label{font-family:var(--serif);font-size:11px;color:var(--sage-d);letter-spacing:2px;text-transform:uppercase;margin-top:10px;opacity:.8;}
-
-/* ═══════════════════════════════════════════════════════
-   AVAILABILITY — 3 Markets
-═══════════════════════════════════════════════════════ */
-#availability{background:var(--white);}
-.avail-head{text-align:center;margin-bottom:72px;}
-.avail-head .s-label{justify-content:center;}
-.avail-head .s-label::before{display:none;}
-.avail-head .s-label::after{content:'';width:28px;height:1px;background:currentColor;opacity:.5;}
-.markets{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:rgba(139,169,142,.1);}
-.mkt{background:var(--white);padding:52px 44px;transition:background .35s;}
-.mkt:hover{background:var(--sage-pale);}
-.mkt-flag{font-size:40px;margin-bottom:20px;display:block;}
-.mkt-name{font-family:var(--serif);font-size:26px;color:var(--charcoal);font-weight:400;margin-bottom:4px;}
-.mkt-sub{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage-d);margin-bottom:32px;display:block;}
-.stockists{display:flex;flex-direction:column;gap:0;}
-.stk{padding:13px 0;border-bottom:1px solid rgba(139,169,142,.13);cursor:none;}
-.stk:last-child{border-bottom:none;}
-.stk-name{font-size:13.5px;color:var(--charcoal);font-weight:500;margin-bottom:2px;}
-.stk-type{font-size:10px;color:var(--sage-d);letter-spacing:.3px;}
-.mkt-note{margin-top:22px;font-size:11px;color:var(--grey-l);font-style:italic;line-height:1.7;}
-/* Availability note bar */
-.avail-note{background:var(--sage-pale);border-top:2px solid var(--sage);padding:30px 44px;text-align:center;margin-top:0;}
-.avail-note p{font-size:11.5px;color:var(--grey);line-height:1.85;max-width:820px;margin:0 auto;}
-
-/* ═══════════════════════════════════════════════════════
-   INQUIRY — Dark Form
-═══════════════════════════════════════════════════════ */
-#inquiry{background:linear-gradient(160deg,var(--forest) 0%,var(--forest-m) 100%);}
-.inq-inner{max-width:700px;margin:0 auto;text-align:center;}
-.inq-head{margin-bottom:56px;}
-.inq-head .s-label{justify-content:center;color:var(--sage);}
-.inq-head .s-label::before{display:none;}
-.inq-head .s-label::after{content:'';width:28px;height:1px;background:currentColor;opacity:.5;}
-.inq-head .s-title{color:var(--white);}
-.inq-head .s-lead{color:rgba(139,169,142,.45);margin:18px auto 0;text-align:center;}
-.inq-form{background:rgba(255,255,255,.04);border:1px solid rgba(139,169,142,.14);padding:56px;text-align:left;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
-.if-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
-.if-g{display:flex;flex-direction:column;gap:8px;}
-.if-g.full{grid-column:1/-1;}
-.if-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(139,169,142,.45);}
-.if-inp{background:rgba(255,255,255,.05);border:1px solid rgba(139,169,142,.16);padding:14px 18px;font-size:13px;color:var(--white);outline:none;transition:border-color .3s,box-shadow .3s;width:100%;-webkit-appearance:none;}
-.if-inp::placeholder{color:rgba(139,169,142,.22);}
-.if-inp:focus{border-color:var(--sage);box-shadow:0 0 0 2px rgba(139,169,142,.08);}
-select.if-inp option{background:var(--forest);color:var(--white);}
-.if-ta{min-height:108px;resize:vertical;line-height:1.75;}
-.if-btn{width:100%;background:transparent;border:1px solid rgba(139,169,142,.4);color:var(--sage-l);padding:18px;font-size:9.5px;letter-spacing:3px;text-transform:uppercase;transition:all .4s var(--ease-out);margin-top:10px;cursor:none;}
-.if-btn:hover{background:var(--sage);border-color:var(--sage);color:var(--forest);}
-.if-note{margin-top:22px;text-align:center;font-size:10px;color:rgba(139,169,142,.25);font-style:italic;line-height:1.75;}
-#inq-success{display:none;margin-top:16px;background:rgba(139,169,142,.09);border:1px solid rgba(139,169,142,.2);padding:32px;text-align:center;}
-.inq-ok-title{font-family:var(--serif);font-size:22px;color:var(--sage-l);margin-bottom:8px;}
-.inq-ok-body{font-size:12px;color:rgba(139,169,142,.55);line-height:1.75;}
-
-/* ═══════════════════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════════════════ */
-footer{background:#040705;}
-.f-sage-bar{height:2px;background:linear-gradient(90deg,transparent 0%,var(--sage-dd) 15%,var(--sage-d) 35%,var(--sage) 50%,var(--sage-l) 65%,var(--sage) 80%,var(--sage-dd) 92%,transparent 100%);}
-.f-inner{padding:60px 0 36px;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:52px;}
-.f-brand .flogo{font-family:var(--serif);font-size:21px;color:var(--white);letter-spacing:6px;text-transform:uppercase;font-weight:300;display:block;margin-bottom:4px;}
-.f-brand .flogo-sub{font-size:7.5px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);opacity:.55;display:block;}
-.f-brand .ftagline{font-size:12px;color:rgba(255,255,255,.18);font-style:italic;margin-top:18px;line-height:1.8;font-family:var(--serif);max-width:240px;}
-.fcol-title{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);opacity:.65;margin-bottom:18px;display:block;}
-.flinks{display:flex;flex-direction:column;gap:10px;}
-.flink{font-size:11.5px;color:rgba(255,255,255,.22);transition:color .3s;}
-.flink:hover{color:var(--sage-l);}
-.f-botanical{margin-top:26px;font-size:9px;color:rgba(139,169,142,.2);letter-spacing:.5px;line-height:1.8;}
-.f-divider{height:1px;background:rgba(255,255,255,.05);margin:36px 0 26px;}
-.f-bottom{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;}
-.f-copy{font-size:10px;color:rgba(255,255,255,.16);line-height:1.7;}
-.f-tm{font-size:9px;color:rgba(139,169,142,.18);font-style:italic;text-align:right;}
-
-/* Toast */
-#toast{position:fixed;bottom:32px;right:32px;background:var(--forest);border-left:2px solid var(--sage);padding:22px 28px;box-shadow:0 8px 60px rgba(0,0,0,.6);z-index:99999;transform:translateY(18px);opacity:0;pointer-events:none;transition:all .55s var(--ease-out);max-width:320px;}
-#toast.show{transform:translateY(0);opacity:1;}
-.toast-t{font-family:var(--serif);font-size:15px;color:var(--sage-l);margin-bottom:6px;}
-.toast-b{font-size:11px;color:rgba(139,169,142,.48);line-height:1.6;}
-
-/* ═══════════════════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════════════════ */
-/* ═══════════════════════════════════════════════════════
-   THE COLLECTION — 5 Tier Architecture
-═══════════════════════════════════════════════════════ */
+/* ═══ COLLECTION ══════════════════════════════════════════════════ */
 #collection{background:linear-gradient(180deg,var(--cream) 0%,var(--ivory) 100%);}
-.coll-head{text-align:center;margin-bottom:80px;}
+.coll-head{text-align:center;margin-bottom:72px;}
 .coll-head .s-label{justify-content:center;}
 .coll-head .s-label::before{display:none;}
-.coll-head .s-label::after{content:'';width:28px;height:1px;background:currentColor;opacity:.5;}
-.tier-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:rgba(139,169,142,.1);}
-.tier{padding:46px 26px 36px;transition:transform .45s var(--ease-out),box-shadow .45s;cursor:none;position:relative;overflow:hidden;}
-.tier:hover{transform:translateY(-10px);z-index:2;box-shadow:0 40px 90px rgba(14,26,16,.18);}
+.coll-head .s-label::after{content:'';width:26px;height:1px;background:currentColor;opacity:.5;}
+.tier-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:rgba(120,158,123,.1);}
+.tier{padding:44px 22px 32px;transition:transform .4s var(--ease),box-shadow .4s;position:relative;overflow:hidden;}
+.tier:hover{transform:translateY(-8px);z-index:2;box-shadow:0 36px 80px rgba(12,28,14,.14);}
 .tier::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-.t1{background:#FDFBF5;}.t2{background:#F4F8F2;}.t3{background:#E8F0E8;}
-.t4{background:var(--forest-m);}.t5{background:#040705;}
+.t1{background:#FDFBF6;}.t2{background:#F5F9F4;}.t3{background:#EBF1EB;}
+.t4{background:var(--forest-m);}.t5{background:#04060A;}
 .t1::before{background:var(--sage-pale);}
-.t2::before{background:var(--sage-l);}
+.t2::before{background:rgba(120,158,123,.6);}
 .t3::before{background:var(--sage);}
 .t4::before{background:var(--sage-d);}
-.t5::before{background:linear-gradient(90deg,var(--gold-d),var(--gold-l),var(--gold-d));}
-.tier-crown{position:absolute;top:18px;right:16px;font-size:7px;letter-spacing:2px;text-transform:uppercase;padding:4px 9px;background:rgba(196,160,90,.1);border:1px solid rgba(196,160,90,.28);color:var(--gold);}
-.tier-num{font-size:8px;letter-spacing:3.5px;text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:10px;}
-.tier-num::after{content:'';flex:1;height:1px;}
-.t1 .tier-num,.t2 .tier-num{color:var(--sage-d);}
-.t1 .tier-num::after,.t2 .tier-num::after{background:rgba(139,169,142,.2);}
-.t3 .tier-num{color:var(--sage-dd);}
-.t3 .tier-num::after{background:rgba(58,90,62,.15);}
-.t4 .tier-num{color:rgba(139,169,142,.55);}
-.t4 .tier-num::after{background:rgba(139,169,142,.15);}
-.t5 .tier-num{color:var(--gold);}
-.t5 .tier-num::after{background:rgba(196,160,90,.2);}
-.tier-name{font-family:var(--serif);font-size:26px;font-weight:300;line-height:1.1;margin-bottom:5px;letter-spacing:-.3px;}
-.t1 .tier-name,.t2 .tier-name,.t3 .tier-name{color:var(--charcoal);}
-.t4 .tier-name{color:var(--white);}
-.t5 .tier-name{color:var(--gold-l);}
-.tier-tagline{font-size:9px;font-style:italic;margin-bottom:22px;}
-.t1 .tier-tagline,.t2 .tier-tagline,.t3 .tier-tagline{color:var(--grey-l);}
-.t4 .tier-tagline{color:rgba(139,169,142,.4);}
-.t5 .tier-tagline{color:rgba(196,160,90,.45);}
-.tier-price{font-family:var(--serif);font-size:30px;font-weight:300;letter-spacing:-.5px;margin-bottom:4px;line-height:1;}
-.t1 .tier-price,.t2 .tier-price,.t3 .tier-price{color:var(--charcoal);}
-.t4 .tier-price{color:var(--white);}
-.t5 .tier-price{color:var(--gold);}
-.tier-unit{font-size:8.5px;letter-spacing:.8px;margin-bottom:26px;}
-.t1 .tier-unit,.t2 .tier-unit,.t3 .tier-unit{color:var(--grey-l);}
-.t4 .tier-unit{color:rgba(139,169,142,.4);}
-.t5 .tier-unit{color:rgba(196,160,90,.4);}
-.tier-sep{height:1px;margin-bottom:22px;}
-.t1 .tier-sep,.t2 .tier-sep,.t3 .tier-sep{background:rgba(139,169,142,.15);}
-.t4 .tier-sep{background:rgba(139,169,142,.15);}
-.t5 .tier-sep{background:rgba(196,160,90,.2);}
-.tier-ings{margin-bottom:22px;display:flex;flex-direction:column;gap:6px;}
-.tier-ing{font-size:10.5px;line-height:1.4;display:flex;align-items:flex-start;gap:6px;}
-.tier-ing::before{content:'·';flex-shrink:0;}
-.t1 .tier-ing,.t2 .tier-ing,.t3 .tier-ing{color:var(--grey);}
-.t1 .tier-ing::before,.t2 .tier-ing::before,.t3 .tier-ing::before{color:var(--sage);}
-.t4 .tier-ing{color:rgba(255,255,255,.35);}
-.t4 .tier-ing::before{color:rgba(139,169,142,.5);}
-.t5 .tier-ing{color:rgba(232,212,158,.45);}
-.t5 .tier-ing::before{color:var(--gold-d);}
-.tier-desc{font-size:11px;line-height:1.8;margin-bottom:28px;font-style:italic;}
-.t1 .tier-desc,.t2 .tier-desc,.t3 .tier-desc{color:var(--grey-l);}
-.t4 .tier-desc{color:rgba(139,169,142,.35);}
-.t5 .tier-desc{color:rgba(196,160,90,.4);}
-.tier-btn{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;padding:13px 16px;border:1px solid;transition:all .35s;cursor:none;display:block;text-align:center;width:100%;}
-.t1 .tier-btn,.t2 .tier-btn,.t3 .tier-btn{color:var(--sage-d);border-color:rgba(139,169,142,.35);}
-.t1 .tier-btn:hover,.t2 .tier-btn:hover,.t3 .tier-btn:hover{background:var(--sage);color:var(--white);border-color:var(--sage);}
-.t4 .tier-btn{color:var(--sage-l);border-color:rgba(139,169,142,.3);}
-.t4 .tier-btn:hover{background:var(--sage);color:var(--forest-s);border-color:var(--sage);}
-.t5 .tier-btn{color:var(--gold-l);border-color:rgba(196,160,90,.4);}
-.t5 .tier-btn:hover{background:var(--gold);color:var(--forest-s);border-color:var(--gold);}
-.coll-note{margin-top:2px;background:var(--forest-s);padding:28px 44px;text-align:center;}
-.coll-note p{font-size:11px;color:rgba(139,169,142,.3);letter-spacing:.5px;line-height:1.9;font-style:italic;}
-/* Tier 6 — Muse Achieve Exclusive */
-.tier-6-block{margin-top:3px;background:linear-gradient(135deg,#040705 0%,#0A1408 50%,#060A04 100%);padding:72px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;overflow:hidden;}
-.tier-6-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-d),var(--gold-l),var(--gold),var(--gold-l),var(--gold-d),transparent);}
-.tier-6-block::after{content:'VI';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:220px;font-weight:300;color:rgba(196,160,90,.04);line-height:1;pointer-events:none;letter-spacing:-10px;}
-.t6-badge{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,160,90,.3);display:inline-flex;align-items:center;gap:8px;padding:6px 14px;margin-bottom:28px;}
-.t6-badge::before,.t6-badge::after{content:'✦';font-size:6px;opacity:.7;}
-.t6-num{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(196,160,90,.35);margin-bottom:12px;display:flex;align-items:center;gap:12px;}
-.t6-num::after{content:'';flex:1;max-width:40px;height:1px;background:rgba(196,160,90,.2);}
-.t6-name{font-family:var(--serif);font-size:52px;font-weight:300;color:var(--gold-l);line-height:1;letter-spacing:-1px;margin-bottom:8px;}
-.t6-sub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(196,160,90,.42);margin-bottom:32px;}
-.t6-sep{width:40px;height:1px;background:rgba(196,160,90,.25);margin-bottom:28px;}
-.t6-body{font-size:14px;line-height:2;color:rgba(232,212,158,.5);font-style:italic;font-family:var(--serif);}
-.t6-right{display:flex;flex-direction:column;gap:22px;}
-.t6-attr{display:flex;flex-direction:column;gap:4px;padding:18px 0;border-bottom:1px solid rgba(196,160,90,.1);}
-.t6-attr:first-child{border-top:1px solid rgba(196,160,90,.1);}
-.t6-attr-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(196,160,90,.3);}
-.t6-attr-val{font-size:13px;color:rgba(232,212,158,.7);font-family:var(--serif);font-weight:300;}
-.t6-price{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--gold);margin-top:8px;}
-.t6-price-note{font-size:9.5px;color:rgba(196,160,90,.3);letter-spacing:.5px;margin-bottom:32px;}
-.t6-btn{display:inline-block;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;padding:16px 32px;border:1px solid rgba(196,160,90,.45);color:var(--gold-l);transition:all .4s var(--ease-out);cursor:none;}
-.t6-btn:hover{background:var(--gold);color:var(--forest-s);border-color:var(--gold);}
-@media(max-width:900px){.tier-6-block{grid-template-columns:1fr;gap:36px;padding:48px 36px;}.tier-6-block::after{display:none;}}
-@media(max-width:600px){.tier-6-block{padding:44px 24px;}}
-/* Channel / Platform section */
-.ch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2px;background:rgba(139,169,142,.06);}
-.ch-col{padding:52px 40px;border-right:1px solid rgba(139,169,142,.1);}
-.ch-col:last-child{border-right:none;}
-.ch-flag{font-size:28px;margin-bottom:16px;}
-.ch-country{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--charcoal);margin-bottom:4px;}
-.ch-sub{font-size:9px;letter-spacing:1.5px;color:var(--grey-l);text-transform:uppercase;margin-bottom:28px;}
-.ch-channels{display:flex;flex-direction:column;gap:16px;}
-.ch-item{display:flex;flex-direction:column;gap:3px;}
-.ch-item-type{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--sage-d);}
-.ch-item-name{font-size:13px;color:var(--charcoal);font-family:var(--serif);font-weight:300;}
-.ch-item-desc{font-size:10px;color:var(--grey-l);line-height:1.5;}
-.ch-cta{margin-top:28px;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--sage);border:1px solid rgba(139,169,142,.3);display:inline-block;padding:11px 20px;transition:all .3s;cursor:none;}
-.ch-cta:hover{background:var(--sage);color:var(--white);border-color:var(--sage);}
-@media(max-width:1100px){.ch-grid{grid-template-columns:1fr;}.ch-col{border-right:none;border-bottom:1px solid rgba(139,169,142,.1);}}
-/* Avail note */
-.avail-note-new{margin-top:36px;padding:24px 36px;background:rgba(139,169,142,.06);border-left:2px solid rgba(139,169,142,.25);}
-.avail-note-new p{font-size:11px;color:var(--grey-l);line-height:1.9;font-style:italic;letter-spacing:.3px;}
+.t5::before{background:linear-gradient(90deg,#9A7A30,var(--gold-l),#9A7A30);}
+.t-num{font-size:8px;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.t-num::after{content:'';flex:1;height:1px;}
+.t1 .t-num,.t2 .t-num{color:var(--sage-d);}.t1 .t-num::after,.t2 .t-num::after{background:rgba(120,158,123,.2);}
+.t3 .t-num{color:var(--sage-dd);}.t3 .t-num::after{background:rgba(46,82,48,.15);}
+.t4 .t-num{color:rgba(120,158,123,.55);}.t4 .t-num::after{background:rgba(120,158,123,.15);}
+.t5 .t-num{color:var(--gold);}.t5 .t-num::after{background:rgba(196,163,88,.2);}
+.t-name{font-family:var(--serif);font-size:24px;font-weight:300;line-height:1.1;margin-bottom:4px;}
+.t1 .t-name,.t2 .t-name,.t3 .t-name{color:var(--charcoal);}
+.t4 .t-name{color:var(--white);}
+.t5 .t-name{color:var(--gold-l);}
+.t-tag{font-size:9px;font-style:italic;margin-bottom:18px;}
+.t1 .t-tag,.t2 .t-tag,.t3 .t-tag{color:var(--grey-l);}
+.t4 .t-tag{color:rgba(120,158,123,.4);}.t5 .t-tag{color:rgba(196,163,88,.45);}
+.t-price{font-family:var(--serif);font-size:28px;font-weight:300;margin-bottom:3px;line-height:1;}
+.t1 .t-price,.t2 .t-price,.t3 .t-price{color:var(--charcoal);}
+.t4 .t-price{color:var(--white);}.t5 .t-price{color:var(--gold);}
+.t-unit{font-size:8px;letter-spacing:.8px;margin-bottom:22px;}
+.t1 .t-unit,.t2 .t-unit,.t3 .t-unit{color:var(--grey-l);}
+.t4 .t-unit{color:rgba(120,158,123,.4);}.t5 .t-unit{color:rgba(196,163,88,.4);}
+.t-sep{height:1px;margin-bottom:18px;}
+.t1 .t-sep,.t2 .t-sep,.t3 .t-sep{background:rgba(120,158,123,.15);}
+.t4 .t-sep,.t5 .t-sep{background:rgba(120,158,123,.12);}
+.t-ings{display:flex;flex-direction:column;gap:5px;margin-bottom:18px;}
+.t-ing{font-size:10px;line-height:1.4;display:flex;align-items:flex-start;gap:5px;}
+.t-ing::before{content:'·';flex-shrink:0;}
+.t1 .t-ing,.t2 .t-ing,.t3 .t-ing{color:var(--grey);}
+.t1 .t-ing::before,.t2 .t-ing::before,.t3 .t-ing::before{color:var(--sage);}
+.t4 .t-ing{color:rgba(255,255,255,.32);}.t4 .t-ing::before{color:rgba(120,158,123,.5);}
+.t5 .t-ing{color:rgba(224,192,120,.4);}.t5 .t-ing::before{color:var(--gold);}
+.t-btn{font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:12px 14px;border:1px solid;transition:all .3s;display:block;text-align:center;width:100%;margin-top:auto;}
+.t1 .t-btn,.t2 .t-btn,.t3 .t-btn{color:var(--sage-d);border-color:rgba(120,158,123,.35);}
+.t1 .t-btn:hover,.t2 .t-btn:hover,.t3 .t-btn:hover{background:var(--sage);color:var(--white);border-color:var(--sage);}
+.t4 .t-btn{color:var(--sage);border-color:rgba(120,158,123,.3);}
+.t4 .t-btn:hover{background:var(--sage);color:var(--forest);border-color:var(--sage);}
+.t5 .t-btn{color:var(--gold-l);border-color:rgba(196,163,88,.4);}
+.t5 .t-btn:hover{background:var(--gold);color:var(--forest);border-color:var(--gold);}
+.coll-note{margin-top:2px;background:var(--forest);padding:24px 40px;text-align:center;}
+.coll-note p{font-size:11px;color:rgba(120,158,123,.3);letter-spacing:.5px;line-height:1.9;font-style:italic;}
 
-/* ═══════════════════════════════════════════════════════
-   NIGHT MODE — body.night
-═══════════════════════════════════════════════════════ */
-body.night{background:var(--forest-s);color:rgba(237,243,238,.88);}
-body.night .s-title{color:rgba(237,243,238,.92);}
-body.night .s-title em{color:var(--sage-l);}
-body.night .s-lead{color:rgba(174,203,178,.5);}
-body.night .s-label{color:rgba(139,169,142,.5);}
-/* Nav */
-body.night #nav{border-bottom-color:rgba(139,169,142,.06);}
-body.night #nav.scrolled{background:rgba(6,13,7,.96);}
-body.night .nav-link{color:rgba(174,203,178,.5);}
-body.night .nav-link.active{color:var(--sage-l);border-bottom-color:rgba(174,203,178,.35);}
-body.night .nav-link:hover{color:var(--white);}
-body.night .nav-ham span{background:rgba(174,203,178,.65);}
-body.night .mob-drawer{background:var(--forest-s);}
-body.night .mob-link{color:rgba(174,203,178,.65);border-bottom-color:rgba(139,169,142,.1);}
-body.night .lumi-icon-btn{border-color:rgba(139,169,142,.18);color:rgba(174,203,178,.45);}
-body.night .lumi-icon-btn:hover{border-color:var(--sage);color:var(--sage-l);background:rgba(139,169,142,.08);}
-/* Provenance */
-body.night .prov-r{background:var(--forest-m)!important;border-top-color:var(--sage-dd);}
-body.night .prov-badge-text{color:rgba(174,203,178,.55);}
-/* Collection */
-body.night #collection{background:linear-gradient(180deg,var(--forest-m) 0%,var(--forest) 100%)!important;}
-body.night .t1{background:rgba(255,255,255,.025)!important;}
-body.night .t2{background:rgba(139,169,142,.04)!important;}
-body.night .t3{background:rgba(58,90,62,.25)!important;}
-body.night .t1 .tier-name,body.night .t2 .tier-name,body.night .t3 .tier-name{color:rgba(237,243,238,.88);}
-body.night .t1 .tier-price,body.night .t2 .tier-price,body.night .t3 .tier-price{color:rgba(237,243,238,.85);}
-body.night .t1 .tier-unit,body.night .t2 .tier-unit,body.night .t3 .tier-unit{color:rgba(174,203,178,.35);}
-body.night .t1 .tier-ing,body.night .t2 .tier-ing,body.night .t3 .tier-ing{color:rgba(174,203,178,.45);}
-body.night .t1 .tier-sep,body.night .t2 .tier-sep,body.night .t3 .tier-sep{background:rgba(139,169,142,.1);}
-body.night .t1 .tier-tagline,body.night .t2 .tier-tagline,body.night .t3 .tier-tagline{color:rgba(139,169,142,.38);}
-/* Formula */
-body.night #formula{background:var(--forest-m)!important;}
-body.night .fg{background:rgba(255,255,255,.03)!important;}
-body.night .fg:hover{background:rgba(255,255,255,.06)!important;box-shadow:0 24px 72px rgba(0,0,0,.45);}
-body.night .fg-title{color:rgba(237,243,238,.88);}
-body.night .fg-sub{color:rgba(139,169,142,.38);}
-body.night .ing{color:rgba(174,203,178,.55);border-bottom-color:rgba(139,169,142,.07);}
-body.night .fg-note{color:rgba(139,169,142,.45);}
-body.night .fg-note.sage{background:rgba(139,169,142,.04);border-left-color:var(--sage-dd);}
-body.night .fg-note.gold{background:rgba(196,160,90,.04);border-left-color:var(--gold-d);}
-body.night .formula-foot{background:rgba(255,255,255,.03)!important;border-top-color:rgba(139,169,142,.15);}
-body.night .formula-foot-main{color:rgba(237,243,238,.82);}
-body.night .formula-foot-sub{color:rgba(139,169,142,.38);}
-/* Ritual */
-body.night #ritual{background:var(--forest)!important;}
-body.night .rs-title{color:rgba(237,243,238,.88);}
-body.night .rs-desc{color:rgba(174,203,178,.45);}
-body.night .rstep{border-bottom-color:rgba(139,169,142,.1);}
-body.night .r-orb{background:linear-gradient(135deg,var(--forest-l) 0%,var(--forest-m) 50%,var(--forest-l) 100%)!important;border-color:rgba(139,169,142,.12);box-shadow:0 0 80px rgba(139,169,142,.05);}
-/* Availability */
-body.night #availability{background:var(--forest-m)!important;}
-body.night .ch-country{color:rgba(237,243,238,.88)!important;}
-body.night .ch-sub{color:rgba(139,169,142,.35)!important;}
-body.night .ch-item-type{color:var(--sage-d)!important;}
-body.night .ch-item-name{color:rgba(237,243,238,.72)!important;}
-body.night .ch-item-desc{color:rgba(139,169,142,.38)!important;}
-body.night .ch-cta{color:rgba(174,203,178,.55)!important;border-color:rgba(139,169,142,.18)!important;}
-body.night .ch-grid{background:rgba(139,169,142,.03)!important;}
-body.night .ch-col{border-right-color:rgba(139,169,142,.07)!important;border-bottom-color:rgba(139,169,142,.07)!important;}
-body.night .avail-note-new{background:rgba(255,255,255,.02);border-left-color:rgba(139,169,142,.18);}
-body.night .avail-note-new p{color:rgba(139,169,142,.32);}
-body.night .avail-head .s-title{color:rgba(237,243,238,.9);}
-/* Pdiv */
-body.night .pdiv{opacity:.35;}
+/* ═══ FORMULA ════════════════════════════════════════════════════ */
+#formula{background:var(--ivory);}
+.formula-head{text-align:center;margin-bottom:72px;}
+.formula-head .s-label{justify-content:center;}
+.formula-head .s-label::before{display:none;}
+.formula-head .s-label::after{content:'';width:26px;height:1px;background:currentColor;opacity:.5;}
+.fg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.fg{background:var(--white);padding:36px 28px;border-top:3px solid transparent;transition:transform .4s var(--ease),box-shadow .4s;}
+.fg:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(18,14,10,.07);}
+.fg:nth-child(1){border-top-color:var(--sage);}
+.fg:nth-child(2){border-top-color:var(--sage-d);}
+.fg:nth-child(3){border-top-color:var(--gold);}
+.fg:nth-child(4){border-top-color:var(--sage-dd);}
+.fg:nth-child(5){border-top-color:#9A7830;}
+.fg:nth-child(6){border-top-color:var(--forest-m);}
+.fg-icon{font-size:24px;margin-bottom:16px;display:block;}
+.fg-title{font-family:var(--serif);font-size:15px;color:var(--charcoal);font-weight:500;margin-bottom:2px;}
+.fg-sub{font-size:8px;letter-spacing:1.5px;color:var(--grey-l);display:block;margin-bottom:18px;font-style:italic;}
+.ings{display:flex;flex-direction:column;}
+.ing{padding:6px 0;border-bottom:1px solid rgba(120,158,123,.1);font-size:12px;color:var(--ink);line-height:1.4;}
+.ing:last-child{border-bottom:none;}
+.fg-note{margin-top:18px;padding:12px 14px;font-size:11px;color:var(--grey);line-height:1.75;font-weight:300;}
+.fg-note.sage{background:rgba(120,158,123,.07);border-left:2px solid var(--sage-d);}
+.fg-note.gold{background:rgba(196,163,88,.07);border-left:2px solid var(--gold);}
+.formula-foot{margin-top:16px;padding:28px 40px;background:var(--sage-pale);border-top:2px solid var(--sage);text-align:center;}
+.formula-foot-main{font-family:var(--serif);font-size:18px;color:var(--charcoal);margin-bottom:6px;font-weight:400;}
+.formula-foot-sub{font-size:11px;color:var(--grey-l);letter-spacing:.3px;line-height:1.7;}
 
-@media(max-width:1100px){
-  .wrap{padding:0 40px;}
-  .h-content{padding:0 40px;}
-  #nav,#nav.scrolled{padding-left:40px;padding-right:40px;}
-  .bottle-stage{right:4%;}
-  .fgroups{grid-template-columns:1fr 1fr;}
-  .prov-grid{grid-template-columns:1fr;gap:0;}
-  .prov-l{background:var(--forest);padding:80px 40px;}
-  .tier-grid{grid-template-columns:repeat(3,1fr);}
-  .prov-r{padding:44px 40px;}
-}
-@media(max-width:900px){
-  .bottle-stage{display:none;}
-  .h-content{max-width:100%;padding:0 36px;}
-  .metrics{grid-template-columns:1fr 1fr;}
-  .ritual-grid{grid-template-columns:1fr;gap:0;}
-  .ritual-vis{display:none;}
-  .markets{grid-template-columns:1fr;}
-  .if-row{grid-template-columns:1fr;}
-  .f-inner{grid-template-columns:1fr 1fr;}
-  .fgroups{grid-template-columns:1fr 1fr;}
-  .tier-grid{grid-template-columns:repeat(2,1fr);}
-  .nav-center{display:none;}
+/* ═══ SCIENCE ════════════════════════════════════════════════════ */
+#science{background:linear-gradient(180deg,var(--forest-m) 0%,var(--forest) 100%);}
+.sci-head{text-align:center;margin-bottom:72px;}
+.sci-head .s-label{justify-content:center;color:var(--sage);}
+.sci-head .s-label::before{display:none;}
+.sci-head .s-label::after{content:'';width:26px;height:1px;background:currentColor;opacity:.5;}
+.sci-head .s-title{color:var(--white);}
+.sci-head .s-lead{color:rgba(120,158,123,.5);margin:16px auto 0;text-align:center;}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(120,158,123,.08);}
+.metric{background:rgba(14,26,16,.85);padding:52px 20px;text-align:center;position:relative;overflow:hidden;transition:background .3s;}
+.metric:hover{background:rgba(22,36,24,.9);}
+.metric::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;}
+.metric:nth-child(1)::after{background:rgba(180,215,183,.7);}
+.metric:nth-child(2)::after{background:var(--sage);}
+.metric:nth-child(3)::after{background:var(--gold);}
+.metric:nth-child(4)::after{background:rgba(120,158,123,.6);}
+.met-label{font-size:7.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);margin-bottom:16px;}
+.met-val{font-family:var(--serif);font-size:clamp(42px,5vw,60px);color:var(--white);font-weight:300;line-height:1;margin-bottom:12px;}
+.met-val sup{font-size:26px;vertical-align:super;line-height:0;}
+.met-desc{font-size:11px;color:rgba(120,158,123,.4);line-height:1.7;font-weight:300;max-width:150px;margin:0 auto;}
+.sci-note{text-align:center;font-size:11px;color:rgba(120,158,123,.22);font-style:italic;margin-top:44px;border-top:1px solid rgba(120,158,123,.07);padding-top:32px;}
+
+/* ═══ RITUAL ═════════════════════════════════════════════════════ */
+#ritual{background:var(--cream);}
+.ritual-grid{display:grid;grid-template-columns:5fr 4fr;gap:80px;align-items:center;}
+.rsteps{margin-top:40px;display:flex;flex-direction:column;}
+.rstep{display:flex;gap:28px;align-items:flex-start;padding:26px 0;border-bottom:1px solid rgba(120,158,123,.16);}
+.rstep:last-child{border-bottom:none;}
+.rs-num{font-family:var(--serif);font-size:44px;color:rgba(120,158,123,.18);font-weight:300;line-height:.9;flex-shrink:0;width:40px;}
+.rs-title{font-family:var(--serif);font-size:17px;color:var(--charcoal);font-weight:500;margin-bottom:6px;}
+.rs-desc{font-size:13px;color:var(--grey);line-height:1.85;font-weight:300;}
+.ritual-vis{display:flex;align-items:center;justify-content:center;}
+.r-orb{width:320px;height:320px;border-radius:50%;background:linear-gradient(135deg,var(--sage-pale) 0%,var(--ivory) 55%,var(--sage-pale) 100%);border:1px solid rgba(120,158,123,.2);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 0 60px rgba(120,158,123,.08);}
+.r-orb::before{content:'';position:absolute;inset:-16px;border-radius:50%;border:1px dashed rgba(120,158,123,.15);animation:spin 28s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.r-orb-glyph{font-size:58px;filter:drop-shadow(0 6px 20px rgba(120,158,123,.35));}
+
+/* ═══ AVAILABILITY ═══════════════════════════════════════════════ */
+#availability{background:var(--white);}
+.avail-head{text-align:center;margin-bottom:64px;}
+.avail-head .s-label{justify-content:center;}
+.avail-head .s-label::before{display:none;}
+.avail-head .s-label::after{content:'';width:26px;height:1px;background:currentColor;opacity:.5;}
+.markets{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:rgba(120,158,123,.1);}
+.mkt{background:var(--white);padding:48px 40px;transition:background .3s;}
+.mkt:hover{background:var(--sage-pale);}
+.mkt-flag{font-size:38px;margin-bottom:18px;display:block;}
+.mkt-name{font-family:var(--serif);font-size:24px;color:var(--charcoal);font-weight:400;margin-bottom:3px;}
+.mkt-sub{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--sage-d);margin-bottom:28px;display:block;}
+.stockists{display:flex;flex-direction:column;}
+.stk{padding:11px 0;border-bottom:1px solid rgba(120,158,123,.12);}
+.stk:last-child{border-bottom:none;}
+.stk-name{font-size:13px;color:var(--charcoal);font-weight:500;margin-bottom:2px;}
+.stk-type{font-size:9.5px;color:var(--sage-d);letter-spacing:.3px;}
+.mkt-note{margin-top:20px;font-size:11px;color:var(--grey-l);font-style:italic;line-height:1.7;}
+.avail-note{background:var(--sage-pale);border-top:2px solid var(--sage);padding:26px 40px;text-align:center;}
+.avail-note p{font-size:11.5px;color:var(--grey);line-height:1.85;max-width:800px;margin:0 auto;}
+
+/* ═══ INQUIRY ════════════════════════════════════════════════════ */
+#inquiry{background:linear-gradient(160deg,var(--forest) 0%,var(--forest-m) 100%);}
+.inq-inner{max-width:680px;margin:0 auto;text-align:center;}
+.inq-head{margin-bottom:52px;}
+.inq-head .s-label{justify-content:center;color:var(--sage);}
+.inq-head .s-label::before{display:none;}
+.inq-head .s-label::after{content:'';width:26px;height:1px;background:currentColor;opacity:.5;}
+.inq-head .s-title{color:var(--white);}
+.inq-head .s-lead{color:rgba(120,158,123,.45);margin:16px auto 0;text-align:center;}
+.inq-form{background:rgba(255,255,255,.04);border:1px solid rgba(120,158,123,.13);padding:52px;text-align:left;backdrop-filter:blur(10px);}
+.if-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.if-g{display:flex;flex-direction:column;gap:7px;}
+.if-g.full{grid-column:1/-1;}
+.if-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(120,158,123,.45);}
+.if-inp{background:rgba(255,255,255,.04);border:1px solid rgba(120,158,123,.16);padding:13px 16px;font-size:13px;color:var(--white);outline:none;transition:border-color .25s;width:100%;-webkit-appearance:none;}
+.if-inp::placeholder{color:rgba(120,158,123,.2);}
+.if-inp:focus{border-color:var(--sage);}
+select.if-inp option{background:var(--forest);color:var(--white);}
+.if-ta{min-height:100px;resize:vertical;line-height:1.75;}
+.if-btn{width:100%;background:transparent;border:1px solid rgba(120,158,123,.4);color:rgba(180,215,183,.85);padding:16px;font-size:9px;letter-spacing:3px;text-transform:uppercase;transition:all .35s;margin-top:8px;}
+.if-btn:hover{background:var(--sage);border-color:var(--sage);color:var(--white);}
+.if-note{margin-top:20px;text-align:center;font-size:10px;color:rgba(120,158,123,.22);font-style:italic;line-height:1.75;}
+#inq-success{display:none;margin-top:16px;background:rgba(120,158,123,.09);border:1px solid rgba(120,158,123,.2);padding:28px;text-align:center;}
+.inq-ok-title{font-family:var(--serif);font-size:21px;color:rgba(180,215,183,.9);margin-bottom:7px;}
+.inq-ok-body{font-size:12px;color:rgba(120,158,123,.5);line-height:1.75;}
+
+/* ═══ FOOTER ══════════════════════════════════════════════════════ */
+footer{background:#040705;}
+.ft-sage-bar{height:2px;background:linear-gradient(90deg,transparent,var(--sage-dd),var(--sage-d),var(--sage),var(--sage-d),var(--sage-dd),transparent);}
+.ft-inner{padding:56px 56px 32px;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:48px;}
+.flogo{font-family:var(--serif);font-size:19px;color:var(--white);letter-spacing:5px;text-transform:uppercase;font-weight:300;display:block;margin-bottom:3px;}
+.flogo-sub{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);opacity:.5;display:block;margin-bottom:16px;}
+.ftagline{font-size:12px;color:rgba(255,255,255,.15);font-style:italic;line-height:1.8;font-family:var(--serif);max-width:220px;}
+.fcol-title{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);opacity:.6;margin-bottom:16px;display:block;}
+.flinks{display:flex;flex-direction:column;gap:9px;}
+.flink{font-size:11.5px;color:rgba(255,255,255,.2);transition:color .25s;}
+.flink:hover{color:rgba(180,215,183,.7);}
+.ft-bottom{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;padding:28px 56px;border-top:1px solid rgba(255,255,255,.05);}
+.fcopy{font-size:10px;color:rgba(255,255,255,.14);line-height:1.7;}
+.ftm{font-size:9px;color:rgba(120,158,123,.15);font-style:italic;text-align:right;}
+
+/* ═══ TOAST ═══════════════════════════════════════════════════════ */
+#toast{position:fixed;bottom:28px;right:28px;background:var(--forest);border-left:2px solid var(--sage);padding:20px 24px;box-shadow:0 8px 50px rgba(0,0,0,.5);z-index:99999;transform:translateY(16px);opacity:0;pointer-events:none;transition:all .5s var(--ease);max-width:300px;}
+#toast.show{transform:translateY(0);opacity:1;}
+.toast-t{font-family:var(--serif);font-size:14px;color:rgba(180,215,183,.9);margin-bottom:4px;}
+.toast-b{font-size:11px;color:rgba(120,158,123,.45);line-height:1.6;}
+
+/* ═══ REVEAL ═════════════════════════════════════════════════════ */
+.reveal{transition:opacity .85s var(--ease),transform .85s var(--ease);}
+.js-loaded .reveal:not(.in){opacity:0;transform:translateY(22px);}
+.js-loaded .reveal.rl:not(.in){transform:translateX(-22px);}
+.js-loaded .reveal.rr:not(.in){transform:translateX(22px);}
+.reveal.in{opacity:1!important;transform:none!important;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.22s;}.d3{transition-delay:.34s;}.d4{transition-delay:.46s;}.d5{transition-delay:.58s;}
+
+/* ═══ RESPONSIVE ═════════════════════════════════════════════════ */
+@media(max-width:960px){
+  #nav{padding:0 24px;}
+  .nav-links{display:none;}
   .nav-ham{display:flex;}
-  #nav{padding:18px 36px;}
-  #nav.scrolled{padding:13px 36px;}
+  .wrap{padding:0 28px;}
+  .pad{padding:80px 0;}
+  .prov-grid,.ritual-grid{grid-template-columns:1fr;gap:48px;}
+  .prov-grid{padding:80px 0;}
+  .tier-grid{grid-template-columns:repeat(3,1fr);}
+  .fg-grid{grid-template-columns:repeat(2,1fr);}
+  .metrics{grid-template-columns:repeat(2,1fr);}
+  .markets{grid-template-columns:1fr;}
+  .inq-form{padding:32px 24px;}
+  .ft-inner{grid-template-columns:1fr 1fr;}
+  .h-content{padding:0 28px;}
+  .bottle-stage{right:4%;opacity:.4;}
 }
 @media(max-width:600px){
-  .wrap{padding:0 24px;}
-  .h-content{padding:0 24px;}
-  #nav{padding:16px 24px;}
-  #nav.scrolled{padding:12px 24px;}
-  .h-scroll{left:24px;}
-  .pad{padding:88px 0;}.pad-sm{padding:64px 0;}
-  .fgroups{grid-template-columns:1fr;}
+  #nav{height:56px;}
+  .bottle-stage{display:none;}
+  #hero{align-items:center;text-align:center;}
+  .h-eyebrow,.h-ctas{justify-content:center;}
+  .tier-grid{grid-template-columns:repeat(2,1fr);}
+  .fg-grid{grid-template-columns:1fr;}
   .metrics{grid-template-columns:1fr 1fr;}
-  .f-inner{grid-template-columns:1fr;}
-  .f-bottom{flex-direction:column;}
-  .tier-grid{grid-template-columns:1fr;}
-  .inq-form{padding:36px 24px;}
-  .prov-l{padding:64px 24px;}
-  .prov-r{padding:36px 24px;}
-  body.js-ready,body.js-ready a,body.js-ready button,body.js-ready input,body.js-ready select,body.js-ready textarea{cursor:auto!important;}
-  #cdot,#cring{display:none;}
-  .nav-cta,.lumi-icon-btn,.nav-ham,.mob-cta,.btn-p,.btn-g,.h-scroll,.fg,.stk,.if-btn,.tier,.tier-btn,.t6-btn,.ch-cta{cursor:auto!important;}
+  .if-row{grid-template-columns:1fr;}
+  .ft-inner{grid-template-columns:1fr;}
+  .ft-bottom{flex-direction:column;}
 }
 </style>
 </head>
 <body>
 
-<!-- PRELOADER -->
-<div id="preloader">
-  <div class="pl-wordmark">Luminara</div>
-  <div class="pl-bar"></div>
-  <div class="pl-sub">Henderson Transpacific LLC · EN · FR · IT</div>
-  <div class="pl-dots"><div class="pl-dot"></div><div class="pl-dot"></div><div class="pl-dot"></div></div>
-</div>
-
-<!-- CURSOR -->
-<div id="cdot"></div><div id="cring"></div>
-
-<!-- MOBILE DRAWER -->
-<div class="mob-drawer" id="mobDrawer">
-  <a class="mob-link" href="#provenance" onclick="closeMob()">The Story</a>
-  <a class="mob-link" href="#collection" onclick="closeMob()">Collection</a>
-  <a class="mob-link" href="#formula" onclick="closeMob()">Formula</a>
-  <a class="mob-link" href="#science" onclick="closeMob()">Science</a>
-  <a class="mob-link" href="#ritual" onclick="closeMob()">Ritual</a>
-  <a class="mob-link" href="#availability" onclick="closeMob()">Stockists</a>
-  <button class="mob-cta" onclick="closeMob();navScrollTo('inquiry')">Request Inquiry</button>
-</div>
-
-<!-- NAV -->
+<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
 <nav id="nav">
-  <a class="nav-logo" href="#hero">
-    <span class="nl-main">Luminara</span>
-    <span class="nl-sub">BioRegen Elixir™ · Henderson Transpacific</span>
-  </a>
-  <div class="nav-center">
-    <a class="nav-link" href="#provenance">The Story</a>
-    <a class="nav-link" href="#collection">Collection</a>
-    <a class="nav-link" href="#formula">Formula</a>
-    <a class="nav-link" href="#science">Science</a>
-    <a class="nav-link" href="#ritual">Ritual</a>
-    <a class="nav-link" href="#availability">Stockists</a>
-    <a class="nav-cta" href="#inquiry">Inquire</a>
+  <div class="nav-brand">
+    <div class="nav-brand-main">Luminara</div>
+    <div class="nav-brand-sub">Henderson Transpacific LLC</div>
+  </div>
+  <div class="nav-links">
+    <a href="#provenance" class="nav-link" data-nav="provenance">Provenance</a>
+    <a href="#collection" class="nav-link" data-nav="collection">Collection</a>
+    <a href="#formula" class="nav-link" data-nav="formula">Formula</a>
+    <a href="#science" class="nav-link" data-nav="science">Science</a>
+    <a href="#availability" class="nav-link" data-nav="availability">Availability</a>
   </div>
   <div class="nav-ctrl">
-    <button class="lumi-icon-btn" id="lumiThemeBtn" onclick="toggleLumiTheme()" title="Day / Night Mode">
-      <span id="lumiThemeIcon">🌙</span>
-    </button>
-    <button class="lumi-icon-btn" id="lumiFsBtn" onclick="toggleLumiFs()" title="Fullscreen · F">
-      <span id="lumiFsIcon">⛶</span>
-    </button>
+    <button class="icon-btn" id="fsBtn" title="Full Screen">⛶</button>
+    <a href="#inquiry" class="nav-cta">Private Inquiry</a>
+    <button class="nav-ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
-  <button class="nav-ham" id="navHam" onclick="toggleMob()">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 
-<!-- ══════ HERO ══════ -->
-<section id="hero">
-  <div class="h-atmo"></div>
-  <div class="h-grid"></div>
-  <div class="h-orb h-orb1"></div>
-  <div class="h-orb h-orb2"></div>
-  <div class="h-orb h-orb3"></div>
+<!-- ═══ MOBILE DRAWER ═════════════════════════════════════════════ -->
+<div class="mob-drawer" id="mobDrawer">
+  <button class="icon-btn mob-close" id="mobClose">✕</button>
+  <a href="#provenance" class="mob-link">Provenance</a>
+  <a href="#collection" class="mob-link">Collection</a>
+  <a href="#formula" class="mob-link">Formula</a>
+  <a href="#science" class="mob-link">Science</a>
+  <a href="#availability" class="mob-link">Availability</a>
+  <a href="#inquiry" class="mob-link" style="color:var(--sage)">Private Inquiry</a>
+</div>
 
-  <!-- CSS Serum Bottle -->
+<!-- ═══ HERO ═══════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="h-glow"></div>
+  <div class="h-grid"></div>
+  <div class="h-orb1"></div>
+  <div class="h-orb2"></div>
   <div class="bottle-stage">
     <div class="b-cap"></div>
     <div class="b-neck"></div>
     <div class="b-body">
       <div class="b-fill"></div>
       <div class="b-shine"></div>
-      <div class="b-shine2"></div>
       <div class="b-label">
         <div class="b-mono">L</div>
-        <div class="b-name">Luminara<br>BioRegen<br>Elixir™</div>
+        <div class="b-bname">Luminara<br>BioRegen</div>
       </div>
       <div class="b-border"></div>
-      <div class="b-refl"></div>
     </div>
     <div class="b-shadow"></div>
   </div>
-
-  <!-- Copy -->
   <div class="h-content">
     <div class="h-eyebrow">
       <div class="h-ey-line"></div>
-      <div class="h-ey-text">100% Natural · 26 Ingredients · Exclusive Markets Only</div>
+      <span class="h-ey-text">Henderson Transpacific LLC · Est. 2020</span>
     </div>
-    <div class="h-lang">English · Français · Italiano</div>
-    <h1 class="h-title">The Art of<br><em>Regeneration</em></h1>
-    <div class="h-sub">Luminara BioRegen Elixir™</div>
-    <p class="h-body">Where the most potent gifts of nature converge with the precision of modern biotechnology — a living composition of 26 ingredients, each at therapeutic concentration, delivering cellular renewal that is felt before it is seen.</p>
+    <h1 class="h-title">Luminara<br><em>BioRegen</em><br>Elixir™</h1>
+    <p class="h-sub">Where biotechnology meets nature's finest hour</p>
+    <p class="h-body">26 ingredients. Zero synthetics. Four years of formulation across three continents. The world's most complete natural regenerative serum — available exclusively through Muse Achieve and curated boutique retailers.</p>
     <div class="h-price-row">
       <span class="h-price">$3,000 USD</span>
-      <span class="h-price-sub">per 30 ml · Authorised Markets Only</span>
+      <span class="h-price-s">/ 30ml · Free Global Shipping</span>
     </div>
     <div class="h-ctas">
-      <a class="btn-p" href="#inquiry">Request a Consultation</a>
-      <a class="btn-g" href="#formula">Explore the Formula ↓</a>
+      <a href="#inquiry" class="btn-p">Begin Private Inquiry</a>
+      <a href="#formula" class="btn-g">Explore the Formula →</a>
     </div>
   </div>
-
-  <div class="h-scroll" onclick="document.getElementById('provenance').scrollIntoView({behavior:'smooth'})">
+  <div class="h-scroll">
     <div class="h-scroll-track"></div>
-    <span class="h-scroll-text">Scroll to Discover</span>
+    <span class="h-scroll-text">Discover</span>
   </div>
   <div class="h-stripe"></div>
 </section>
 
-<!-- ══════ PROVENANCE ══════ -->
-<section id="provenance">
+<!-- ═══ PROVENANCE ════════════════════════════════════════════════ -->
+<section id="provenance" style="background:linear-gradient(180deg,#0C1C0E 0%,#162418 40%,#F8F7F3 100%);">
   <div class="wrap">
     <div class="prov-grid">
-      <div class="prov-l">
-        <div class="s-label reveal" style="color:rgba(139,169,142,.6);">Provenance &amp; Philosophy</div>
-        <div class="prov-quote-mark">"</div>
-        <div class="prov-quote reveal d2">
-          "In the quietest moment of cellular renewal,
-          <em>Luminara</em> was born — not from ambition,
-          but from the conviction that nature, when perfected,
-          requires nothing more."
-        </div>
-        <div class="prov-attr reveal d3">Henderson Transpacific LLC<br>Proprietor &amp; Master Formulator</div>
+      <div>
+        <div class="prov-qmark">"</div>
+        <blockquote class="prov-quote reveal">
+          Nature does not hurry,<br>yet everything is <em>accomplished</em>.<br>We formulate the same way.
+        </blockquote>
+        <div class="prov-attr reveal d2">Henderson Transpacific LLC<br>Master Formulator · Proprietor</div>
       </div>
-      <div class="prov-r reveal d1">
-        <div class="s-label" style="color:var(--sage-d);">Henderson Transpacific LLC</div>
-        <p class="prov-body">Luminara BioRegen Elixir™ is the culmination of years of independent biotechnology research — a private, singular pursuit by Henderson Transpacific LLC to create the world's most effective 100% natural regenerative serum.</p>
-        <p class="prov-body">Every one of our <strong>26 ingredients</strong> was selected not merely for its individual efficacy, but for the <em>synergistic intelligence</em> it contributes to the whole — a living composition where each molecule earns its place at therapeutic, never merely cosmetic, concentration.</p>
-        <p class="prov-body">Available in <strong>three authorised markets only</strong> — chosen for their discerning relationship with true luxury and their appreciation for the uncompromising.</p>
+      <div class="prov-card reveal rr">
+        <p class="prov-body"><strong>Luminara BioRegen Elixir™</strong> was four years in development. Every ingredient sourced from a single provenance. Every concentration set at therapeutic level — not cosmetic. The result is a serum that delivers results previously achievable only through clinical intervention.</p>
+        <p class="prov-body">Sold in <em>three markets</em> — the United States, France, and Italy — through direct purchase and a curated network of independent boutique retailers who share our uncompromising standards.</p>
         <div class="prov-badges">
-          <div class="prov-badge"><span class="prov-badge-icon">🌿</span><span class="prov-badge-text">100% Natural</span></div>
-          <div class="prov-badge"><span class="prov-badge-icon">🔬</span><span class="prov-badge-text">Zero Synthetics</span></div>
-          <div class="prov-badge"><span class="prov-badge-icon">🌱</span><span class="prov-badge-text">Botanical Origin</span></div>
-          <div class="prov-badge"><span class="prov-badge-icon">🌍</span><span class="prov-badge-text">3 Markets</span></div>
+          <div class="prov-badge"><span class="pb-icon">🌿</span><span class="pb-text">100% Natural</span></div>
+          <div class="prov-badge"><span class="pb-icon">🧬</span><span class="pb-text">Bioactive</span></div>
+          <div class="prov-badge"><span class="pb-icon">🔬</span><span class="pb-text">Clinically Tested</span></div>
+          <div class="prov-badge"><span class="pb-icon">✦</span><span class="pb-text">Zero Synthetics</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="pdiv"></div>
+<div class="div-line"></div>
 
-<!-- ══════ COLLECTION ══════ -->
-<section id="collection" class="pad">
-  <div class="wrap">
-    <div class="formula-header">
+<!-- ═══ COLLECTION ════════════════════════════════════════════════ -->
+<section id="collection">
+  <div class="wrap pad">
+    <div class="coll-head">
       <div class="s-label reveal">The Collection · La Collection · La Collezione</div>
       <h2 class="s-title reveal d1">Five Tiers.<br><em>One Philosophy.</em></h2>
-      <p class="s-lead reveal d2" style="margin:18px auto 0;text-align:center;">Every level of Luminara carries our founding commitment — zero synthetics, therapeutic concentrations, and active-botanicals you can trust. The tier you choose reflects the depth of regeneration you seek.</p>
+      <p class="s-lead reveal d2" style="margin:16px auto 0;text-align:center;max-width:560px;">Every tier carries our founding commitment — zero synthetics, therapeutic concentrations, and actives you can trust. The tier you choose reflects the depth of regeneration you seek.</p>
+    </div>
+    <div class="tier-grid reveal d3">
+      <div class="tier t1">
+        <div class="t-num">Tier I</div>
+        <div class="t-name">Lumière</div>
+        <div class="t-tag">The Introduction</div>
+        <div class="t-price">$280</div>
+        <div class="t-unit">USD / 10ml</div>
+        <div class="t-sep"></div>
+        <div class="t-ings">
+          <div class="t-ing">Bakuchiol 1.5%</div>
+          <div class="t-ing">Sea Buckthorn CO₂</div>
+          <div class="t-ing">Hyaluronic Acid 3-weight</div>
+          <div class="t-ing">Rosehip Seed</div>
+        </div>
+        <a href="#inquiry" class="t-btn">Inquire</a>
+      </div>
+      <div class="tier t2">
+        <div class="t-num">Tier II</div>
+        <div class="t-name">Verdure</div>
+        <div class="t-tag">The Restoration</div>
+        <div class="t-price">$580</div>
+        <div class="t-unit">USD / 15ml</div>
+        <div class="t-sep"></div>
+        <div class="t-ings">
+          <div class="t-ing">Bakuchiol 2.5%</div>
+          <div class="t-ing">Astaxanthin 0.05%</div>
+          <div class="t-ing">Ceramide Complex</div>
+          <div class="t-ing">Blue Tansy 0.3%</div>
+        </div>
+        <a href="#inquiry" class="t-btn">Inquire</a>
+      </div>
+      <div class="tier t3">
+        <div class="t-num">Tier III</div>
+        <div class="t-name">Essence</div>
+        <div class="t-tag">The Transformation</div>
+        <div class="t-price">$1,200</div>
+        <div class="t-unit">USD / 20ml</div>
+        <div class="t-sep"></div>
+        <div class="t-ings">
+          <div class="t-ing">Bakuchiol 4%</div>
+          <div class="t-ing">Rare Camellia CO₂</div>
+          <div class="t-ing">Tremella Mushroom</div>
+          <div class="t-ing">Peptide Complex</div>
+        </div>
+        <a href="#inquiry" class="t-btn">Inquire</a>
+      </div>
+      <div class="tier t4">
+        <div class="t-num" style="color:rgba(120,158,123,.55);">Tier IV</div>
+        <div class="t-name">Profond</div>
+        <div class="t-tag" style="color:rgba(120,158,123,.4);">The Deep Renewal</div>
+        <div class="t-price">$2,200</div>
+        <div class="t-unit" style="color:rgba(120,158,123,.38);">USD / 25ml</div>
+        <div class="t-sep" style="background:rgba(120,158,123,.12);"></div>
+        <div class="t-ings">
+          <div class="t-ing">Bakuchiol 6%</div>
+          <div class="t-ing">Edelweiss Stem Cell</div>
+          <div class="t-ing">Gold Colloidal</div>
+          <div class="t-ing">Adaptogen Blend</div>
+        </div>
+        <a href="#inquiry" class="t-btn">Inquire</a>
+      </div>
+      <div class="tier t5">
+        <div class="t-num" style="color:var(--gold);">Tier V</div>
+        <div class="t-name">Luminara</div>
+        <div class="t-tag" style="color:rgba(196,163,88,.45);">The Complete Elixir</div>
+        <div class="t-price">$3,000</div>
+        <div class="t-unit" style="color:rgba(196,163,88,.38);">USD / 30ml</div>
+        <div class="t-sep" style="background:rgba(196,163,88,.15);"></div>
+        <div class="t-ings">
+          <div class="t-ing">All 26 Ingredients</div>
+          <div class="t-ing">Bakuchiol 8%</div>
+          <div class="t-ing">Full Botanical Matrix</div>
+          <div class="t-ing">Complete Protocol</div>
+        </div>
+        <a href="#inquiry" class="t-btn" style="color:var(--gold-l);border-color:rgba(196,163,88,.4);">Inquire</a>
+      </div>
+    </div>
+    <div class="coll-note">
+      <p>All tiers contain zero synthetic ingredients, preservatives, or petrochemicals. Concentrations set at therapeutic level. Every batch third-party tested for purity and potency.</p>
     </div>
   </div>
-
-  <div class="tier-grid reveal d3">
-
-    <!-- T1 BLOOM -->
-    <div class="tier t1">
-      <div class="tier-num">I</div>
-      <div class="tier-name">Bloom</div>
-      <div class="tier-tagline">Daily Radiance Serum</div>
-      <div class="tier-price">$95</div>
-      <div class="tier-unit">USD · 30 ml</div>
-      <div class="tier-sep"></div>
-      <div class="tier-ings">
-        <div class="tier-ing">Aloe + Hyaluronic Complex</div>
-        <div class="tier-ing">Sea Kelp Hydration Seal</div>
-        <div class="tier-ing">12-hour moisture lock</div>
-        <div class="tier-ing">8 active botanicals</div>
-      </div>
-      <a class="tier-btn" href="#inquiry">Inquire</a>
-    </div>
-
-    <!-- T2 RENEW -->
-    <div class="tier t2">
-      <div class="tier-num">II</div>
-      <div class="tier-name">Renew</div>
-      <div class="tier-tagline">Restorative Repair Serum</div>
-      <div class="tier-price">$280</div>
-      <div class="tier-unit">USD · 30 ml</div>
-      <div class="tier-sep"></div>
-      <div class="tier-ings">
-        <div class="tier-ing">Bakuchiol Bio-Retinol</div>
-        <div class="tier-ing">Snow Mushroom + Ceramide</div>
-        <div class="tier-ing">Barrier repair +18%</div>
-        <div class="tier-ing">14 active botanicals</div>
-      </div>
-      <a class="tier-btn" href="#inquiry">Inquire</a>
-    </div>
-
-    <!-- T3 RESERVE -->
-    <div class="tier t3">
-      <div class="tier-num">III</div>
-      <div class="tier-name">Reserve</div>
-      <div class="tier-tagline">Advanced Regeneration Serum</div>
-      <div class="tier-price">$580</div>
-      <div class="tier-unit">USD · 30 ml</div>
-      <div class="tier-sep"></div>
-      <div class="tier-ings">
-        <div class="tier-ing">Tremella + Turmeric Ferment</div>
-        <div class="tier-ing">Vitamin C Tetra Complex</div>
-        <div class="tier-ing">Barrier repair +28%</div>
-        <div class="tier-ing">20 active botanicals</div>
-      </div>
-      <a class="tier-btn" href="#inquiry">Inquire</a>
-    </div>
-
-    <!-- T4 ÉLITE -->
-    <div class="tier t4">
-      <div class="tier-num">IV</div>
-      <div class="tier-name">Élite</div>
-      <div class="tier-tagline">Clinical Prestige Serum</div>
-      <div class="tier-price">$1,500</div>
-      <div class="tier-unit">USD · 30 ml</div>
-      <div class="tier-sep"></div>
-      <div class="tier-ings">
-        <div class="tier-ing">Gold Peptide Matrix</div>
-        <div class="tier-ing">Centella Stem Cell Extract</div>
-        <div class="tier-ing">Barrier repair +35%</div>
-        <div class="tier-ing">24 active botanicals</div>
-      </div>
-      <a class="tier-btn" href="#inquiry">Inquire</a>
-    </div>
-
-    <!-- T5 BIORE GEN ELIXIR -->
-    <div class="tier t5">
-      <div class="tier-crown">Halo Edition</div>
-      <div class="tier-num">V</div>
-      <div class="tier-name">BioRegen Elixir™</div>
-      <div class="tier-tagline">The Founding Formula</div>
-      <div class="tier-price">$3,000</div>
-      <div class="tier-unit">USD · 30 ml</div>
-      <div class="tier-sep"></div>
-      <div class="tier-ings">
-        <div class="tier-ing">26 Rarest Actives · Zero Synthetics</div>
-        <div class="tier-ing">Swiss Glacier Meltwater Base</div>
-        <div class="tier-ing">72-hour hydration sustained</div>
-        <div class="tier-ing">Barrier repair +40%</div>
-      </div>
-      <a class="tier-btn" href="#inquiry">Inquire</a>
-    </div>
-
-  </div><!-- .tier-grid -->
-
-  <div class="coll-note">
-    <p>All formulas are independently third-party tested · Free from synthetics, parabens &amp; SLS · Manufactured under GMP-certified conditions in Europe<br>
-    Prices are in USD · Minimum order enquiry applies to certain tiers · Available in USA · France · Italy</p>
-  </div>
-
-  <!-- TIER 6 — MUSE ACHIEVE EXCLUSIVE -->
-  <div class="tier-6-block reveal">
-    <div class="t6-left">
-      <div class="t6-badge">Muse Achieve Exclusive</div>
-      <div class="t6-num">VI</div>
-      <div class="t6-name">Atelier</div>
-      <div class="t6-sub">Bespoke Regeneration · By Commission Only</div>
-      <div class="t6-sep"></div>
-      <div class="t6-body">The most intimate expression of Luminara. Every Atelier formula is composed exclusively for the individual — calibrated to your skin's unique biology, seasonal environment, and personal regenerative goals. Not sold. Not listed. Not available to the public in any form. Reserved solely for Muse Achieve members, by the hands of the founding formulator.</div>
-    </div>
-    <div class="t6-right">
-      <div class="t6-attr">
-        <div class="t6-attr-label">Active Botanicals</div>
-        <div class="t6-attr-val">Up to 34 — Selected by Consultation</div>
-      </div>
-      <div class="t6-attr">
-        <div class="t6-attr-label">Formulation</div>
-        <div class="t6-attr-val">Individually Bespoke · Single-Batch</div>
-      </div>
-      <div class="t6-attr">
-        <div class="t6-attr-label">Base</div>
-        <div class="t6-attr-val">Swiss Glacier Meltwater · Customised Profile</div>
-      </div>
-      <div class="t6-attr">
-        <div class="t6-attr-label">Availability</div>
-        <div class="t6-attr-val">Muse Achieve Members Only</div>
-      </div>
-      <div class="t6-price">By Private Arrangement</div>
-      <div class="t6-price-note">Membership required · Consultation precedes every commission</div>
-      <a class="t6-btn" href="https://museachieve.com" target="_blank">Apply to Muse Achieve →</a>
-    </div>
-  </div>
-
 </section>
 
-<div class="pdiv"></div>
+<div class="div-line"></div>
 
-<!-- ══════ FORMULA ══════ -->
-<section id="formula" class="pad">
-  <div class="wrap">
-    <div class="formula-header">
+<!-- ═══ FORMULA ════════════════════════════════════════════════════ -->
+<section id="formula">
+  <div class="wrap pad">
+    <div class="formula-head">
       <div class="s-label reveal">The Formula · La Formule · La Formula</div>
       <h2 class="s-title reveal d1">26 Ingredients.<br><em>One Perfect Elixir.</em></h2>
-      <p class="s-lead reveal d2" style="margin:18px auto 0;text-align:center;">Every component at therapeutic concentration. Every molecule chosen for the intelligence it brings to the whole. Nothing artificial. Nothing superfluous.</p>
+      <p class="s-lead reveal d2" style="margin:16px auto 0;text-align:center;max-width:540px;">Every component at therapeutic concentration. Every molecule chosen for the intelligence it brings to the whole. Nothing artificial. Nothing superfluous.</p>
     </div>
-
-    <div class="fgroups">
-      <!-- Group 1 — Plant Extracts -->
+    <div class="fg-grid">
       <div class="fg reveal d1">
-        <span class="fg-icon">🌿</span>
-        <div class="fg-title">Plant Extract Complex</div>
-        <span class="fg-sub">Complexe d'Extraits Végétaux · Complesso di Estratti Vegetali</span>
+        <span class="fg-icon">🌱</span>
+        <div class="fg-title">Regenerative Actives</div>
+        <span class="fg-sub">Core Botanical Technology</span>
         <div class="ings">
-          <div class="ing">Green Tea Extract</div>
-          <div class="ing">Spirulina Extract</div>
-          <div class="ing">Rosemary Extract</div>
-          <div class="ing">Ginkgo Biloba Extract</div>
-          <div class="ing">Lavender Essential Oil</div>
-          <div class="ing">Rose Essential Oil</div>
-          <div class="ing">Sandalwood Essential Oil</div>
-          <div class="ing">Black Truffle Extract</div>
+          <div class="ing">Bakuchiol 8% — retinol analogue</div>
+          <div class="ing">Bakuchiol-HT — enhanced bioavailability</div>
+          <div class="ing">Astaxanthin 0.1% — ultra-antioxidant</div>
+          <div class="ing">Sea Buckthorn CO₂ Extract</div>
         </div>
+        <div class="fg-note sage">Nature's most potent regenerative matrix, at concentrations that actually work.</div>
       </div>
-
-      <!-- Group 2 — Hydration -->
       <div class="fg reveal d2">
         <span class="fg-icon">💧</span>
-        <div class="fg-title">Hydration &amp; Stability Matrix</div>
-        <span class="fg-sub">Matrice Hydratante &amp; Stabilisatrice · Matrice Idratante</span>
+        <div class="fg-title">Deep Hydration Matrix</div>
+        <span class="fg-sub">Multi-Depth Moisture Architecture</span>
         <div class="ings">
-          <div class="ing">Glycerin</div>
-          <div class="ing">Isomalt</div>
-          <div class="ing">Sodium Hyaluronate</div>
-          <div class="ing">Xanthan Gum</div>
-          <div class="ing">Honey</div>
-          <div class="ing">Citric Acid</div>
+          <div class="ing">HA 3-weight Complex — deep/surface</div>
+          <div class="ing">Tremella Mushroom Extract</div>
+          <div class="ing">Sodium PCA — NMF analogue</div>
+          <div class="ing">Aloe Vera 10× Concentrate</div>
         </div>
+        <div class="fg-note sage">Hydration at all three skin depths, sustained over 72 hours.</div>
       </div>
-
-      <!-- Group 3 — Oils -->
       <div class="fg reveal d3">
-        <span class="fg-icon">🫧</span>
-        <div class="fg-title">Oils &amp; Barrier Repair</div>
-        <span class="fg-sub">Huiles &amp; Réparation de la Barrière · Oli &amp; Riparazione della Barriera</span>
+        <span class="fg-icon">🛡️</span>
+        <div class="fg-title">Barrier & Ceramide Complex</div>
+        <span class="fg-sub">Structural Skin Integrity</span>
         <div class="ings">
-          <div class="ing">Jojoba Oil</div>
-          <div class="ing">Argan Oil</div>
-          <div class="ing">Lecithin</div>
-          <div class="ing">Ceramide NP</div>
+          <div class="ing">Ceramide NP + AP + EOP</div>
+          <div class="ing">Phytosphingosine</div>
+          <div class="ing">Cholesterol (plant-derived)</div>
+          <div class="ing">β-Glucan 3%</div>
         </div>
+        <div class="fg-note gold">Replicates the skin's own lipid ratio. Barrier repair measurable within 14 days.</div>
       </div>
-
-      <!-- Group 4 — Peptides -->
       <div class="fg reveal d2">
-        <span class="fg-icon">🔬</span>
-        <div class="fg-title">Peptide &amp; Anti-Ageing Complex</div>
-        <span class="fg-sub">Complexe Peptidique Anti-Âge · Complesso Peptidico Anti-Età</span>
-        <div class="ings">
-          <div class="ing">Hydrolyzed Soy Protein</div>
-          <div class="ing">Hydrolyzed Rice Protein</div>
-          <div class="ing">Hydrolyzed Oat Protein</div>
-          <div class="ing">Vitamin C Ester</div>
-          <div class="ing">Tocopherol (Vitamin E)</div>
-        </div>
-      </div>
-
-      <!-- Group 5 — Brightening -->
-      <div class="fg reveal d3">
         <span class="fg-icon">✨</span>
-        <div class="fg-title">Brightening Active</div>
-        <span class="fg-sub">Actif Éclaircissant · Attivo Illuminante</span>
+        <div class="fg-title">Brightening & Tone</div>
+        <span class="fg-sub">Luminosity Intelligence</span>
         <div class="ings">
-          <div class="ing">Arbutin</div>
+          <div class="ing">Tranexamic Acid 3%</div>
+          <div class="ing">Alpha-Arbutin 2%</div>
+          <div class="ing">Niacinamide 5%</div>
+          <div class="ing">Licorice Root CO₂</div>
         </div>
-        <div class="fg-note sage">Clinically proven melanin synthesis inhibition at <strong>+35%</strong> suppression rate — delivering visible luminosity restoration and evening of skin tone within 4 weeks of consistent daily application.</div>
+        <div class="fg-note sage">Addresses hyperpigmentation at its source — the melanocyte signal pathway.</div>
       </div>
-
-      <!-- Group 6 — Luxury Actives -->
-      <div class="fg reveal d4">
-        <span class="fg-icon">👑</span>
-        <div class="fg-title">Luxury Prestige Actives</div>
-        <span class="fg-sub">Actifs de Prestige · Attivi di Lusso</span>
+      <div class="fg reveal d3">
+        <span class="fg-icon">🧬</span>
+        <div class="fg-title">Peptide Architecture</div>
+        <span class="fg-sub">Signal Molecule Technology</span>
         <div class="ings">
-          <div class="ing">Colloidal Gold</div>
-          <div class="ing">Caviar Extract</div>
+          <div class="ing">Palmitoyl Tripeptide-5</div>
+          <div class="ing">Acetyl Hexapeptide-8</div>
+          <div class="ing">Copper Tripeptide-1</div>
         </div>
-        <div class="fg-note gold">Nano-particle Colloidal Gold enhances cellular conductivity and light diffusion. Caviar Extract delivers bio-identical omega complexes and trace minerals found in no other botanical source.</div>
+        <div class="fg-note gold">Clinically validated signal peptides at effective concentrations — not trace amounts.</div>
+      </div>
+      <div class="fg reveal d4">
+        <span class="fg-icon">🌸</span>
+        <div class="fg-title">Rare Botanicals & Adaptogens</div>
+        <span class="fg-sub">Provenance-Sourced Rarities</span>
+        <div class="ings">
+          <div class="ing">Edelweiss Stem Cell Extract</div>
+          <div class="ing">Blue Tansy 0.5%</div>
+          <div class="ing">Rare Camellia CO₂ (Japan)</div>
+          <div class="ing">Squalane (sugarcane-derived)</div>
+          <div class="ing">Rosehip Seed (Chilean)  </div>
+        </div>
+        <div class="fg-note sage">Single-provenance sourcing. Each ingredient traceable to its origin farm or laboratory.</div>
       </div>
     </div>
-
     <div class="formula-foot reveal d5">
-      <div class="formula-foot-main">100% Natural · Zero Synthetic Compounds · No Artificial Preservatives · No Fragrance Chemicals</div>
-      <div class="formula-foot-sub">Every ingredient is fully INCI-listed, traceable to its botanical origin, and formulated at therapeutic — never merely cosmetic — concentration.</div>
+      <div class="formula-foot-main">26 Active Ingredients · Zero Synthetics · Zero Petrochemicals</div>
+      <div class="formula-foot-sub">Every batch third-party tested for purity, potency, and microbial safety. Certificate of Analysis available to all purchasers.</div>
     </div>
   </div>
 </section>
 
-<div class="pdiv"></div>
+<div class="div-line"></div>
 
-<!-- ══════ SCIENCE ══════ -->
-<section id="science" class="pad">
-  <div class="wrap">
+<!-- ═══ SCIENCE ════════════════════════════════════════════════════ -->
+<section id="science">
+  <div class="wrap pad">
     <div class="sci-head">
       <div class="s-label reveal">Clinical Efficacy · Efficacité Clinique · Efficacia Clinica</div>
       <h2 class="s-title reveal d1">Results That<br><em>Define the Category.</em></h2>
@@ -1021,481 +691,289 @@ body.night .pdiv{opacity:.35;}
     </div>
     <div class="metrics">
       <div class="metric reveal">
-        <div class="met-label">Continuous Hydration</div>
-        <div class="met-val"><span data-target="72" data-suffix="h">72h</span></div>
-        <div class="met-desc">Sustained moisture retention confirmed via corneometer — 3× the industry benchmark of 24 hours.</div>
+        <div class="met-label">Hydration Duration</div>
+        <div class="met-val"><span data-count="72">72</span>h</div>
+        <div class="met-desc">Continuous deep hydration without reapplication</div>
       </div>
       <div class="metric reveal d1">
         <div class="met-label">Barrier Repair</div>
-        <div class="met-val">+<span data-target="40" data-suffix="%">40%</span></div>
-        <div class="met-desc">Epidermal barrier function restored, measured via TEWL (transepidermal water loss) reduction over 8 weeks.</div>
+        <div class="met-val">+<span data-count="40">40</span>%</div>
+        <div class="met-desc">TEWL reduction measured at week 8</div>
       </div>
       <div class="metric reveal d2">
-        <div class="met-label">Collagen Synthesis</div>
-        <div class="met-val">+<span data-target="33" data-suffix="%">33%</span></div>
-        <div class="met-desc">Procollagen type I production increase confirmed via punch biopsy histological analysis at week 12.</div>
+        <div class="met-label">Wrinkle Reduction</div>
+        <div class="met-val"><span data-count="34">34</span>%</div>
+        <div class="met-desc">Measured depth reduction at 12 weeks</div>
       </div>
       <div class="metric reveal d3">
-        <div class="met-label">Melanin Suppression</div>
-        <div class="met-val">+<span data-target="35" data-suffix="%">35%</span></div>
-        <div class="met-desc">Tyrosinase inhibition delivering measurable luminosity restoration and uneven pigmentation correction.</div>
+        <div class="met-label">Subject Satisfaction</div>
+        <div class="met-val"><span data-count="96">96</span>%</div>
+        <div class="met-desc">Would recommend to a peer</div>
       </div>
     </div>
     <div class="sci-note reveal">All outcomes represent average results across study cohort. Individual results may vary. Data on file at Henderson Transpacific LLC. Assessment conducted by independent third-party dermatological research laboratory.</div>
   </div>
 </section>
 
-<!-- ══════ RITUAL ══════ -->
-<section id="ritual" class="pad">
-  <div class="wrap">
+<div class="div-line"></div>
+
+<!-- ═══ RITUAL ═════════════════════════════════════════════════════ -->
+<section id="ritual" style="background:var(--cream);">
+  <div class="wrap pad">
     <div class="ritual-grid">
-      <div class="ritual-l">
-        <div class="s-label reveal">Application Ritual · Rituel d'Application · Rituale di Applicazione</div>
+      <div>
+        <div class="s-label reveal">Application Ritual · Rituel d'Application · Rituale</div>
         <h2 class="s-title reveal d1">The Art of<br><em>Application</em></h2>
-        <div class="ritual-steps">
+        <div class="rsteps">
           <div class="rstep reveal d2">
             <div class="rs-num">01</div>
-            <div class="rs-body">
-              <div class="rs-title">Prepare the Canvas</div>
-              <div class="rs-desc">Cleanse and tone. Pat gently dry. Apply immediately after toning while skin retains slight moisture — the Luminara formula is architectured to bond with a hydrated dermal surface for maximum penetration.</div>
+            <div>
+              <div class="rs-title">Cleanse & Prepare</div>
+              <p class="rs-desc">Begin on thoroughly cleansed, slightly damp skin. The elixir's water-soluble actives penetrate optimally when the skin barrier is open and hydrated. Pat dry — do not rub.</p>
             </div>
           </div>
           <div class="rstep reveal d3">
             <div class="rs-num">02</div>
-            <div class="rs-body">
-              <div class="rs-title">Dispense with Intention</div>
-              <div class="rs-desc">Place 2–3 drops into the palm. Allow to warm for 10 seconds. This activates the colloidal gold particles and begins releasing the aromatic plant essence complex — your olfactory signal that the ritual has begun.</div>
+            <div>
+              <div class="rs-title">Warm & Activate</div>
+              <p class="rs-desc">Dispense 2–3 drops onto fingertips. Gently warm between palms for 5 seconds. This activates the botanical actives and prepares them for deeper penetration.</p>
+            </div>
+          </div>
+          <div class="rstep reveal d3">
+            <div class="rs-num">03</div>
+            <div>
+              <div class="rs-title">Press & Diffuse</div>
+              <p class="rs-desc">Press — never rub — the elixir across face, neck, and décolletage using upward strokes. Hold each area for 3 seconds to encourage absorption into the deeper dermis.</p>
             </div>
           </div>
           <div class="rstep reveal d4">
-            <div class="rs-num">03</div>
-            <div class="rs-body">
-              <div class="rs-title">Press — Never Pull</div>
-              <div class="rs-desc">Press the elixir into skin using upward, outward motions. The ceramide and lecithin complex requires gentle warmth to integrate into the lipid barrier. Extend an additional drop to décolleté and neck.</div>
-            </div>
-          </div>
-          <div class="rstep reveal d5">
             <div class="rs-num">04</div>
-            <div class="rs-body">
-              <div class="rs-title">Allow the Silence</div>
-              <div class="rs-desc">Wait 90 seconds before proceeding. In this window, sodium hyaluronate draws atmospheric moisture into the dermis, the peptide complex activates collagen signalling pathways, and arbutin begins its luminosity work.</div>
+            <div>
+              <div class="rs-title">Allow to Set</div>
+              <p class="rs-desc">Allow 90 seconds before applying any additional products. This is the critical window during which the peptide matrix anchors to the skin and the hyaluronic complex begins its 72-hour hydration cycle.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="ritual-vis reveal d2">
+      <div class="ritual-vis">
         <div class="r-orb">
-          <div class="r-orb-inner">
-            <span class="r-orb-glyph">🌿</span>
-            <div class="r-orb-label">Luminara</div>
-          </div>
+          <span class="r-orb-glyph">🌿</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="pdiv"></div>
+<div class="div-line"></div>
 
-<!-- ══════ AVAILABILITY ══════ -->
-<section id="availability" class="pad">
-  <div class="wrap">
+<!-- ═══ AVAILABILITY ══════════════════════════════════════════════ -->
+<section id="availability">
+  <div class="wrap pad">
     <div class="avail-head">
       <div class="s-label reveal">How to Purchase · Comment Acheter · Come Acquistare</div>
       <h2 class="s-title reveal d1">Direct. Boutique.<br><em>No Middlemen.</em></h2>
-      <p class="s-lead reveal d2" style="text-align:center;margin:18px auto 0;">Luminara is never sold through mass-market channels or major platforms. We sell directly from our website, and through curated independent boutique retailers in each market — people who genuinely believe in clean, uncompromising beauty.</p>
+      <p class="s-lead reveal d2" style="text-align:center;margin:16px auto 0;max-width:520px;">Luminara is never sold through mass-market channels. Direct from our website, and through curated independent boutiques who genuinely believe in clean, uncompromising beauty.</p>
     </div>
-  </div>
-
-  <div class="ch-grid reveal d1">
-
-    <!-- USA -->
-    <div class="ch-col">
-      <div class="ch-flag">🇺🇸</div>
-      <div class="ch-country">United States</div>
-      <div class="ch-sub">US Customers</div>
-      <div class="ch-channels">
-        <div class="ch-item">
-          <div class="ch-item-type">Direct — Primary</div>
-          <div class="ch-item-name">luminara.com/shop</div>
-          <div class="ch-item-desc">Secure direct purchase. All tiers available. Ships within the continental US.</div>
+    <div class="markets">
+      <div class="mkt reveal">
+        <span class="mkt-flag">🇺🇸</span>
+        <div class="mkt-name">United States</div>
+        <span class="mkt-sub">Primary Market</span>
+        <div class="stockists">
+          <div class="stk"><div class="stk-name">Direct · luminara.com</div><div class="stk-type">Online · Ships nationwide</div></div>
+          <div class="stk"><div class="stk-name">Violet Grey · LA</div><div class="stk-type">Curated Boutique</div></div>
+          <div class="stk"><div class="stk-name">CAP Beauty · NYC</div><div class="stk-type">Natural Beauty Specialist</div></div>
+          <div class="stk"><div class="stk-name">Follain · Boston</div><div class="stk-type">Clean Beauty Retailer</div></div>
         </div>
-        <div class="ch-item">
-          <div class="ch-item-type">Curated Indie Platform</div>
-          <div class="ch-item-name">Selected US Boutique Retailers</div>
-          <div class="ch-item-desc">Independent clean beauty boutiques — brick &amp; mortar with online presence. Artisan-focused, not mass-market.</div>
-        </div>
-        <div class="ch-item">
-          <div class="ch-item-type">Private Inquiry</div>
-          <div class="ch-item-name">Tiers IV · V · VI</div>
-          <div class="ch-item-desc">Higher tiers available by direct inquiry only. A Henderson Transpacific representative will respond personally.</div>
-        </div>
+        <p class="mkt-note">Free express shipping on all US orders. Arrives within 2 business days.</p>
       </div>
-      <a class="ch-cta" href="#inquiry">Inquire for US</a>
-    </div>
-
-    <!-- FRANCE -->
-    <div class="ch-col">
-      <div class="ch-flag">🇫🇷</div>
-      <div class="ch-country">France</div>
-      <div class="ch-sub">Clientèle Française</div>
-      <div class="ch-channels">
-        <div class="ch-item">
-          <div class="ch-item-type">Direct — Primaire</div>
-          <div class="ch-item-name">luminara.com/fr</div>
-          <div class="ch-item-desc">Achat direct sécurisé. Livraison partout en France. Toutes les gammes disponibles.</div>
+      <div class="mkt reveal d1">
+        <span class="mkt-flag">🇫🇷</span>
+        <div class="mkt-name">France</div>
+        <span class="mkt-sub">European Hub</span>
+        <div class="stockists">
+          <div class="stk"><div class="stk-name">Direct · luminara.eu</div><div class="stk-type">Online · Ships EU-wide</div></div>
+          <div class="stk"><div class="stk-name">Officine Universelle Buly</div><div class="stk-type">Paris · 75006</div></div>
+          <div class="stk"><div class="stk-name">Aesop Marais</div><div class="stk-type">Paris · 75004</div></div>
+          <div class="stk"><div class="stk-name">Colette Select</div><div class="stk-type">Paris · 75001</div></div>
         </div>
-        <div class="ch-item">
-          <div class="ch-item-type">Boutique Indépendante</div>
-          <div class="ch-item-name">Revendeurs Français Sélectionnés</div>
-          <div class="ch-item-desc">Instituts de beauté indépendants et épiceries de luxe françaises — artisanaux, pas mass-market.</div>
-        </div>
-        <div class="ch-item">
-          <div class="ch-item-type">Consultation Privée</div>
-          <div class="ch-item-name">Gammes IV · V · VI</div>
-          <div class="ch-item-desc">Les gammes supérieures sont disponibles sur demande privée directe à Henderson Transpacific.</div>
-        </div>
+        <p class="mkt-note">Livraison gratuite en 48h pour toute la France métropolitaine.</p>
       </div>
-      <a class="ch-cta" href="#inquiry">Demande Privée</a>
-    </div>
-
-    <!-- ITALIA -->
-    <div class="ch-col">
-      <div class="ch-flag">🇮🇹</div>
-      <div class="ch-country">Italia</div>
-      <div class="ch-sub">Clienti Italiani</div>
-      <div class="ch-channels">
-        <div class="ch-item">
-          <div class="ch-item-type">Diretto — Primario</div>
-          <div class="ch-item-name">luminara.com/it</div>
-          <div class="ch-item-desc">Acquisto diretto sicuro. Consegna in tutta Italia. Tutte le gamme disponibili.</div>
+      <div class="mkt reveal d2">
+        <span class="mkt-flag">🇮🇹</span>
+        <div class="mkt-name">Italy</div>
+        <span class="mkt-sub">Southern Europe</span>
+        <div class="stockists">
+          <div class="stk"><div class="stk-name">Direct · luminara.it</div><div class="stk-type">Online · Spedizione Italia</div></div>
+          <div class="stk"><div class="stk-name">Acqua di Parma · Milan</div><div class="stk-type">Via Montenapoleone</div></div>
+          <div class="stk"><div class="stk-name">Santa Maria Novella</div><div class="stk-type">Florence & Rome</div></div>
+          <div class="stk"><div class="stk-name">La Rinascente Luxury</div><div class="stk-type">Milan · Beauty Level</div></div>
         </div>
-        <div class="ch-item">
-          <div class="ch-item-type">Boutique Indipendente</div>
-          <div class="ch-item-name">Rivenditori Italiani Selezionati</div>
-          <div class="ch-item-desc">Profumerie indipendenti e boutique di bellezza artigianale — non mass-market, autenticamente curate.</div>
-        </div>
-        <div class="ch-item">
-          <div class="ch-item-type">Consulenza Privata</div>
-          <div class="ch-item-name">Livelli IV · V · VI</div>
-          <div class="ch-item-desc">I livelli superiori sono disponibili su richiesta privata diretta a Henderson Transpacific.</div>
-        </div>
+        <p class="mkt-note">Consegna gratuita in 2–3 giorni lavorativi su tutto il territorio nazionale.</p>
       </div>
-      <a class="ch-cta" href="#inquiry">Consulenza Privata</a>
     </div>
-
-  </div>
-
-  <div class="wrap">
-    <div class="avail-note-new reveal d3">
-      <p>Luminara BioRegen Elixir™ is never sold through mass-market platforms, large department store chains, or third-party aggregators. This is intentional — it protects the integrity of the formula, the privacy of our clients, and the standard every bottle must meet before it reaches your hands. Tier VI (Atelier) is available only through Muse Achieve membership. Unauthorised resale is prohibited under applicable international trademark and intellectual property law.</p>
+    <div class="avail-note reveal">
+      <p>Luminara BioRegen Elixir™ is produced in limited batches of 500 units per quarter. Each bottle is numbered, dated, and accompanied by a Certificate of Analysis. Pre-order available for subsequent batches — contact us via private inquiry.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════ INQUIRY ══════ -->
-<section id="inquiry" class="pad">
-  <div class="wrap">
+<div class="div-line"></div>
+
+<!-- ═══ INQUIRY ════════════════════════════════════════════════════ -->
+<section id="inquiry">
+  <div class="wrap pad">
     <div class="inq-inner">
       <div class="inq-head">
         <div class="s-label reveal">Private Inquiry · Demande Privée · Richiesta Privata</div>
-        <h2 class="s-title reveal d1" style="color:var(--white);">Begin Your<br><em style="color:var(--sage-l);">Luminara Journey</em></h2>
-        <p class="s-lead reveal d2" style="text-align:center;margin:18px auto 0;">For private purchase inquiries, retail partnership discussions, and press enquiries. Every communication is handled with absolute discretion by a Henderson Transpacific representative.</p>
+        <h2 class="s-title reveal d1" style="color:var(--white);">Begin Your<br><em style="color:rgba(180,215,183,.8);">Luminara Journey</em></h2>
+        <p class="s-lead reveal d2" style="text-align:center;margin:16px auto 0;color:rgba(120,158,123,.45);">For private purchase inquiries, retail partnership discussions, and press enquiries. Every communication is handled with absolute discretion by a Henderson Transpacific representative.</p>
       </div>
       <form class="inq-form reveal d2" id="inqForm" onsubmit="handleInq(event)">
         <div class="if-row">
-          <div class="if-g"><label class="if-label">Full Name</label><input class="if-inp" type="text" placeholder="Your full name" required></div>
-          <div class="if-g"><label class="if-label">Email Address</label><input class="if-inp" type="email" placeholder="your@email.com" required></div>
+          <div class="if-g"><label class="if-label">Full Name *</label><input class="if-inp" type="text" name="name" placeholder="Your name" required></div>
+          <div class="if-g"><label class="if-label">Email Address *</label><input class="if-inp" type="email" name="email" placeholder="your@email.com" required></div>
         </div>
         <div class="if-row">
-          <div class="if-g">
-            <label class="if-label">Country</label>
-            <select class="if-inp">
-              <option value="" disabled selected>Select your country</option>
-              <option>United States</option><option>France</option><option>Italy</option>
-              <option>Other — Inquiry Only</option>
-            </select>
-          </div>
-          <div class="if-g">
-            <label class="if-label">Nature of Inquiry</label>
-            <select class="if-inp">
-              <option value="" disabled selected>Select inquiry type</option>
-              <optgroup label="── Purchase">
-                <option>Private Purchase — Personal</option>
-                <option>Private Purchase — Gift &amp; Corporate</option>
-                <option>VIP &amp; Priority Client Services</option>
-              </optgroup>
-              <optgroup label="── Partnership">
-                <option>Retail Partnership</option>
-                <option>Spa &amp; Wellness Partnership</option>
-                <option>Medical &amp; Dermatologist Partnership</option>
-                <option>Hotel &amp; Hospitality Partnership</option>
-                <option>International Distribution</option>
-              </optgroup>
-              <optgroup label="── Other">
-                <option>Press &amp; Media</option>
-                <option>Influencer &amp; Ambassador</option>
-                <option>General Enquiry</option>
-              </optgroup>
+          <div class="if-g"><label class="if-label">Country</label><input class="if-inp" type="text" name="country" placeholder="United States"></div>
+          <div class="if-g"><label class="if-label">Inquiry Type *</label>
+            <select class="if-inp" name="type" required>
+              <option value="" disabled selected>Select type</option>
+              <option>Purchase Inquiry</option>
+              <option>Retail Partnership</option>
+              <option>Press & Media</option>
+              <option>Muse Achieve Membership</option>
+              <option>Other</option>
             </select>
           </div>
         </div>
-        <div class="if-row">
-          <div class="if-g full"><label class="if-label">Your Message</label>
-            <textarea class="if-inp if-ta" placeholder="Please share what you're looking for. All inquiries receive a personal response within 48 hours."></textarea>
-          </div>
-        </div>
-        <button type="submit" class="if-btn">Submit Inquiry</button>
-        <div class="if-note">All information is handled with absolute discretion. We do not share, sell, or distribute any client data. You will receive a personal response from a Henderson Transpacific representative within 48 hours.</div>
+        <div class="if-g full" style="margin-bottom:12px;"><label class="if-label">Message *</label><textarea class="if-inp if-ta" name="message" placeholder="Please share the nature of your inquiry. All responses are treated with absolute discretion." required></textarea></div>
+        <button class="if-btn" type="submit">Submit Private Inquiry</button>
+        <p class="if-note">All inquiries are responded to within 48 hours by a Henderson Transpacific representative. Your information is never shared.</p>
       </form>
       <div id="inq-success">
-        <div class="inq-ok-title">Thank You</div>
-        <div class="inq-ok-body">Your inquiry has been received and will be reviewed with the utmost care. A Henderson Transpacific representative will respond to you personally within 48 hours — discreetly and in complete confidence.</div>
+        <div class="inq-ok-title">Inquiry Received</div>
+        <p class="inq-ok-body">Thank you. A Henderson Transpacific representative will respond to your inquiry within 48 hours with absolute discretion.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════ FOOTER ══════ -->
+<!-- ═══ FOOTER ═════════════════════════════════════════════════════ -->
 <footer>
-  <div class="f-sage-bar"></div>
-  <div class="wrap">
-    <div class="f-inner">
-      <div class="f-brand">
-        <span class="flogo">Luminara</span>
-        <span class="flogo-sub">BioRegen Elixir™ · Henderson Transpacific LLC</span>
-        <div class="ftagline">"Where biotechnology meets nature's finest hour — and the boundary between science and luxury quietly dissolves."</div>
-      </div>
-      <div>
-        <span class="fcol-title">Discover</span>
-        <div class="flinks">
-          <a class="flink" href="#provenance">The Story</a>
-          <a class="flink" href="#formula">The Formula</a>
-          <a class="flink" href="#science">Clinical Science</a>
-          <a class="flink" href="#ritual">Application Ritual</a>
-          <a class="flink" href="#availability">Stockists</a>
-        </div>
-      </div>
-      <div>
-        <span class="fcol-title">Connect</span>
-        <div class="flinks">
-          <a class="flink" href="#inquiry">Private Inquiry</a>
-          <a class="flink" href="#inquiry">Retail Partnerships</a>
-          <a class="flink" href="#inquiry">Press &amp; Media</a>
-          <a class="flink" href="mailto:inquiry@henderson-transpacific.com">inquiry@henderson-transpacific.com</a>
-        </div>
-        <div class="f-botanical">
-          100% Natural · Zero Synthetics<br>
-          Available in USA · France · Italy<br>
-          Henderson Transpacific LLC
-        </div>
+  <div class="ft-sage-bar"></div>
+  <div class="ft-inner">
+    <div>
+      <span class="flogo">Luminara</span>
+      <span class="flogo-sub">Henderson Transpacific LLC</span>
+      <p class="ftagline">Where biotechnology meets nature's finest hour. Zero synthetics. Zero compromise.</p>
+    </div>
+    <div>
+      <span class="fcol-title">Navigate</span>
+      <div class="flinks">
+        <a href="#provenance" class="flink">Provenance</a>
+        <a href="#collection" class="flink">Collection</a>
+        <a href="#formula" class="flink">Formula</a>
+        <a href="#science" class="flink">Clinical Science</a>
+        <a href="#availability" class="flink">Where to Buy</a>
       </div>
     </div>
-    <div class="f-divider"></div>
-    <div class="f-bottom">
-      <div class="f-copy">© 2026 Henderson Transpacific LLC. All rights reserved.<br>Luminara BioRegen Elixir™ is a registered trademark of Henderson Transpacific LLC.</div>
-      <div class="f-tm">Available exclusively: 🇺🇸 · 🇫🇷 · 🇮🇹<br>Unauthorised distribution strictly prohibited.</div>
+    <div>
+      <span class="fcol-title">Company</span>
+      <div class="flinks">
+        <a href="landing.html" class="flink">Muse Achieve Circle</a>
+        <a href="ceo_dashboard.html" class="flink">CEO Portal</a>
+        <a href="#inquiry" class="flink">Private Inquiry</a>
+      </div>
     </div>
+  </div>
+  <div class="ft-bottom">
+    <p class="fcopy">© 2025 Henderson Transpacific LLC. All rights reserved.<br>Available in USA, France &amp; Italy. Luminara BioRegen Elixir™ is a registered trademark.</p>
+    <p class="ftm">Formulated with intention. Every drop traceable.</p>
   </div>
 </footer>
 
-<!-- Toast -->
-<div id="toast">
-  <div class="toast-t">Inquiry Received</div>
-  <div class="toast-b">We will respond within 48 hours — discreetly and in confidence.</div>
-</div>
+<div id="toast"><div class="toast-t">Inquiry Sent</div><div class="toast-b">We'll be in touch within 48 hours.</div></div>
 
 <script>
-/* ════════════════════════════════
-   PRELOADER
-════════════════════════════════ */
-function hidePreloader(){document.getElementById('preloader').classList.add('gone');}
-window.addEventListener('load',()=>setTimeout(hidePreloader,2000));
-// Hard fallback: hide after 5s regardless of font/resource loading
-setTimeout(hidePreloader,5000);
+'use strict';
 
-/* ════════════════════════════════
-   CUSTOM CURSOR
-════════════════════════════════ */
-document.body.classList.add('js-ready');
-const dot=document.getElementById('cdot');
-const ring=document.getElementById('cring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  dot.style.left=mx+'px';dot.style.top=my+'px';
-});
-(function animRing(){
-  rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
-})();
-document.querySelectorAll('a,button,.fg,.metric,.mkt,.rstep').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('chover'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('chover'));
+/* ── FULLSCREEN ─────────────────────────────────── */
+document.getElementById('fsBtn').addEventListener('click',()=>{
+  if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});
+  else document.exitFullscreen().catch(()=>{});
 });
 
-/* ════════════════════════════════
-   NAV SCROLL
-════════════════════════════════ */
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('scrolled',window.scrollY>60);
-},{passive:true});
+/* ── MOBILE DRAWER ──────────────────────────────── */
+const drawer=document.getElementById('mobDrawer');
+document.getElementById('hamBtn').addEventListener('click',()=>drawer.classList.add('open'));
+document.getElementById('mobClose').addEventListener('click',()=>drawer.classList.remove('open'));
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
 
-/* ════════════════════════════════
-   MOBILE MENU
-════════════════════════════════ */
-let mobOpen=false;
-function toggleMob(){
-  mobOpen=!mobOpen;
-  nav.classList.toggle('mopen',mobOpen);
-  document.getElementById('mobDrawer').classList.toggle('open',mobOpen);
-  document.body.style.overflow=mobOpen?'hidden':'';
-}
-function closeMob(){
-  mobOpen=false;
-  nav.classList.remove('mopen');
-  document.getElementById('mobDrawer').classList.remove('open');
-  document.body.style.overflow='';
-}
-
-/* ════════════════════════════════
-   SMOOTH SCROLL
-════════════════════════════════ */
-function navScrollTo(id){
-  const el=document.getElementById(id);
-  if(el){
-    const top=el.getBoundingClientRect().top+window.scrollY-80;
-    window.scrollTo({top,behavior:'smooth'});
-  }
-}
+/* ── SMOOTH SCROLL ──────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const id=a.getAttribute('href').slice(1);
-    if(!id)return;
     const el=document.getElementById(id);
-    if(el){
-      e.preventDefault();
-      closeMob();
-      // Immediately highlight the clicked nav link (don't wait for scroll events)
-      document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
-      const clicked=document.querySelector('.nav-link[href="#'+id+'"]');
-      if(clicked)clicked.classList.add('active');
-      navScrollTo(id);
-    }
+    if(el){e.preventDefault();const top=el.getBoundingClientRect().top+window.scrollY-68;window.scrollTo({top,behavior:'smooth'});}
   });
 });
 
-/* ════════════════════════════════
-   SCROLL REVEAL
-════════════════════════════════ */
+/* ── NAV ────────────────────────────────────────── */
+const nav=document.getElementById('nav');
+const navLinks=document.querySelectorAll('.nav-link[data-nav]');
+const sections=['provenance','collection','formula','science','ritual','availability','inquiry']
+  .map(id=>document.getElementById(id)).filter(Boolean);
+
+function updateNav(){
+  nav.classList.toggle('scrolled',window.scrollY>80);
+  const th=110;let cur='';
+  sections.forEach(s=>{if(s.getBoundingClientRect().top<=th)cur=s.id;});
+  navLinks.forEach(l=>l.classList.toggle('active',l.dataset.nav===cur));
+}
+window.addEventListener('scroll',updateNav,{passive:true});
+setTimeout(updateNav,200);
+
+/* ── REVEAL ─────────────────────────────────────── */
+document.body.classList.add('js-loaded');
+
 const revObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}
-  });
-},{threshold:0,rootMargin:'0px 0px -10px 0px'});
-// Fallback: show all reveal elements after 1.5s if observer has not fired
-setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),1500);
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}});
+},{threshold:0,rootMargin:'0px 0px -20px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
-// Immediately reveal elements already in viewport
+
 requestAnimationFrame(()=>{
   document.querySelectorAll('.reveal:not(.in)').forEach(el=>{
     const r=el.getBoundingClientRect();
-    if(r.top<window.innerHeight&&r.bottom>0){el.classList.add('in');}
+    if(r.top<window.innerHeight)el.classList.add('in');
   });
 });
+setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),1500);
 
-/* ════════════════════════════════
-   ACTIVE NAV LINKS
-════════════════════════════════ */
-const navLinks=document.querySelectorAll('.nav-link[href^="#"]');
-const navSections=Array.from(document.querySelectorAll('section[id]'));
-function updateActiveNav(){
-  // Use getBoundingClientRect — reliable regardless of transforms/parents
-  const threshold=130;
-  let current='';
-  navSections.forEach(s=>{
-    if(s.getBoundingClientRect().top<=threshold) current=s.id;
-  });
-  navLinks.forEach(l=>{
-    l.classList.toggle('active',l.getAttribute('href')==='#'+current);
-  });
+/* ── COUNTERS ───────────────────────────────────── */
+function animCount(el){
+  const t=parseInt(el.getAttribute('data-count'));if(isNaN(t))return;
+  const dur=1200,t0=performance.now();
+  (function step(now){const p=Math.min((now-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(e*t);if(p<1)requestAnimationFrame(step);})(t0);
 }
-window.addEventListener('scroll',updateActiveNav,{passive:true});
-// Run after a short delay so fonts/images have shifted layout
-setTimeout(updateActiveNav,300);
-
-/* ════════════════════════════════
-   COUNTER ANIMATION
-════════════════════════════════ */
-function animCounter(el){
-  const target=parseInt(el.getAttribute('data-target'));
-  if(isNaN(target))return;
-  const suffix=el.getAttribute('data-suffix')||'';
-  const dur=1500,t0=performance.now();
-  (function step(now){
-    const pct=Math.min((now-t0)/dur,1);
-    const ease=1-Math.pow(1-pct,4);
-    el.textContent=Math.round(ease*target)+suffix;
-    if(pct<1)requestAnimationFrame(step);
-  })(t0);
-}
-const cntObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting&&e.target.hasAttribute('data-target')){
-      animCounter(e.target);cntObs.unobserve(e.target);
-    }
-  });
+const cObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){animCount(e.target);cObs.unobserve(e.target);}});
 },{threshold:.5});
-document.querySelectorAll('[data-target]').forEach(el=>cntObs.observe(el));
+document.querySelectorAll('[data-count]').forEach(el=>cObs.observe(el));
 
-/* ════════════════════════════════
-   INQUIRY FORM
-════════════════════════════════ */
+/* ── FORM ───────────────────────────────────────── */
 function handleInq(e){
   e.preventDefault();
-  const form=document.getElementById('inqForm');
+  const form=e.target,req=form.querySelectorAll('[required]');
+  let ok=true;
+  req.forEach(el=>{if(!el.value.trim()){el.style.borderColor='rgba(220,80,80,.5)';ok=false;setTimeout(()=>el.style.borderColor='',1500);}});
+  if(!ok)return;
   form.style.display='none';
   document.getElementById('inq-success').style.display='block';
-  const t=document.getElementById('toast');
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),5500);
+  const toast=document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),4000);
 }
-
-/* ════════════════════════════════
-   DAY / NIGHT TOGGLE
-════════════════════════════════ */
-let lumiNight=false;
-(function(){
-  const saved=localStorage.getItem('luminara-theme');
-  if(saved==='night'){lumiNight=true;document.body.classList.add('night');document.getElementById('lumiThemeIcon').textContent='☀️';}
-})();
-function toggleLumiTheme(){
-  lumiNight=!lumiNight;
-  document.body.classList.toggle('night',lumiNight);
-  document.getElementById('lumiThemeIcon').textContent=lumiNight?'☀️':'🌙';
-  localStorage.setItem('luminara-theme',lumiNight?'night':'day');
-}
-
-/* ════════════════════════════════
-   FULLSCREEN
-════════════════════════════════ */
-function toggleLumiFs(){
-  if(!document.fullscreenElement){
-    document.documentElement.requestFullscreen().catch(()=>{});
-  }else{
-    document.exitFullscreen().catch(()=>{});
-  }
-}
-document.addEventListener('fullscreenchange',()=>{
-  document.getElementById('lumiFsIcon').textContent=document.fullscreenElement?'✕':'⛶';
-});
-document.addEventListener('keydown',e=>{
-  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT')return;
-  if(e.key==='f'||e.key==='F')toggleLumiFs();
-  if(e.key==='d'||e.key==='D')toggleLumiTheme();
-});
 </script>
 </body>
 </html>
