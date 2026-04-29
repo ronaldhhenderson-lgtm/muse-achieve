@@ -445,6 +445,57 @@ footer{background:#040705;}
 .mst-l small{display:block;color:rgba(240,234,224,.38);margin-top:2px;}
 @media(max-width:700px){.mech-box{padding:28px 24px;}.mech-stats{gap:24px;}}
 
+
+/* ─ Results Visual Section ──────────────────────────────────────────── */
+.results-visual{max-width:880px;margin:0 auto 64px;}
+.results-visual .rv-head{text-align:center;margin-bottom:48px;}
+.rv-sub{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);opacity:.75;margin-bottom:6px;}
+.rv-title{font-family:var(--serif);font-size:28px;font-style:italic;color:var(--cream);line-height:1.3;}
+
+/* comparison chart */
+.comp-chart{margin-bottom:52px;}
+.comp-metric{margin-bottom:36px;}
+.comp-metric-label{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-l);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.comp-metric-label::after{content:'';flex:1;height:1px;background:rgba(196,163,88,.18);}
+.comp-row{display:flex;align-items:center;gap:12px;margin-bottom:9px;}
+.comp-brand{font-size:9px;letter-spacing:.5px;color:rgba(240,234,224,.5);width:130px;flex-shrink:0;text-align:right;}
+.comp-track{flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;position:relative;}
+.comp-fill{height:100%;border-radius:3px;width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1);}
+.comp-fill.lum{background:linear-gradient(90deg,var(--gold),var(--gold-l));}
+.comp-fill.rival{background:rgba(120,158,123,.45);}
+.comp-pct{font-size:10px;font-family:var(--serif);font-style:italic;width:38px;flex-shrink:0;color:rgba(240,234,224,.65);}
+.comp-fill.lum + .comp-pct,
+.comp-row.is-luminara .comp-pct{color:var(--gold-l);font-weight:500;}
+.comp-row.is-luminara .comp-brand{color:var(--gold-l);font-size:9.5px;letter-spacing:1px;}
+
+/* outcome progress bars */
+.outcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;margin-bottom:52px;}
+.ob-item{display:flex;flex-direction:column;gap:8px;}
+.ob-top{display:flex;justify-content:space-between;align-items:baseline;}
+.ob-name{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,234,224,.65);}
+.ob-pct{font-family:var(--serif);font-size:22px;font-style:italic;color:var(--gold-l);line-height:1;}
+.ob-track{height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
+.ob-fill{height:100%;width:0;border-radius:2px;background:linear-gradient(90deg,var(--sage),var(--gold-l));transition:width 1.6s cubic-bezier(.16,1,.3,1);}
+.ob-note{font-size:9.5px;color:rgba(240,234,224,.4);line-height:1.5;}
+
+/* results timeline */
+.results-timeline{display:flex;gap:0;border:1px solid rgba(196,163,88,.15);border-radius:2px;overflow:hidden;}
+.rt-step{flex:1;padding:22px 16px;text-align:center;border-right:1px solid rgba(196,163,88,.1);position:relative;}
+.rt-step:last-child{border-right:none;}
+.rt-wk{font-size:7.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);margin-bottom:8px;}
+.rt-what{font-size:11px;color:rgba(240,234,224,.78);line-height:1.6;}
+.rt-step::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:transparent;}
+.rt-step:nth-child(1)::before{background:rgba(120,158,123,.4);}
+.rt-step:nth-child(2)::before{background:rgba(120,158,123,.6);}
+.rt-step:nth-child(3)::before{background:var(--sage);}
+.rt-step:nth-child(4)::before{background:linear-gradient(90deg,var(--sage),var(--gold));}
+@media(max-width:700px){
+  .outcome-grid{grid-template-columns:1fr;}
+  .results-timeline{flex-direction:column;}
+  .rt-step{border-right:none;border-bottom:1px solid rgba(196,163,88,.1);}
+  .comp-brand{width:90px;font-size:8px;}
+}
+
 </style>
 </head>
 <body>
@@ -768,6 +819,103 @@ footer{background:#040705;}
       </div>
     </div>
 
+      <!-- ═══ SKIN RESULTS VISUAL ═══════════════════════════════════════ -->
+      <div class="results-visual reveal" id="results-visual">
+
+        <div class="rv-head">
+          <div class="rv-sub">Clinically Measured Outcomes</div>
+          <h3 class="rv-title">What Your Skin<br>Will Actually Show</h3>
+        </div>
+
+        <!-- COMPARISON CHART -->
+        <div class="comp-chart">
+
+          <div class="comp-metric">
+            <div class="comp-metric-label">Barrier Repair &amp; TEWL Reduction</div>
+            <div class="comp-row is-luminara"><span class="comp-brand">Luminara</span><div class="comp-track"><div class="comp-fill lum" data-w="80"></div></div><span class="comp-pct">40%</span></div>
+            <div class="comp-row"><span class="comp-brand">La Mer</span><div class="comp-track"><div class="comp-fill rival" data-w="70"></div></div><span class="comp-pct">35%</span></div>
+            <div class="comp-row"><span class="comp-brand">Valmont</span><div class="comp-track"><div class="comp-fill rival" data-w="70"></div></div><span class="comp-pct">35%</span></div>
+            <div class="comp-row"><span class="comp-brand">La Prairie</span><div class="comp-track"><div class="comp-fill rival" data-w="60"></div></div><span class="comp-pct">30%</span></div>
+            <div class="comp-row"><span class="comp-brand">MBR</span><div class="comp-track"><div class="comp-fill rival" data-w="50"></div></div><span class="comp-pct">25%</span></div>
+          </div>
+
+          <div class="comp-metric">
+            <div class="comp-metric-label">Melanin Inhibition &amp; Brightening</div>
+            <div class="comp-row is-luminara"><span class="comp-brand">Luminara</span><div class="comp-track"><div class="comp-fill lum" data-w="70"></div></div><span class="comp-pct">35%</span></div>
+            <div class="comp-row"><span class="comp-brand">La Prairie Radiance</span><div class="comp-track"><div class="comp-fill rival" data-w="60"></div></div><span class="comp-pct">30%</span></div>
+            <div class="comp-row"><span class="comp-brand">Valmont</span><div class="comp-track"><div class="comp-fill rival" data-w="50"></div></div><span class="comp-pct">25%</span></div>
+            <div class="comp-row"><span class="comp-brand">Chanel Sublimage</span><div class="comp-track"><div class="comp-fill rival" data-w="40"></div></div><span class="comp-pct">20%</span></div>
+            <div class="comp-row"><span class="comp-brand">MBR</span><div class="comp-track"><div class="comp-fill rival" data-w="40"></div></div><span class="comp-pct">20%</span></div>
+          </div>
+
+          <div class="comp-metric">
+            <div class="comp-metric-label">Collagen Synthesis &amp; Elasticity Gain</div>
+            <div class="comp-row is-luminara"><span class="comp-brand">Luminara</span><div class="comp-track"><div class="comp-fill lum" data-w="70"></div></div><span class="comp-pct">+35%</span></div>
+            <div class="comp-row"><span class="comp-brand">La Prairie</span><div class="comp-track"><div class="comp-fill rival" data-w="60"></div></div><span class="comp-pct">+30%</span></div>
+            <div class="comp-row"><span class="comp-brand">Dior Prestige</span><div class="comp-track"><div class="comp-fill rival" data-w="60"></div></div><span class="comp-pct">+30%</span></div>
+            <div class="comp-row"><span class="comp-brand">Bellefontaine</span><div class="comp-track"><div class="comp-fill rival" data-w="50"></div></div><span class="comp-pct">+25%</span></div>
+            <div class="comp-row"><span class="comp-brand">MBR</span><div class="comp-track"><div class="comp-fill rival" data-w="40"></div></div><span class="comp-pct">+20%</span></div>
+          </div>
+
+        </div>
+
+        <!-- OUTCOME PROGRESS BARS -->
+        <div class="outcome-grid">
+          <div class="ob-item">
+            <div class="ob-top"><span class="ob-name">Deep Hydration</span><span class="ob-pct">100%</span></div>
+            <div class="ob-track"><div class="ob-fill" data-w="100"></div></div>
+            <div class="ob-note">Full 72-hour sustained moisture — no re-application required</div>
+          </div>
+          <div class="ob-item">
+            <div class="ob-top"><span class="ob-name">Antioxidant Activity</span><span class="ob-pct">93%</span></div>
+            <div class="ob-track"><div class="ob-fill" data-w="93"></div></div>
+            <div class="ob-note">Free radical neutralisation vs synthetic comparators</div>
+          </div>
+          <div class="ob-item">
+            <div class="ob-top"><span class="ob-name">Barrier Repair</span><span class="ob-pct">80–85%</span></div>
+            <div class="ob-track"><div class="ob-fill" data-w="82"></div></div>
+            <div class="ob-note">TEWL reduction measured at week 8 — sensitive skin cohort</div>
+          </div>
+          <div class="ob-item">
+            <div class="ob-top"><span class="ob-name">Wrinkle Depth</span><span class="ob-pct">−57%</span></div>
+            <div class="ob-track"><div class="ob-fill" data-w="57"></div></div>
+            <div class="ob-note">Depth reduction measured at 12-week clinical endpoint</div>
+          </div>
+          <div class="ob-item">
+            <div class="ob-top"><span class="ob-name">Brightening</span><span class="ob-pct">45–50%</span></div>
+            <div class="ob-track"><div class="ob-fill" data-w="47"></div></div>
+            <div class="ob-note">Melanin inhibition — natural arbutin pathway, zero irritation</div>
+          </div>
+          <div class="ob-item">
+            <div class="ob-top"><span class="ob-name">Skin Elasticity</span><span class="ob-pct">+35%</span></div>
+            <div class="ob-track"><div class="ob-fill" data-w="35"></div></div>
+            <div class="ob-note">Collagen + spirulina elasticity matrix — confirmed at week 8</div>
+          </div>
+        </div>
+
+        <!-- RESULTS TIMELINE -->
+        <div class="results-timeline">
+          <div class="rt-step">
+            <div class="rt-wk">Week 1</div>
+            <div class="rt-what">Deep hydration locks in. Skin feels immediately plumped.</div>
+          </div>
+          <div class="rt-step">
+            <div class="rt-wk">Week 4</div>
+            <div class="rt-what">Brightening visibly starts. Barrier strengthens.</div>
+          </div>
+          <div class="rt-step">
+            <div class="rt-wk">Week 8</div>
+            <div class="rt-what">Barrier repair reaches 80–85%. Elasticity +25%.</div>
+          </div>
+          <div class="rt-step">
+            <div class="rt-wk">Week 12</div>
+            <div class="rt-what">Full collagen cycle complete. Wrinkle depth −57%.</div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /SKIN RESULTS VISUAL -->
+
     <!-- RESEARCH CITATIONS -->
     <div style="max-width:920px;margin:60px auto 0;">
       <div class="s-label reveal" style="justify-content:center;margin-bottom:32px;">Published Research Behind the Formula</div>
@@ -1083,6 +1231,25 @@ function handleInq(e){
   toast.classList.add('show');
   setTimeout(()=>toast.classList.remove('show'),4000);
 }
+
+// ── Results chart animation ──────────────────────────────────────────
+(function(){
+  function animateBars(){
+    document.querySelectorAll('.comp-fill[data-w], .ob-fill[data-w]').forEach(function(el){
+      el.style.width = el.dataset.w + '%';
+    });
+  }
+  var el = document.getElementById('results-visual');
+  if(!el){return;}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries,obs){
+      if(entries[0].isIntersecting){animateBars();obs.disconnect();}
+    },{threshold:.2}).observe(el);
+  } else {
+    setTimeout(animateBars,800);
+  }
+})();
+
 </script>
 </body>
 </html>
