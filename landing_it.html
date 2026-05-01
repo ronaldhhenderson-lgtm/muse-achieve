@@ -510,7 +510,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
   <p class="section-tag reveal">Membership</p>
   <h2 class="section-h2 reveal">Request Access</h2>
   <div class="app-inner">
-    <p class="app-note reveal">Membership is by application only. Each application is reviewed personally. We respond within 72 hours. La spedizione in Italia e in Europa è inclusa in tutti i livelli di abbonamento.</p>
+    <p class="app-note reveal">  <div class="mem-price-line reveal" style="text-align:center;margin:0 auto 36px;">
+    <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(196,163,88,.55);margin-bottom:8px;">Adesione Annuale</p>
+    <p style="font-family:var(--serif);font-size:clamp(28px,4vw,42px);font-weight:300;color:var(--text);letter-spacing:2px;margin-bottom:6px;">2&thinsp;200&nbsp;€ <span style="font-size:14px;font-weight:300;color:var(--muted);letter-spacing:1px;">/ anno</span></p>
+    <p style="font-size:11px;font-family:var(--serif);font-style:italic;color:var(--muted);margin-bottom:0;">Include l'Elisir Luminara, le selezioni trimestrali e l'accesso completo</p>
+  </div>
+      Membership is by application only. Each application is reviewed personally. We respond within 72 hours. La spedizione in Italia e in Europa è inclusa in tutti i livelli di abbonamento.</p>
     <form id="appForm" onsubmit="handleSubmit(event)" novalidate>
       <div class="frow">
         <input class="finput" type="text" placeholder="First Name" required>
@@ -621,4 +626,4 @@ function handleSubmit(e){
 }
 </script>
 </body>
-</html>               
+</html>
