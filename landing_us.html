@@ -531,6 +531,11 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:60px
   <div class="section-rule reveal"></div>
   <p class="section-tag reveal">Membership</p>
   <h2 class="section-h2 reveal">Request Access</h2>
+  <div class="mem-price-line reveal" style="text-align:center;margin:0 auto 36px;max-width:440px;">
+    <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(196,163,88,.55);margin-bottom:8px;">Annual Membership</p>
+    <p style="font-family:var(--serif);font-size:clamp(28px,4vw,42px);font-weight:300;color:var(--text);letter-spacing:2px;margin-bottom:6px;">$2,400 <span style="font-size:14px;font-weight:300;color:var(--muted);letter-spacing:1px;">USD / year</span></p>
+    <p style="font-size:11px;font-family:var(--serif);font-style:italic;color:var(--muted);">Includes Luminara Elixir, quarterly curations, and full member access</p>
+  </div>
   <div class="app-inner">
     <p class="app-note reveal">Membership is by application only. We review each request personally and respond within 72 hours. USA & Canada shipping included in all tier memberships.</p>
     <form id="appForm" onsubmit="handleSubmit(event)" novalidate>
@@ -646,17 +651,4 @@ setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.clas
 
 /* COUNTERS */
 function animCount(el){const target=parseInt(el.getAttribute('data-count'));if(isNaN(target))return;const dur=1200,t0=performance.now();(function step(now){const p=Math.min((now-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(e*target);if(p<1)requestAnimationFrame(step);})(t0);}
-const cntObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animCount(e.target);cntObs.unobserve(e.target);}});},{threshold:.5});
-document.querySelectorAll('[data-count]').forEach(el=>cntObs.observe(el));
-
-/* FORM */
-function handleSubmit(e){
-  e.preventDefault();
-  const form=e.target,req=form.querySelectorAll('[required]');let ok=true;
-  req.forEach(el=>{if(!el.value.trim()){el.style.borderColor='rgba(220,80,80,.5)';ok=false;setTimeout(()=>el.style.borderColor='',1500);}});
-  if(!ok)return;
-  form.style.display='none';
-  document.getElementById('appsuccess').style.display='block';
-  document.getElementById('appsuccess').scrollIntoView({behavior:'smooth',block:'center'});
-}
-</script>
+const cntObs=new IntersectionObserver(entries=>{entries.forEach(e
